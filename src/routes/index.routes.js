@@ -5,7 +5,8 @@ const {
   renderIndex,
   renderAbout,
   renderProjects,
-  renderContact
+  renderContact,
+  sendMail
 } = require('../controllers/index.controller.js');
 
 // Render Routes
@@ -16,5 +17,8 @@ Router.get('/nosotros', renderAbout);
 Router.get('/proyectos', renderProjects);
 
 Router.get('/contacto', renderContact);
+
+// Operation Routes
+Router.post('/send-mail', sendMail);
 
 module.exports = Router;

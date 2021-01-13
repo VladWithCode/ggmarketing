@@ -1,0 +1,30 @@
+{
+  "name": "ggmkt_site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "express-session": "^1.17.1",
+    "googleapis": "^67.0.0",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.4.17"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VladWithCode/ggmarketing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VladWithCode/ggmarketing/issues"
+  },
+  "homepage": "https://github.com/VladWithCode/ggmarketing#readme"
+}

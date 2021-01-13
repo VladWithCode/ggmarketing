@@ -1,0 +1,89 @@
+
+
+.projects {
+    height: 80vh;
+    position: relative;
+
+
+    $proj-circle: 50vw;
+    $proj-img-top: 29vh;
+
+    &__circle {
+        background-color: $color-primary-light;
+        position: absolute;
+
+        height: $proj-circle;
+        width: $proj-circle;
+        border-radius: 100rem;
+        left: 45%;
+
+    }
+
+    &__title {
+        position: absolute;
+        font-size: 6rem;
+        line-height: 6rem;
+        top: 40%;
+        left: 10%;
+        & span {
+            display: block;
+        }
+
+        animation-delay: 1.4s;
+    }
+
+    &__img {
+        position: absolute;
+        width: 30%;
+        top: $proj-img-top;
+        left: 55%;
+        animation-delay: .9s;
+    }
+
+    @include respond(tab-port){
+        position: static;
+        margin-top: 3rem;
+
+        &__circle,
+        &__title,
+        &__img {
+            position: static;
+        }
+
+        &__title {
+            order: -1;
+            font-size: 4rem;
+
+            & span {
+                display: inline;
+            }
+        }
+
+        &__circle { 
+            margin-top: 5rem;
+
+            @include respond(phone) {
+                width: 60vw;
+                height: 60vw;
+            }
+
+        }
+        &__img {
+            margin-top: -40%;
+            width: 60%;
+            
+            @include respond(phone) {
+                width: 80%;
+            }
+        }
+
+    }
+
+}
+
+.projects-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}

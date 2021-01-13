@@ -1,0 +1,147 @@
+.main {
+    position: relative;
+
+    &-text-box {
+        color: $color-text;
+        text-align: center;
+        position: relative;
+
+        &__primary {
+            font-weight: 400;
+            font-size: 2rem;
+            margin: 5rem 0 2rem 0;
+        }
+
+        &__sec {
+            font-size: 3.2rem;
+        }
+
+        &__hr {
+            margin: 3rem auto 6rem auto;
+            background-color: $color-text;
+            width: 15rem;
+            height: 1rem;
+            border-radius: 5rem;
+        }
+    }
+
+    &__services {
+        width: 75%;
+        margin: 0 auto;
+        display: flex;
+        // align-items: space-between;
+        justify-content: space-between;
+        position: relative;
+        flex-wrap: wrap;
+
+        & .card {
+            flex: 0 1 calc(33% - 2rem);
+        }
+
+        @include respond(tab-land) {
+            width: 85%;
+            
+            & .card {
+                flex: 0 1 calc(50% - 3rem);
+                margin-bottom: 3rem;
+            }
+
+        }
+
+        @include respond(tab-port) {
+            
+            & .card {
+                flex: 0 1 100%;
+            }
+
+        }
+
+
+        @include respond(phone) {
+            width: 90%;
+            & .card {
+                box-shadow: none;
+                flex: 0 1 100%;
+
+                &:last-child {
+                    align-self: center;
+                }
+            }
+        }
+
+    }
+
+
+}
+
+
+.main-background {
+    position: relative;
+
+    &__circle {
+
+        display: none;
+
+        @include respond(tab-port) {
+            display: none;
+        }
+
+        // background-color: #f1f0fe;
+        background-color: rgba($color-primary-light, 0.3);
+        position: absolute;
+        border-radius: 50rem;
+        
+
+        $circle1: 100vw * .5;
+        $circle3: 38vw;
+        $circle2: 60vw * .6;
+
+        $circle2_left: 60%;
+        $circle3_left: 45%;
+        
+
+        @include respond(tab-land) {
+
+            // & {
+            //     display: block;
+            // }
+
+
+
+        }
+
+
+        &:nth-child(1) {
+            height: $circle1;
+            width: $circle1;
+            top: 8rem;
+        }
+
+        &:nth-child(2) {
+            height: $circle2;
+            width: $circle2;
+            top: 6rem;
+        
+            left: $circle2_left;
+        }
+
+
+        &:nth-child(3) {
+            height: $circle3;
+            width: $circle3;
+            top: 70rem;
+            left: $circle3_left;
+        }
+
+
+    }
+}
+
+// @function circles($size,  $respond) {
+//     $base: 1800;
+
+//     $result: ($size * $respond) / $base;
+
+//     @return $result;
+
+// }

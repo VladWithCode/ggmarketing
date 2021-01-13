@@ -1,0 +1,56 @@
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+@import "base/base";
+@import "base/animation";
+@import "base/typography";
+@import "base/utilities";
+
+@import "components/card";
+@import "components/nav";
+
+@import "layout/header";
+@import "layout/main-layout";
+@import "layout/google";
+@import "layout/web-offer";
+@import "layout/footer";
+
+@import "pages/contacto";
+
+@import "pages/proyectos";
+@import "layout/projects-clients";
+
+@import "pages/nosotros";
+
+
+
+
+
+
+.heading-primary {
+    color: $color-white;
+    text-transform: uppercase;
+
+    backface-visibility: hidden;
+    margin-bottom: 6rem;
+
+    &-main {
+        display: block;
+        font-size: 6rem;
+        font-weight: 600;
+        letter-spacing: 3.5rem;
+
+        animation: moveInLeft 0.7s ease-out;
+    }
+
+    &-sub {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.75rem;
+
+        animation: moveInRight 0.7s ease-out;
+    }
+}
+

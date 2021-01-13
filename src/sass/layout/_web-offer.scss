@@ -1,0 +1,79 @@
+.web-offer {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: $color-primary-light;
+    margin: 12rem auto;
+    padding: 4rem 3rem;
+    border-radius: 7rem;
+    width: 95%;
+
+    @include respond(tab-port){
+        padding: 4rem 3rem;
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 5rem;
+    }
+
+
+    &__img {
+        flex: 0 1 50%;
+        height: 65%;
+        animation-delay: 1s;
+
+        @include respond(tab-port){
+            flex: 0 1 100%;
+            height: auto;
+            width: 100%;
+        }
+    }
+
+    &__main {
+        flex: 0 1 30%;
+        color: #fff;
+        // margin-right: 25rem;
+
+        // animation-delay: 1.8s;
+
+        &__title {
+            font-size: 5rem;
+            text-transform: uppercase;
+            margin-bottom: 5rem;
+
+            @include respond(tab-port) {
+                text-align: center;
+                flex: 0 1 100%;
+                margin-top: 4rem;
+                margin-bottom: 1.8rem;
+            }
+
+            @include respond(phone){
+                font-size: 3rem;
+            }
+        }
+
+        &__text {
+            font-size: 3rem;
+            font-weight: 300;
+            line-height: 4rem;
+        }
+
+        @include respond(tab-port){
+            flex: 0 1 100%;
+            margin: 0 auto;
+            text-align: center;
+
+            &__text {
+                margin-bottom: 3rem;
+
+                @include respond(phone){
+                    font-size: 2rem;
+                }
+            }
+            
+        }
+    }
+
+}

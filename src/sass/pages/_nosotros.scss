@@ -1,0 +1,205 @@
+.ggmkt {
+    height: 100vh;
+    position: relative;
+    text-align: right;
+
+    $us_circle: 55vw;
+
+    &__circle {
+        background-color: $color-primary-light;
+        position: absolute;
+
+        height: $us_circle;
+        width: $us_circle;
+        border-radius: 100rem;
+        left: 4%;
+        top: 13%;
+
+    }
+
+    &__title {
+        position: absolute;
+        font-size: 6rem;
+        line-height: 6rem;
+        top: 30%;
+        left: 70%;
+        & span {
+            display: block;
+        }
+        text-align: left;
+        animation-delay: 1.4s !important;
+    }
+
+    $top_img: 25vh;
+
+    &__img {
+        position: absolute;
+        width: 40%;
+        top: $top_img;
+        left: 10%;
+        animation-delay: 1s !important;
+    }
+
+    &__link {
+        position: relative;
+        @include btn-about-us;
+        top: 60%;
+        left: -8%;
+        animation-delay: 2.2s !important;
+    }
+
+    @include respond(tab-land){
+        // position: static;
+        margin: 0 auto;
+        text-align: center;
+
+        &__circle,
+        &__title,
+        &__img{
+            position: static;
+        }
+
+        &__title {
+            order: -1;
+            font-size: 4rem;
+
+            & span {
+                display: inline;
+            }
+        }
+
+        &__circle { 
+            margin-top: 5rem;
+
+            @include respond(phone) {
+                width: 60vw;
+                height: 60vw;
+            }
+
+        }
+        &__img {
+            margin-top: -50%;
+            width: 60%;
+            
+            @include respond(phone) {
+                width: 80%;
+            }
+        }
+
+        &__link {
+            top: 10rem;
+            left: 0;
+            
+            // transform: translateX(-50%);
+
+            @include respond(phone) {
+                top: 6rem;
+            }
+
+        }
+    }
+
+}
+
+.us-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+}
+
+
+
+
+.about-us {
+    position: relative;
+    width: 80%;
+    margin: 14rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__bubble {
+        font-size: 2.3rem;
+        font-weight: 300;
+        width: 60%;
+        padding: 3rem 4rem;
+        
+        border-radius: 5rem;
+
+        animation-delay: .3s !important;
+
+        &:nth-child(1){
+            background-color: $color-primary;
+            padding: 3rem 10rem;
+            width: 80%;
+            @include shadow;
+        }
+
+        & span {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4rem;
+        }
+
+        & .high {
+            display: inline-block;
+            margin: 0;
+        }
+
+        & .us {
+            text-align: center;
+            font-size: 3.5rem;
+            text-decoration: underline;
+        }
+    }
+
+    &__slogan {
+        padding: 1rem 10rem;
+        background-color: $color-primary-dark;
+        display: inline-block;
+        border-radius: 5rem;
+        font-weight: 600;
+        font-size: 2.3rem;
+        margin: 4rem;
+        @include shadow;
+        animation-delay: 0s !important;
+    }
+
+    &__link {
+        @include btn-about-us;
+        animation-delay: .3s !important;
+    }
+
+    @include respond(tab-port){
+        margin: -14rem auto 5rem auto;
+        position: static;
+        width: 98%;
+
+        &__bubble {
+            width: 90%;
+            margin: 0;
+            padding: 0;
+
+            &:nth-child(1){
+                background-color: $color-primary;
+                padding: 4rem 2rem 2rem 2rem;
+                width: 90%;
+                @include shadow;
+                animation: .8s moveInBottom;
+                animation-fill-mode: backwards;
+                overflow: hidden;
+                animation-delay: 2.8s !important;
+            }
+
+            & span {
+                margin-top: 4rem;
+            }
+
+
+           
+        }
+    }
+}
+

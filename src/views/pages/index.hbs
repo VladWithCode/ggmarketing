@@ -1,0 +1,102 @@
+{{#> layouts/default}}
+
+{{#*inline "header-block"}}
+{{> includes/layout/header}}
+{{/inline}}
+
+{{#*inline "content-block"}}
+<div class="main-background">
+  <div class="main-background__circle" data-aos-once="true" data-aos="popUp"></div>
+  <div class="main-background__circle" data-aos-once="true" data-aos="popUp"></div>
+  <div class="main-background__circle" data-aos-once="true" data-aos="popUp"></div>
+</div>
+
+<main class="main">
+
+  <div class="main-text-box">
+    <h3 class="main-text-box__primary">
+      ¿Qué ofecemos para tu negocio?
+    </h3>
+    <h3 class="main-text-box__sec">
+      Conoce nuestro servicios digitales
+    </h3>
+    <hr class="main-text-box__hr">
+  </div>
+
+  <div class="main__services">
+    <div class="card" data-aos-once="true" data-aos="moveInLeft">
+      <img class="card__img" src="assets/ppc.webp" alt="PPC">
+      <div class="card__info">
+        <h2 class="card__title">PPC</h2>
+        <p class="card__description">
+          Aprovecha el potencial y todos los beneficios de las campañas de publicidad digital.
+          Creamos y optimizamos las campañas de AdWords en distintas plataformas, asegurándonos de que tu
+          inversión genere prospectos de calidad.
+        </p>
+      </div>
+    </div>
+    <div class="card" data-aos-once="true" data-aos="moveInBottom">
+      <img class="card__img" src="assets/seo.svg" alt="SEO">
+      <div class="card__info">
+        <h2 class="card__title">SEO</h2>
+        <p class="card__description">
+          Nuestra misión es posicionarte en Google. Creamos estrategias y un plan de contenido único y de
+          calidad para lograr que tus clientes potenciales te encuentran en los primeros lugares al buscar
+          tu
+          producto y servicio en Google.
+        </p>
+      </div>
+    </div>
+    <div class="card" data-aos-once="true" data-aos="moveInRight">
+      <img class="card__img" src="assets/estrategia.svg" alt="Estrategia Digital">
+      <div class="card__info">
+        <h2 class="card__title">Estrategia Digital</h2>
+        <p class="card__description">
+          Te ayudamos a incrementar las ventas de tus productos o servicos a través de una estretegia
+          digital
+          global de posicionamiento en motores de búsqueda y otros canales digitales para que obtengas los
+          mejores resultados.
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<section class="google-partner">
+  <img src="assets/busnisslap.svg" alt="Google Partner" data-aos-once="true" data-aos="popUp"
+    class="google-partner__img">
+  <div class="google-partner__aside">
+    <div class="google-partner__aside__bubble" data-aos-once="true" data-aos="appear">
+      <p class="google-partner__aside__bubble__text">
+        Somos expertos en <span>Google ads, Mobile ads, Display ads y Video ads.</span>
+      </p>
+    </div>
+    <div class="google-partner__aside__text" data-aos-once="true" data-aos="moveInBottom">
+      <p>¿Por qué confiar en nosotros? <span class="google-partner__aside__text__span">Somos una agencia de
+          marketing certificada como Google Partner.</span>
+      </p>
+    </div>
+  </div>
+
+  <div data-aos-once="true" data-aos="moveInLeft" class="google-partner__certificate">
+    <div class="google-partner__certificate__separator"></div>
+    <img src="assets/partner.png" alt="" class="google-partner__certificate">
+  </div>
+</section>
+
+<div class="web-offer">
+  <img data-aos-once="true" data-aos="appear" src="assets/gg_pc.webp" alt="Website 1View" class="web-offer__img">
+  <div class="web-offer__main" data-aos-once="true" data-aos="moveInLeft">
+    <h2 class="web-offer__main__title">diseño web</h2>
+    <div>
+      <p class="web-offer__main__text">Tenemos al mejor equipo de diseño web responsive; un diseño moderno y
+        adaptable a
+        cualquier dispositivo le dará una mejor imagen a tu negocio.
+      </p>
+      <a href="/contacto" data-aos-once="true" data-aos="popUp">¡Contáctanos!</a>
+    </div>
+  </div>
+</div>
+{{/inline}}
+
+{{/layouts/default}}

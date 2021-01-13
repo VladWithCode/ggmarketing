@@ -1,0 +1,186 @@
+@mixin navigation {
+    padding: 3rem 0;
+    margin: 0 auto;
+    width: 40%;
+    max-width: 90%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+
+    @include respond(tab-port) {
+        width: 90%;
+    }
+
+    li {
+
+        
+
+        a {
+
+
+            &:link,
+            &:visited {
+                text-decoration: none;
+                text-transform: uppercase;
+
+                padding: .5rem 2rem;
+                margin: 0 2rem;
+
+                color: white;
+                font-size: 2rem;
+                transition: all .5s;
+                // padding: .5rem 3rem;
+                // margin: 0 2rem;
+
+                @include respond(phone) {
+                    font-size: 3rem;
+                }
+
+            }
+
+            &:hover {
+                @include respond(from-tab-land) {
+                    @include shadow;
+                }
+
+                background-color: $color-primary;
+                border-radius: 5rem;
+
+                &::after {
+                    opacity: 0;
+                }
+            }
+
+        }
+
+        @include respond(tab-port) {
+
+            & .active,
+            &:hover {
+                background-color: $color-ggmkt !important;
+                @include shadow;
+            }
+        }
+    }
+
+}
+
+
+
+
+@mixin shadow {
+    box-shadow: 5px 10px 18px rgba(0, 0, 0, 0.289);
+}
+
+
+@mixin btn-about-us {
+
+    &:link,
+    &:visited {
+        margin: 6rem 0 3rem 0;
+        font-size: 5rem;
+        padding: 2rem 10rem;
+        background-color: $color-primary;
+        border-radius: 10rem;
+        @include shadow;
+        transition: all .4s;
+        
+
+        @include respond(phone){
+            padding: 2rem 8rem;
+            font-size: 4rem;
+            text-align: center;
+        }
+
+    }
+
+    &:hover {
+        @include hoverHigh;
+    }
+}
+
+@mixin hoverHigh {
+    background-color: $color-ggmkt;
+    transform: scale(1.5) !important;
+    box-shadow: 5px 10px 18px rgba(0, 0, 0, 0.8);
+}
+
+// MEDIA QUERY MANAGER
+
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+1200 - 1800px:  Normail styles (desktop)
+1800px+:        Big desktop
+*/
+
+// 1em == 16px
+
+@mixin respond($breakpoint) {
+    @if $breakpoint==phone {
+        @media (max-width: 37.5em) {
+            @content
+        }
+
+        ; // 600px
+    }
+
+    @if $breakpoint==tab-port {
+        @media (max-width: 56.25em) {
+            @content
+        }
+
+        ; // 900px
+    }
+
+    @if $breakpoint==from-tab-land {
+        @media (min-width: 56.25em) {
+            @content
+        }
+
+        ; // 900px
+    }
+
+    @if $breakpoint==google {
+        @media (max-width: 71.37em) {
+            @content
+        }
+
+        ; // 900px
+    }
+
+    @if $breakpoint==tab-land {
+        @media (max-width: 75em) {
+            @content
+        }
+
+        ; //1200px
+    }
+
+    @if $breakpoint==big-desk {
+        @media (min-width: 112.5em) {
+            @content
+        }
+
+        ; //1800px
+    }
+}
+
+@mixin animation($duration, $name, $delay) {
+    &.aos-animate {
+        opacity: 1;
+        animation: $name $duration ease-in-out $delay;
+        backface-visibility: hidden;
+        animation-fill-mode: backwards;
+    }
+}
+
+// [data-aos="moveInLeft"] {
+
+//     &.aos-animate {
+//         animation: .5s moveInLeft 1s;
+//         backface-visibility: hidden;
+//         animation-fill-mode: backwards;
+//     }
+// }

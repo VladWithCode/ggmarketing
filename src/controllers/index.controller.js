@@ -1,9 +1,21 @@
 // Controller init
 const ctrl = {};
 
-// Handlers
+// Render handlers
 ctrl.renderIndex = function(req, res, next) {
-  req.render('pages/index');
+  res.render('pages/index');
+}
+
+ctrl.renderAbout = function (req, res, next) {
+  res.render('pages/about');
+}
+
+ctrl.renderProjects = function (req, res, next) {
+  res.render('pages/projects');
+}
+
+ctrl.renderContact = function (req, res, next) {
+  res.render('pages/contact');
 }
 
 // Exporting

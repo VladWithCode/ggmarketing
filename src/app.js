@@ -20,7 +20,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', hbs({
   extname: '.hbs',
   defaultLayout: false,
-  partialsDir: path.join(app.get('view'), 'partials'),
+  partialsDir: path.join(app.get('views'), 'partials'),
   helpers: {
 
   }

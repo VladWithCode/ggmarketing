@@ -1,0 +1,51 @@
+
+
+.footer {
+    background-color: $color-primary-dark;
+    position: relative;
+
+    &__content {
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 80%;
+        padding: 5rem 0;
+
+        @include respond(phone) {
+            flex-direction: column;
+            align-items: flex-start;
+
+        }
+    }
+
+    & h3 {
+        font-size: 3rem;
+        margin-bottom: 4rem;
+        text-transform: capitalize;
+    }
+
+    &__contact {
+        font-size: 1.5rem;
+        
+        & span {
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: block;
+            margin-top: 2rem;
+        }
+    }
+
+    &__social-media {
+        align-self: flex-start;
+
+        & a {
+            font-size: 3rem;
+            margin-right: 5rem;
+        }
+
+        @include respond(phone) {
+            margin-top: 4rem;
+        }
+    }
+}

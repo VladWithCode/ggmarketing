@@ -1,0 +1,39 @@
+{{#> layouts/default}}
+
+{{#*inline "header-block"}}
+{{> includes/layout/navigation projects=true}}
+{{/inline}}
+
+{{#*inline "content-block"}}
+<div class="projects">
+  <div class="projects-header">
+    <div class="projects__circle" data-aos-once="true" data-aos="popUp"></div>
+    <h2 class="projects__title" data-aos-once="true" data-aos="moveInLeft">Nuestros <span>clientes.</span></h2>
+    <img src="assets/community.svg" alt="" class="projects__img" data-aos-once="true" data-aos="appear">
+  </div>
+</div>
+
+<div class="clients" data-aos-once="true" data-aos="moveInBottom">
+  <h3>Algunos de nuestros clientes</h3>
+  <hr>
+  <div class="clients__container">
+    <div class="client">
+      <a href="https://elkilate.com.mx/" target="_blank">
+        <img src="./assets/elkilate.webp" alt="elkilate">
+      </a>
+    </div>
+    <div class="client">
+      <a href="https://www.sibradgo.com/#" target="_blank">
+        <img src="./assets/sibra.webp" alt="sibra">
+      </a>
+    </div>
+    <div class="client">
+      <a href="https://maxi-pollo.com/" target="_blank">
+        <img src="./assets/maxi-pollo.webp" alt="maxi-pollo">
+      </a>
+    </div>
+  </div>
+</div>
+{{/inline}}
+
+{{/layouts/default}}

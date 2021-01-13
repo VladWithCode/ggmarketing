@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    {{#if pageTitle}}
+    {{pageTitle}}
+    {{else}}
+    GG Marketing
+    {{/if}}
+  </title>
+  <script src="https://kit.fontawesome.com/c6bf5c5efb.js" crossorigin="anonymous"></script>
+
+  {{#> head-block}}
+  {{!-- Custom head content per page --}}
+  <link type="text/css" rel="stylesheet" href="/css/style.css" defer>
+  {{/head-block}}
+</head>
+
+<body>
+
+  {{#> header-block}}
+  {{> includes/layout/navigation}}
+  {{/header-block}}
+
+
+  {{#> content-block}}{{/content-block}}
+
+  {{#> footer-block}}
+  {{> includes/layout/footer}}
+  {{/footer-block}}
+
+  {{#> scripts-block}}
+  {{!-- Custom scripts per page --}}
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <script src="/js/index.js" defer></script>
+  {{/scripts-block}}
+
+</body>
+
+</html>

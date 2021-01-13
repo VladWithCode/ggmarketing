@@ -1,0 +1,107 @@
+.projects {
+    
+    @include respond(from-tab-land) {
+        height: 90vh;
+        background-image: linear-gradient(to left, rgba($color-primary-light, 0.3), white);
+        // background-color: rgba($color-primary-light, 0.3);
+        clip-path: polygon(0 0, 100% 0, 100% 80%, 0 90%);
+        // overflow: hidden;
+    }
+
+    &__title {
+        position: absolute;
+        font-size: 5rem;
+        line-height: 6rem;
+        top: 40%;
+        left: 10%;
+
+
+        // color: white;
+        & span {
+            display: block;
+        }
+
+        animation-delay: 1.4s;
+    }
+
+
+    $proj-circle: 50vw;
+    $proj-img-top: 30rem;
+
+    &__circle {
+        background-color: rgba($color-primary-light, 0.5);
+        position: absolute;
+
+        // display: none;
+
+        height: $proj-circle;
+        width: $proj-circle;
+        border-radius: 100rem;
+        left: 45%;
+        top: 8rem;
+
+    }
+
+    
+
+    &__img {
+        position: absolute;
+        width: 30%;
+        top: $proj-img-top;
+
+        @include respond(tab-land) {
+            top: 25rem;
+        }
+
+        left: 55%;
+        animation-delay: .9s;
+    }
+
+    @include respond(tab-port) {
+        position: static;
+        margin: 8rem auto 0 auto;
+
+        &__circle,
+        &__title,
+        &__img {
+            position: static;
+        }
+
+        &__title {
+            order: -1;
+            font-size: 4rem;
+
+            & span {
+                display: inline;
+            }
+        }
+
+        &__circle {
+            margin-top: 5rem;
+
+            @include respond(phone) {
+                width: 60vw;
+                height: 60vw;
+            }
+
+        }
+
+        &__img {
+            margin-top: -40%;
+            width: 60%;
+
+            @include respond(phone) {
+                width: 80%;
+            }
+        }
+
+    }
+
+}
+
+.projects-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}

@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'Segoe UI';
+    src: ('../fonts/Segoe_UI.ttf');
+}
+
+@font-face {
+    font-family: 'Segoe UI Bold';
+    src: ('../fonts/Segoe_UI_Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Segoe UI Bold Italic';
+    src: ('../fonts/Segoe_UI_Bold_Italic.ttf');
+}
+
+@font-face {
+    font-family: 'Segoe UI Italic';
+    src: ('../fonts/Segoe_UI_Italic.ttf');
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%; // 1rem == 10px
+
+    @include respond(tab-port){
+        font-size: 50%; // 1rem == 8px
+    }
+
+    @include respond(tab-land){
+        font-size: 56.25%; // 1rem == 9px
+    }
+
+    @include respond(big-desk){
+        font-size: 75%; // 1rem == 12px, 12/16
+    }
+
+}
+
+body {
+    background-color: $color-background;
+
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    color: white;
+
+
+    box-sizing: border-box;
+    animation-fill-mode: backwards;
+
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}

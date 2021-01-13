@@ -1,0 +1,75 @@
+
+
+
+.card {
+    color: white;
+    text-align: left;
+    background-color: $color-primary;
+    border-radius: $border-radius;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
+    padding: 4rem;
+    // flex: 0 1 calc(33% - 4rem);
+    transition: .3s all 0s ease;
+    backface-visibility: hidden;
+    cursor: pointer;
+
+    
+
+    @include shadow-light;
+    
+    &__img {
+        width: 100%;
+        margin-bottom: 9rem;
+        flex: 0 1 40%;
+    }
+
+    &__info {
+        flex: 0 1 50%;
+        // overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+
+    &__title { 
+        order: 0;
+        font-size: 2.3rem;
+        margin-bottom: 3rem;
+        
+    }
+
+    &__description {
+        font-size: 1.8rem;
+        line-height: 3rem;
+    }
+
+    &:hover {
+        transform: scale(1.1);
+        @include shadow;
+    }
+
+    &:nth-child(1) {
+        animation-delay: .8s;
+        @include respond(tab-port) {
+            animation-delay: .3s !important;
+        }
+    }
+    &:nth-child(2) {
+        animation-delay: .4s;
+        @include respond(tab-port) {
+            animation-delay: .5s !important;
+        }
+    }
+    &:nth-child(3) {
+        animation-delay: .8s;
+        @include respond(tab-port) {
+            animation-delay: .5s !important;
+        }
+    }
+
+    
+}

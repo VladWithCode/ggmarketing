@@ -1,0 +1,11 @@
+<nav class="res-nav{{#if extraClasses}} {{extraClasses}}{{/if}}" id="navbar">
+  <a href="/" class="logo"><img src="assets/gg_logo.png" alt=""></a>
+  <input type="checkbox" id="check">
+  <label for="check" data-aos="popUp" class="nav-check"><i class="fas fa-bars"></i></label>
+  <ul>
+    <li {{#if index}}class="active"{{/if}}><a href="/">Inicio</a></li>
+    <li {{#if projects}}class="active"{{/if}}><a href="/proyectos">Proyectos</a></li>
+    <li {{#if us}}class="active"{{/if}}><a href="/nosotros">Nosotros</a></li>
+    <li {{#if contact}}class="active"{{/if}}><a href="/contacto">Contacto</a></li>
+  </ul>
+</nav>

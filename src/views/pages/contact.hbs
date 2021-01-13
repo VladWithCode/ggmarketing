@@ -1,0 +1,36 @@
+{{#> layouts/default}}
+
+{{#*inline "header-block"}}
+{{> includes/layout/navigation contact=true}}
+{{/inline}}
+
+{{#*inline "content-block"}}
+<div class="contact">
+  {{!-- <nav class="res-nav" id="navbar">
+    <a href="index.html" class="logo"><img src="assets/gg_logo.png" alt=""></a>
+    <input type="checkbox" id="check">
+    <label for="check" data-aos="popUp" class="nav-check"><i class="fas fa-bars"></i></label>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="proyectos.html">Proyectos</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li class="active"><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav> --}}
+  <div class="contact__circle" data-aos-once="true" data-aos="popUp"></div>
+  <div class="contact__circle" data-aos-once="true" data-aos="popUp"></div>
+  <div class="contact__circle" data-aos-once="true" data-aos="popUp"></div>
+  <div class="contact-body">
+    <img src="assets/contact.svg" alt="" class="contact__img" data-aos-once="true" data-aos="appear">
+    <div class="contact__form" data-aos-once="true" data-aos="appear">
+      <h2>¡Contáctanos!</h2>
+      <input type="text" placeholder="Nombre">
+      <input type="text" placeholder="Correo">
+      <input type="text" placeholder="Consulta">
+      <button class="btn btn-white">Enviar</button>
+    </div>
+  </div>
+</div>
+{{/inline}}
+
+{{/layouts/default}}

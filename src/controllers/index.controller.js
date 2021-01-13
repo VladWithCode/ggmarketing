@@ -33,7 +33,7 @@ ctrl.sendMail = async function (req, res, next) {
       msg
     } = req.body;
     const senderMail = process.env.SENDER_MAIL;
-    const receiverMail = process.env.RECIEVER_MAIL;
+    const receiverMail = process.env.RECEIVER_MAIL;
 
     const accessToken = await oAuth2Client.getAccessToken();
 

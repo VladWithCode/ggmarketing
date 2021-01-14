@@ -92,20 +92,28 @@
     &:link,
     &:visited {
         margin: 0;
-        font-size: 3.3rem;
+        // font-size: 3.3rem;
         padding: 2rem 8rem;
         background-color: $color-primary;
         border-radius: 10rem;
         @include shadow;
         transition: all .4s;
         max-width: 90%;
+        text-align: center;
         
+        @include respond(tab-land){
+            padding: 2rem 5rem !important;
+        }
 
         @include respond(phone){
             padding: 2rem 0;
             width: 100%;
             font-size: 2.5rem;
             text-align: center;
+        }
+
+        @include respond(from-tab-land) {
+            font-size: 3.3rem;
         }
 
     }

@@ -1,6 +1,7 @@
 .header {
-    height: 100vh;
-    background-image: url("../assets/hero.webp");
+    height: 86.9vh;
+    // background-image: url("../assets/hero.webp");
+    background-image: linear-gradient(rgba($color-primary-light, 0.3), rgba($color-primary-dark, 0.3)), url("../assets/hero.webp");
     background-size: cover;
     background-position: top;
     position: relative;
@@ -9,34 +10,41 @@
 
     &__heading {
         text-align: center;
-        
+        cursor: pointer;
 
 
         &__primary {
             background-color: rgba(0, 0, 0, 0.08);
             display: block;
-            padding: .3rem 6rem;
+            padding: .8rem 6rem;
             color: white;
             font-weight: 400;
             font-size: 2.8rem;
             border-radius: 5rem;
-            letter-spacing: .5rem;
+            letter-spacing: .2rem;
+            line-height: 3rem;
             white-space: wrap;
             // text-overflow: ellipsis;
             position: absolute;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            animation: .8s headerAnimate 1s ease;
+            animation: .8s headerAnimate 1s ease-in-out;
             overflow: hidden;
             animation-fill-mode: backwards;
             // width: auto;
+            transition: .3s all ease-in-out;
+
+            &:hover {
+                transform: translate(-50%, -50%) scale(1.1);
+                @include shadow;
+            }
 
             @include respond(phone) {
                 font-size: 2rem;
             }
 
-            @include respond(tab-port){
+            @include respond(tab-port) {
                 width: 90%;
             }
 
@@ -48,12 +56,14 @@
 @keyframes headerAnimate {
     0% {
         opacity: 0;
-        transform: translate(-50%, 50%);
+        transform: translate(-50%, 50%) scale(.8);
     }
+
     75% {
-        transform: translate(-50%, -60%);
+        transform: translate(-50%, -60%) scale(1.2);
         @include shadow;
     }
+
     100% {
         opacity: 1;
     }

@@ -167,7 +167,15 @@
 
         @include respond(phone){
             font-size: 2rem;
+            // padding: 10rem;
         }
+
+        @include respond(tab-port){
+            & .no-space {
+                margin: 0 !important;
+            }
+        }
+
     }
 
     &__slogan {
@@ -208,17 +216,23 @@
         &__bubble {
             width: 90%;
             margin: 0;
-            padding: 0;
+            // padding: 0 3rem;
 
             &:nth-child(1){
                 background-color: $color-primary;
-                padding: 4rem 2rem 2rem 2rem;
+                padding:  4rem 3rem;
                 width: 90%;
                 @include shadow;
                 animation: .8s moveInBottom;
                 animation-fill-mode: backwards;
                 overflow: hidden;
                 animation-delay: 2.8s !important;
+            }
+
+            &:nth-child(2){
+                margin-top: 0;
+                padding-top: 0;
+                padding-bottom: 0;
             }
 
             & span {

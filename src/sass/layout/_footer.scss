@@ -2,7 +2,9 @@
 
 .footer {
     background-color: $color-primary-dark;
-    position: relative;
+    overflow: hidden;
+    // position: relative;
+    color: white;
 
     &__content {
         margin: 0 auto;
@@ -34,6 +36,16 @@
             display: block;
             margin-top: 2rem;
         }
+
+        & a {
+            transition: all .3s ease-in-out;
+            &:hover {
+                color: $color-ggmkt !important;
+                margin-left: 2rem !important;
+            }
+
+           
+        }
     }
 
     &__social-media {
@@ -42,6 +54,43 @@
         & a {
             font-size: 3rem;
             margin-right: 5rem;
+
+            & .fa-facebook-f {
+                transition: all .3s !important;
+                &:hover {
+                    color: $color-fb !important;
+                    transform: scale(1.5) translateY(-.8rem) !important;
+                }
+            }
+
+            & .fa-twitter {
+                transition: all .3s !important;
+                &:hover {
+                    color: $color_tw !important;
+                    transform: scale(1.5) translateY(-.8rem) !important;
+                }
+            }
+
+            & .fa-instagram {
+                transition: all .3s !important;
+                &:hover {
+                    color: $color-ig !important;
+                    transform: scale(1.5) translateY(-.8rem) !important;
+                }
+            }
+
+            & .fa-whatsapp {
+                transition: all .3s !important;
+                &:hover {
+                    color: $color-wp !important;
+                    transform: scale(1.5) translateY(-.8rem) !important;
+                }
+            }
+
+
+            
+
+
         }
 
         @include respond(phone) {

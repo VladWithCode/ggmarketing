@@ -1,18 +1,18 @@
 @mixin navigation {
     padding: 3rem 0;
     margin: 0 auto;
-    width: 40%;
-    max-width: 90%;
-    text-align: center;
+    width: 100%;
+    // max-width: 90%;
     display: flex;
     justify-content: space-between;
+    // margin-top: 2rem;
+    transition: .2s all ease-in-out;
 
     @include respond(tab-port) {
         width: 90%;
     }
 
     li {
-
         
 
         a {
@@ -21,12 +21,12 @@
             &:link,
             &:visited {
                 text-decoration: none;
-                text-transform: uppercase;
+                text-transform: capitalize;
 
                 padding: .5rem 2rem;
                 margin: 0 2rem;
 
-                color: white;
+                color: $color-text;
                 font-size: 2rem;
                 transition: all .5s;
                 // padding: .5rem 3rem;
@@ -36,6 +36,10 @@
                     font-size: 3rem;
                 }
 
+                @include respond(tab-port) {
+                    color: white !important;
+                }
+
             }
 
             &:hover {
@@ -43,8 +47,9 @@
                     @include shadow;
                 }
 
-                background-color: $color-primary;
+                background-color: $color-ggmkt;
                 border-radius: 5rem;
+                color: white;
 
                 &::after {
                     opacity: 0;
@@ -72,24 +77,43 @@
     box-shadow: 5px 10px 18px rgba(0, 0, 0, 0.289);
 }
 
+@mixin shadow-light {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.289);
+}
+
+@mixin shadow-nav {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.171);
+}
+
+
 
 @mixin btn-about-us {
 
     &:link,
     &:visited {
-        margin: 6rem 0 3rem 0;
-        font-size: 5rem;
-        padding: 2rem 10rem;
+        margin: 0;
+        // font-size: 3.3rem;
+        padding: 2rem 8rem;
         background-color: $color-primary;
         border-radius: 10rem;
         @include shadow;
         transition: all .4s;
+        max-width: 90%;
+        text-align: center;
         
+        @include respond(tab-land){
+            padding: 2rem 5rem !important;
+        }
 
         @include respond(phone){
-            padding: 2rem 8rem;
-            font-size: 4rem;
+            padding: 2rem 0;
+            width: 100%;
+            font-size: 2.5rem;
             text-align: center;
+        }
+
+        @include respond(from-tab-land) {
+            font-size: 3.3rem;
         }
 
     }
@@ -101,7 +125,7 @@
 
 @mixin hoverHigh {
     background-color: $color-ggmkt;
-    transform: scale(1.5) !important;
+    transform: scale(1.05) !important;
     box-shadow: 5px 10px 18px rgba(0, 0, 0, 0.8);
 }
 
@@ -184,3 +208,48 @@
 //         animation-fill-mode: backwards;
 //     }
 // }
+
+
+
+@mixin section {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+    padding: 0 3rem 4rem 3rem;
+    // border-radius: 7rem;
+    width: 100%;
+
+    background-image: linear-gradient(rgba($color-primary-light, 0.3), white);
+
+    @include respond(tab-port){
+        padding: 4rem 3rem;
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 5rem;
+    }
+
+    &__img {
+        flex: 0 1 20%;
+        // height: 65%;
+        width: 2rem;
+        animation-delay: 1s;
+        order: 2;
+
+        @include respond(tab-port){
+            flex: 0 1 100%;
+            height: auto;
+            width: 35%;
+            order: 0;
+            margin-top: 3rem;
+        }
+
+        @include respond(phone){
+            width: 60%;
+        }
+    }
+
+    
+}

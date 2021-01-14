@@ -1,6 +1,6 @@
 .google-partner {
     position: relative;
-    padding-top: 20rem;
+    padding-top: 15rem;
     width: 90%;
     margin: 0 auto;
     display: flex;
@@ -9,7 +9,7 @@
 
     &__img {
         width: 100%;
-        flex: 0 1 55%;
+        flex: 0 1 45%;
         animation-delay: .3s !important;
         
     }
@@ -20,7 +20,7 @@
 
         &__bubble {
 
-            background-color: $color-primary;
+            background-color: $color-ggmkt;
             position: relative;
             height: 18rem;
             text-align: left;
@@ -44,18 +44,21 @@
 
         &__text {
             padding-left: 5rem;
-            color: #fff;
+            color: $color-text;
             font-size: 2rem;
             margin-top: 6rem;
+            font-weight: 600;
+            
 
             &__span {
-                font-weight: 200;
+                font-weight: 400;
                 display: block;
             }
 
             animation-delay: .8s !important;
             @include respond(tab-port) {
                 animation-delay: .3s !important;
+                padding-left: 0;
             }
 
             
@@ -79,6 +82,7 @@
         }
 
         @include respond(phone){
+            height: 13rem;
             margin-left: 0;
             align-self: flex-start;
         }

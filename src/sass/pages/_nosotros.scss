@@ -1,27 +1,38 @@
 .ggmkt {
-    height: 100vh;
-    position: relative;
+    // height: 100vh;
+    // position: relative;
+
+    @include respond(from-tab-land) {
+        height: 90vh;
+        background-image: linear-gradient(to right, rgba($color-primary-light, 0.3), white);
+        // background-color: rgba($color-primary-light, 0.3);
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 80%);
+        // overflow: hidden;
+    }
+
     text-align: right;
 
-    $us_circle: 55vw;
+
+    $us_circle: 50vw;
+    $us-img-top: 30rem;
 
     &__circle {
-        background-color: $color-primary-light;
+        background-color:rgba($color-primary-light, 0.5);
         position: absolute;
 
         height: $us_circle;
         width: $us_circle;
         border-radius: 100rem;
         left: 4%;
-        top: 13%;
+        top: 8rem;
 
     }
 
     &__title {
         position: absolute;
-        font-size: 6rem;
+        font-size: 5rem;
         line-height: 6rem;
-        top: 30%;
+        top: $us-img-top;
         left: 70%;
         & span {
             display: block;
@@ -34,23 +45,22 @@
 
     &__img {
         position: absolute;
-        width: 40%;
+        width: 30%;
         top: $top_img;
-        left: 10%;
+        left: 13%;
         animation-delay: 1s !important;
     }
 
     &__link {
-        position: relative;
+        // position: relative;
         @include btn-about-us;
-        top: 60%;
-        left: -8%;
+        // top: 60%;
         animation-delay: 2.2s !important;
     }
 
-    @include respond(tab-land){
+    @include respond(tab-port){
         // position: static;
-        margin: 0 auto;
+        margin: 8rem auto 0 auto;
         text-align: center;
 
         &__circle,
@@ -86,17 +96,7 @@
             }
         }
 
-        &__link {
-            top: 10rem;
-            left: 0;
-            
-            // transform: translateX(-50%);
-
-            @include respond(phone) {
-                top: 6rem;
-            }
-
-        }
+        
     }
 
 }
@@ -113,9 +113,9 @@
 
 
 .about-us {
-    position: relative;
-    width: 80%;
-    margin: 14rem auto;
+    // position: relative;
+    width: 100%;
+    margin: 0 auto 5rem auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -130,17 +130,25 @@
 
         animation-delay: .3s !important;
 
+        
+        
+
         &:nth-child(1){
             background-color: $color-primary;
             padding: 3rem 10rem;
             width: 80%;
             @include shadow;
+            color: white;
+        }
+
+        &:nth-child(2){
+            margin-top: 4rem;
         }
 
         & span {
             font-weight: 600;
             display: block;
-            margin-bottom: 4rem;
+            // margin-bottom: 4rem;
         }
 
         & .high {
@@ -152,19 +160,47 @@
             text-align: center;
             font-size: 3.5rem;
             text-decoration: underline;
+            margin: 2rem 0;
+
+        
         }
+
+        @include respond(phone){
+            font-size: 2rem;
+            // padding: 10rem;
+        }
+
+        @include respond(tab-port){
+            & .no-space {
+                margin: 0 !important;
+            }
+        }
+
     }
 
     &__slogan {
+        max-width: 90%;
         padding: 1rem 10rem;
         background-color: $color-primary-dark;
         display: inline-block;
         border-radius: 5rem;
         font-weight: 600;
         font-size: 2.3rem;
-        margin: 4rem;
-        @include shadow;
+        margin: 0 0 6rem 0;
+        // @include shadow;
         animation-delay: 0s !important;
+        color: white;
+        text-align: center;
+
+        @include respond(tab-land){
+            margin: 6rem 0;
+        }
+
+        @include respond(phone){
+            font-size: 2rem;
+            padding: 1rem 0;
+            width: 100%
+        }
     }
 
     &__link {
@@ -172,25 +208,31 @@
         animation-delay: .3s !important;
     }
 
-    @include respond(tab-port){
-        margin: -14rem auto 5rem auto;
+    @include respond(tab-land){
+        margin: 6rem auto 5rem auto;
         position: static;
         width: 98%;
 
         &__bubble {
             width: 90%;
             margin: 0;
-            padding: 0;
+            // padding: 0 3rem;
 
             &:nth-child(1){
                 background-color: $color-primary;
-                padding: 4rem 2rem 2rem 2rem;
+                padding:  4rem 3rem;
                 width: 90%;
                 @include shadow;
                 animation: .8s moveInBottom;
                 animation-fill-mode: backwards;
                 overflow: hidden;
                 animation-delay: 2.8s !important;
+            }
+
+            &:nth-child(2){
+                margin-top: 0;
+                padding-top: 0;
+                padding-bottom: 0;
             }
 
             & span {
@@ -200,6 +242,54 @@
 
            
         }
+    }
+
+    &__section {
+        @include section;
+
+        font-size: 2.3rem;
+        font-weight: 300;
+        padding: 3rem 4rem;
+
+        animation-delay: .3s !important;
+
+        flex-direction: column;
+
+        & div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+
+            
+
+            p {
+                flex: 0 1 60%;
+                order: 2;
+   
+                & span {
+                   font-weight: 600;
+                }
+            }
+
+            & img {
+                margin-left: 6rem;
+            }
+
+            @include respond(tab-port) {
+                flex-direction: column;
+
+                & img {
+                    margin: 0;
+                }
+
+                & p {
+                    margin-bottom: 4rem;
+                    font-size: 2rem;
+                }
+            }
+        }
+
     }
 }
 

@@ -1,26 +1,35 @@
-
 .active {
     & a {
         background-color: $color-ggmkt;
         border-radius: 5rem;
 
-        
+
         @include respond(tab-port) {
             background: none;
         }
     }
 
-
-
 }
+
+
 
 
 .res-nav {
 
     margin: 0 auto;
+    position: absolute;
+    z-index: 999;
 
 
+    .active {
+        & a {
+            &:link,
+            &:visited {
+                color: white !important;
+            }
 
+        }
+    }
 
     & ul {
         // margin-right: 2rem;
@@ -57,6 +66,13 @@
         background-color: $color-primary-dark;
         padding: .7rem 1.5rem;
         border-radius: 50rem;
+        cursor: pointer;
+        transition: all .4s ease-in-out;
+
+        &:hover {
+            transform: scale(1.1);
+
+        }
 
         z-index: 99;
 
@@ -64,7 +80,7 @@
 
     #check {
         display: none;
-        
+
     }
 
     @include respond(tab-port) {
@@ -81,7 +97,7 @@
             position: fixed;
             width: 100%;
             height: 100vh;
-            top: 7.7rem;
+            top: 0;
             left: -100%;
             text-align: center;
             background-color: $color-primary-dark;
@@ -89,8 +105,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            padding-top: 20%;
+            justify-content: center;
+            // padding-top: 20%;
             // padding-top: -7.7rem;
 
             transition: all .5s;
@@ -122,10 +138,26 @@
 
 
             }
+
+            @include respond(tab-port) {
+
+            }
         }
 
-        #check:checked~ul {
-            left: 0;
+        #check:checked {
+            &~.nav-check {
+                z-index: 99999;
+                color: $color-primary-dark;
+                background-color: #fff;
+                @include shadow;
+                transform: scale(1.5) translateY(.5rem);
+                
+            }
+
+            &~ul {
+                left: 0;
+            }
+            
         }
 
 
@@ -135,7 +167,133 @@
 
 
 
-    justify-content: center;
+    justify-content: flex-end;
+
+    & .logo {
+        display: none;
+    }
+
+}
+
+@include respond(from-tab-land) {
+
+    .white-nav {
+        & ul {
+            & li {
+                & a {
+
+                    &:link,
+                    &:visited {
+                        color: white;
+                    }
+
+                   
+                }
+            } 
+        }
+    }
 
 
+    .sticky {
+
+        // transition: .4s all ease-in-out;
+        position: fixed;
+        width: 100%;
+        height: 10rem;
+        background-color: white;
+        @include shadow-nav;
+        z-index: 999;
+        transition: .2s all ease-in-out;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & ul {
+            & li {
+                & a {
+
+                    &:link,
+                    &:visited {
+                        color: $color-text !important
+                    }
+
+                    
+                   
+                }
+            } 
+        }
+
+        & .logo {
+
+            display: flex;
+            justify-content: center;
+
+            & img {
+                height: 5rem;
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        a {
+
+            &:link,
+            &:visited {
+                color: $color-text !important;
+                text-decoration: none;
+                text-transform: uppercase;
+
+                padding: .5rem 2rem;
+                margin: 0 2rem;
+
+                font-size: 2rem;
+                transition: all .5s;
+                // padding: .5rem 3rem;
+                // margin: 0 2rem;
+
+                @include respond(phone) {
+                    font-size: 3rem;
+                }
+
+                @include respond(tab-port) {
+                    color: white !important;
+                }
+
+            }
+
+            &:hover {
+                color: white !important;
+            }
+
+            .active {
+                & a {
+                    color: white !important;
+
+                }
+            }
+
+        }
+
+        & ul {
+            & li {
+                & a {
+
+                    &:link,
+                    &:visited {
+                        color: $color-text !important;
+                    }
+
+                    &:hover {
+                        color: white !important;
+                    }
+                   
+                }
+            }
+
+            
+        }
+
+        
+    }
 }

@@ -36,6 +36,7 @@ ctrl.sendMail = async function (req, res, next) {
     const receiverMail = process.env.RECEIVER_MAIL;
 
     const accessToken = await oAuth2Client.getAccessToken();
+    console.log(senderMail, receiverMail);
 
     const mailTransporter = nodemailer.createTransport({
       service: 'gmail',

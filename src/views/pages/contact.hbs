@@ -20,17 +20,21 @@
   <div class="contact__circle" data-aos-once="true" data-aos="popUp"></div>
   <div class="contact__circle" data-aos-once="true" data-aos="popUp"></div>
   <div class="contact__circle" data-aos-once="true" data-aos="popUp"></div>
-  <form action="/send-mail" method="POST" class="contact-body">
+  <form action="/send-mail" method="POST" class="contact-body" id="contactForm">
     <img src="assets/contact.svg" alt="" class="contact__img" data-aos-once="true" data-aos="appear">
     <div class="contact__form" data-aos-once="true" data-aos="appear">
       <h2>¡Contáctanos!</h2>
       <input type="text" placeholder="Nombre" name="name" id="name" required>
-      <input type="text" placeholder="Correo" name="mail" id="mail" required>
+      <input type="email" placeholder="Correo" name="mail" id="mail" required>
       <input type="text" placeholder="Consulta" name="msg" id="msg" required>
       <button class="btn btn-white" type="submit">Enviar</button>
     </div>
   </form>
 </div>
+{{/inline}}
+
+{{#*inline "scripts-block"}}
+<script src="/js/contact.js"></script>
 {{/inline}}
 
 {{/layouts/default}}

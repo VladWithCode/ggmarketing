@@ -42,6 +42,14 @@ app.use(expSession({
 app.use(flash());
 app.use(morgan('dev'));
 
+/* if (process.env.NODE_ENV !== 'production') {
+  app.use((req, res, next) => {
+    res.setHeader('Set-Cookie', 'm_pixel_ratio=1;domain=.facebook.com;sameSite=None;Secure');
+
+    return next();
+  });
+} */
+
 // Routes
 app.use(indexRoutes);
 

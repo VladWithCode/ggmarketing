@@ -1,13 +1,26 @@
 <header class="header">
-
+  <div class="clouds">
+    <img src="/assets/cloud5.png" style="--i:3" alt="Clouds">
+    <img src="/assets/cloud4.png" style="--i:2" alt="Clouds">
+    <img src="/assets/cloud3.png" style="--i:1" alt="Clouds">
+  </div>
+  <div class="clouds2">
+    <img src="/assets/cloud3.png" style="--i:3" alt="Clouds">
+    <img src="/assets/cloud4.png" style="--i:2" alt="Clouds">
+    <img src="/assets/cloud5.png" style="--i:1" alt="Clouds">
+  </div>
   {{> includes/layout/navigation index=true extraClasses="white-nav"}}
 
   <div class="header__heading">
-    {{!-- <h1 class="header__heading__primary">
-      El marketing que tu negocio necesita.
-    </h1> --}}
-    <h1 class="header__title">
-      El marketing que tu negocio necesita.
-    </h1>
+    <div class="ads">
+      <div class="options" data-current="0" id="options">
+        <p class="option">Desarrollo Web</p>
+        <p class="option">Marketing Digital</p>
+        <p class="option">Manejo de Redes Sociales</p>
+      </div>
+      <div class="btn-services">
+        <a href="/servicios">¡Conoce nuestros servicios!</a>
+      </div>
+    </div>
   </div>
 </header>

@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } */
     if (nextIndex >= optionCount) nextIndex = 0;
     optionsContainer.dataset.current = nextIndex;
-  }, 2000);
+  }, 3500);
 });
 
 // optionsChildren[0].classList.add('optionActive');

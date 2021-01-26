@@ -22,65 +22,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const optionsContainer = document.getElementById('options');
   const optionElements = document.querySelectorAll('.option');
   const optionCount = optionElements.length;
-
-  setInterval(function () {
-    let currentIndex = +optionsContainer.dataset.current;
-    let nextIndex = currentIndex + 1;
-    
-    optionElements[currentIndex % optionCount].classList.remove("optionActive");
-    optionElements[nextIndex % optionCount].classList.add("optionActive");
-
-    /* for (let option of optionsContainer.children) {
-      if (localIndex === currentIndex) {
-        option.classList.add('optionActive');
-        localIndex++;
-        continue;
-      }
-      localIndex++;
-      option.classList.remove('optionActive');
-      continue;
-    } */
-
-    /* if (nextIndex === optionCount) {
-      return optionsContainer.dataset.current = 0;
-    } */
-    if (nextIndex >= optionCount) nextIndex = 0;
-    optionsContainer.dataset.current = nextIndex;
-  }, 3500);
+  
+  setTimeout(() => optionElements[0].classList.add('optionActive'), 250)
+  
+  setInterval(switchHeroText(optionsContainer, optionElements, optionCount), 3500);
 });
 
-// optionsChildren[0].classList.add('optionActive');
+function switchHeroText(container, elements, count) {
+  return function () {
+    let currentIndex = +container.dataset.current;
+    let nextIndex = currentIndex + 1;
 
-/* function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-} */
+    elements[currentIndex % count].classList.remove("optionActive");
+    elements[nextIndex % count].classList.add("optionActive");
 
-/* let last = 0;
-let firstRun = true
-
-const changeOption = async () => {
-  current = 0;
-
-  if(firstRun){
-    setInterval(changeOption, 10540);
-    firstRun = false;
+    if (nextIndex >= count) nextIndex = 0;
+    container.dataset.current = nextIndex;
   }
-
-  optionsChildren[last].classList.remove('optionActive');
-  optionsChildren[current].classList.add('optionActive');
-  await sleep(3500);
-
-  optionsChildren[current].classList.remove('optionActive');
-  current++;
-  optionsChildren[current].classList.add('optionActive');
-  await sleep(3500);
-
-  optionsChildren[current].classList.remove('optionActive');
-  current++;
-  optionsChildren[current].classList.add('optionActive');
-
-  await sleep(3500);
-  last = current;
 }
-
-changeOption(); */

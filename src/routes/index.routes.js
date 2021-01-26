@@ -6,11 +6,14 @@ const {
   renderAbout,
   renderProjects,
   renderContact,
-  sendMail
+  sendMail,
+  renderServices
 } = require('../controllers/index.controller.js');
 
 // Render Routes
 Router.get('/', renderIndex);
+
+Router.get('/servicios', renderServices);
 
 Router.get('/nosotros', renderAbout);
 

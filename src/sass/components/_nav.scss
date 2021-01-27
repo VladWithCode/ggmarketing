@@ -73,18 +73,7 @@
         display: none;
     }
 
-    &.sticky {
-        ul {
-            li.active {
-                a {
-                    border-radius: 0;
-                    color: #333 !important;
-                    background-color: transparent;
-                    border-bottom: 4px solid $color-ggmkt;
-                }
-            }
-        }
-    }
+    
 
     @include respond(tab-port) {
         flex-direction: column;
@@ -140,9 +129,7 @@
 
             }
 
-            @include respond(tab-port) {
-
-            }
+            @include respond(tab-port) {}
         }
 
         #check:checked {
@@ -185,6 +172,33 @@
             }
         }
     }
+
+    &.sticky {
+        & ul {
+            & li.active {
+                & a {
+                    border-radius: 0;
+                    color: #333 !important;
+                    background-color: transparent;
+                    border-bottom: 4px solid $color-ggmkt;
+                    box-shadow: none;
+                }
+            }
+
+            & li {
+                & a {
+                    transition: .1s all linear;
+                    &:hover {
+                        border-radius: 0;
+                        color: #333 !important;
+                        background-color: transparent;
+                        border-bottom: 4px solid $color-ggmkt;
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @include respond(from-tab-land) {
@@ -199,9 +213,9 @@
                         color: white;
                     }
 
-                   
+
                 }
-            } 
+            }
         }
     }
 
@@ -278,7 +292,7 @@
                     &:hover {
                         color: white !important;
                     }
-                   
+
                 }
             }
         }

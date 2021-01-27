@@ -21,7 +21,7 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "watch:sass": "node-sass src/sass/main.scss src/public/css/style.css -w --output-style compressed",
-    "watch:sass-a": "node-sass src/sass/admin.scss src/public/css/admin.scs -w --output-style compressed" 
+    "watch:sass-a": "node-sass src/sass/admin.scss src/public/css/admin.scs -w --output-style compressed"
   },
   "repository": {
     "type": "git",

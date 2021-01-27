@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const optionElements = document.querySelectorAll('.option');
   const optionCount = optionElements.length;
   
-  setTimeout(() => optionElements[0].classList.add('optionActive'), 250)
+  setTimeout(() => optionElements[0].classList.add('optionActive'), 250);
   
   setInterval(switchHeroText(optionsContainer, optionElements, optionCount), 3500);
 });

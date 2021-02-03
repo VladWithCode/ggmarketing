@@ -111,4 +111,11 @@
     // delay 1.2s
 }
 
-
+@keyframes servicesCardHover {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 80%;
+    }
+}

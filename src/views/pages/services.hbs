@@ -5,25 +5,38 @@
 {{/inline}}
 
 {{#*inline "content-block"}}
-<div class="svcsHeader">
-    <h1 class="svcsHeader__heading">Nuestros Servicios</h1>
-</div>
-
-
-<div class="plans">
-  <div class="card"></div>
-  <div class="card"></div>
-  <div class="card"></div>
-</div>
-
-
 <div class="svcs">
+  <div class="svcsHeader">
+    <h1 class="svcsHeader__heading">Nuestros Servicios</h1>
+  </div>
+
+  <div class="svcsPlans">
+    <div class="svcsCard svcsCard--ent">
+      <div class="svcsCard__bg svcsCard__bg--ent"></div>
+      <div class="svcsCard__content">
+        <h4 class="heading">Emprendedor</h4>
+      </div>
+    </div>
+    <div class="svcsCard svcsCard--emp">
+      <div class="svcsCard__bg svcsCard__bg--emp"></div>
+      <div class="svcsCard__content">
+        <h4 class="heading">Emprendedor</h4>
+      </div>
+    </div>
+    <div class="svcsCard svcsCard--mag">
+      <div class="svcsCard__bg svcsCard__bg--mag"></div>
+      <div class="svcsCard__content">
+        <h4 class="heading">Emprendedor</h4>
+      </div>
+    </div>
+  </div>
+
   <div class="svcsPricing">
     <h2 class="svcsPricing__heading">Compara nuestros planes</h2>
     <div class="svcsPricing__table">
       <table class="table">
         <thead>
-          <tr>
+          <tr class="head">
             <th class="concept"></th>
             <th>
               Emprendedor
@@ -34,9 +47,9 @@
             <th>
               Magnate
             </th>
-            <th>
+            {{!-- <th>
               Personalizado
-            </th>
+            </th> --}}
           </tr>
         </thead>
         <tbody>
@@ -45,174 +58,327 @@
               Creación de logotipo
             </th>
             <td>
-              &times;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
             </td>
             <td>
-              &minus;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
             </td>
             <td>
-              &times;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
             </td>
-            <td>
-              &minus;
-            </td>
+            {{!-- <td>
+              <svg class="check">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
+            </td> --}}
           </tr>
           <tr>
             <th class="concept">
               Página de Facebook e Instagram
             </th>
             <td>
-              &minus;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
             </td>
             <td>
-              &minus;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
             </td>
             <td>
-              &times;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
             </td>
-            <td>
-              &minus;
-            </td>
+            {{!-- <td>
+              <svg class="check">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
+            </td> --}}
           </tr>
           <tr>
             <th class="concept">
               Publicaciones semanales
             </th>
             <td>
-              &minus;
+              <div class="text">3</div>
             </td>
             <td>
-              &times;
+              <div class="text">5</div>
             </td>
             <td>
-              &times;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
             </td>
-            <td>
-              &minus;
-            </td>
+            {{!-- <td>
+              <svg class="check">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
+            </td> --}}
           </tr>
           <tr>
             <th class="concept">
               Posicionamiento y reconociemto de marca
             </th>
             <td>
-              &minus;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
             </td>
             <td>
-              &times;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
             </td>
             <td>
-              &times;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
             </td>
-            <td>
-              &minus;
-            </td>
+            {{!-- <td>
+              <svg class="check">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
+            </td> --}}
           </tr>
           <tr>
             <th class="concept">
-              Videos
+              Gifs
             </th>
             <td>
-              &minus;
+              <svg class="cross">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
             </td>
             <td>
-              &minus;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
             </td>
             <td>
-              &times;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
             </td>
-            <td>
-              &minus;
-            </td>
+            {{!-- <td>
+              <svg class="check">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
+            </td> --}}
           </tr>
           <tr>
             <th class="concept">
               Mensajería automática
             </th>
             <td>
-              &minus;
+              <svg class="cross">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
             </td>
             <td>
-              &minus;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
             </td>
             <td>
-              &times;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
             </td>
-            <td>
-              &minus;
-            </td>
+            {{!-- <td>
+              <svg class="check">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
+            </td> --}}
           </tr>
           <tr>
             <th class="concept">
               Diseño para tarjetas de presentación
             </th>
             <td>
-              &minus;
+              <svg class="cross">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
             </td>
             <td>
-              &minus;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
             </td>
             <td>
-              &times;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
+            </td>
+            {{!-- <td>
+              <svg class="check">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
+            </td> --}}
+          </tr>
+          <tr>
+            <th class="concept">
+              Interconexion de redes
+            </th>
+            <td>
+              <svg class="cross">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
             </td>
             <td>
-              &minus;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
             </td>
+            <td>
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
+            </td>
+            {{!-- <td>
+              <svg class="check">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
+            </td> --}}
+          </tr>
+          <tr>
+            <th class="concept">
+              Videos
+            </th>
+            <td>
+              <svg class="cross">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
+            </td>
+            <td>
+              <svg class="cross">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
+            </td>
+            <td>
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
+            </td>
+            {{!-- <td>
+              <svg class="check">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
+            </td> --}}
           </tr>
           <tr>
             <th class="concept">
               Membrete
             </th>
             <td>
-              &minus;
+              <svg class="cross">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
             </td>
             <td>
-              &minus;
+              <svg class="cross">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
             </td>
             <td>
-              &times;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
             </td>
-            <td>
-              &minus;
-            </td>
+            {{!-- <td>
+              <svg class="check">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
+            </td> --}}
           </tr>
-           <tr>
+          <tr>
             <th class="concept">
               Campaña amplificadora
             </th>
             <td>
-              &minus;
+              <svg class="cross">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
             </td>
             <td>
-              &minus;
+              <svg class="cross">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
             </td>
             <td>
-              &times;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
             </td>
-            <td>
-              &minus;
-            </td>
+            {{!-- <td>
+              <svg class="check">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
+            </td> --}}
           </tr>
-           <tr>
+          <tr>
             <th class="concept">
               Landing page
             </th>
             <td>
-              &minus;
+              <svg class="cross">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
             </td>
             <td>
-              &minus;
+              <svg class="cross">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
             </td>
             <td>
-              &times;
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
+            </td>
+            {{!-- <td>
+              <svg class="check">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
+            </td> --}}
+          </tr>
+          <tr>
+            <th class="concept">
+              Google ADS
+            </th>
+            <td>
+              <svg class="cross">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
             </td>
             <td>
-              &minus;
+              <svg class="cross">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
             </td>
+            <td>
+              <svg class="check">
+                <use href="/assets/check.svg#check"></use>
+              </svg>
+            </td>
+            {{!-- <td>
+              <svg class="check">
+                <use href="/assets/cross.svg#cross"></use>
+              </svg>
+            </td> --}}
+          </tr>
         </tbody>
       </table>
     </div>
   </div>
+
 </div>
 {{/inline}}
 

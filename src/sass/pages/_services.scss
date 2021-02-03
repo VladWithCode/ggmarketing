@@ -5,9 +5,9 @@
 
   &Header {
     width: 100%;
-    height: 70vh;
+    height: 60vh;
     grid-column: full-start / full-end;
-    clip-path: polygon(0 0, 100% 0, 100% 65%, 0 80%);
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 85%);
     display: flex;
     background-image: $background-gradient-image;
 
@@ -21,27 +21,12 @@
     }
   }
 
-  &Services {
-    width: 100%;
-    height: 90vh;
-    grid-column: center-start / center-end;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: #fff;
-
-    &__heading {
-      font-size: 2.6rem;
-      display: inline-block;
-      width: 100%;
-    }
-  }
-
   &Pricing {
     width: 100%;
-    height: 70vh;
+    min-height: 70vh;
     grid-column: full-start / full-end;
     display: flex;
-    margin-top: 15rem;
+    margin: 7rem 0;
     flex-wrap: wrap;
     align-content: flex-start;
 
@@ -49,7 +34,7 @@
       font-size: 2.6rem;
       display: inline-block;
       width: 100%;
-      padding: 0 20%;
+      padding: 4rem 20% 0;
     }
 
     &__table {
@@ -68,49 +53,145 @@
         }
 
         tr {
-          border-bottom: 1px solid #D8DAE5;
+          border-bottom: 1px solid #d8dae5;
+
           &:last-child {
             border-bottom: 0;
+
+            th {
+              border-bottom: 0;
+            }
+          }
+
+          &.head {
+            th {
+              border-bottom: 1px solid #d8dae5;
+            }
           }
         }
 
         th,
         td {
           width: 20%;
-          border-right: 1px solid #D8DAE5;
+          border-right: 1px solid #d8dae5;
 
           &:last-child {
             border-right: 0;
-          }
-
-          &.concept {
-            font-size: 13px;
           }
         }
 
         th {
           font-size: 14px;
           text-transform: uppercase;
-          border-bottom: 1px solid #D8DAE5;
-          padding: 1rem 0;
+          border-bottom: 1px solid #d8dae5;
+          padding: 1.5rem 0;
+
+          &.concept {
+            font-size: 13px;
+          }
         }
 
         td {
+          position: relative;
+
           &:nth-child(even) {
-            background-color: rgba($color: #f0f0f0, $alpha: .6);
+            background-color: rgba($color: #f0f0f0, $alpha: 0.6);
           }
 
-          &:not(.concept) {
-            font-size: 3rem;
-            text-align: center;
+          .text,
+          .check,
+          .cross {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+
+          .text {
+            font-size: 2rem;
+            font-weight: 600;
+            color: transparent;
+            // -webkit-text-stroke: .5px $color-ggmkt;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.1) -100%, $color-ggmkt);
+            -webkit-background-clip: text;
+            background-clip: text;
+          }
+
+          .check,
+          .cross {
+            width: 1.5rem;
+            height: 1.5rem;
+          }
+
+          .check {
+            -webkit-mask: url("/assets/check.svg");
+            mask: url("/assets/check.svg");
+            fill: transparent;
+            background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1) -100%, $color-ggmkt);
+          }
+
+          .cross {
+            -webkit-mask: url("/assets/cross.svg");
+            mask: url("/assets/cross.svg");
+            fill: transparent;
+            background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1) -100%, rgb(146, 60, 60));
           }
         }
       }
     }
   }
 
+  &Plans {
+    grid-column: full-start / full-end;
+    width: 95%;
+    height: 85vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+  }
+
   &Card {
-    margin: auto;
-    width: 30%;
+    position: relative;
+    display: flex;
+    height: 100%;
+    width: 480px;
+    border-radius: 5.8rem;
+    overflow: hidden;
+    @include shadow-light;
+    transition: 0.3s linear;
+    cursor: pointer;
+
+    &__bg {
+      position: absolute;
+      z-index: 10;
+      height: 100%;
+      width: 100%;
+      transition: filter .2s linear;
+
+      &--ent {
+        background-image: url("/assets/plans/card-ent.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+
+      &--emp {
+        background-image: url("/assets/plans/card-emp.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+
+      &--mag {
+        background-image: url("/assets/plans/card-mag.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+    }
+
+    &__content {
+    }
   }
 }

@@ -28,6 +28,10 @@ ctrl.renderContact = function (req, res, next) {
   res.render('pages/contact');
 }
 
+ctrl.renderSuscribe = function (req, res, next) {
+  res.render('pages/suscribe');
+}
+
 // Operation handlers
 ctrl.sendMail = async function (req, res, next) {
   try {

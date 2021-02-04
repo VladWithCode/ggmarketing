@@ -2,7 +2,7 @@
     
     @include respond(from-tab-land) {
         height: 90vh;
-        background-image: linear-gradient(to left, rgba($color-primary-light, 0.3), white);
+        background-image: $background-gradient-image;
         // background-color: rgba($color-primary-light, 0.3);
         clip-path: polygon(0 0, 100% 0, 100% 80%, 0 90%);
         // overflow: hidden;

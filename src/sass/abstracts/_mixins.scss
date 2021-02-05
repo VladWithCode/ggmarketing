@@ -143,7 +143,7 @@
         }
 
         ; // 600px
-    }
+    };
 
     @if $breakpoint==tab-port {
         @media (max-width: 56.25em) {
@@ -151,7 +151,7 @@
         }
 
         ; // 900px
-    }
+    };
 
     @if $breakpoint==from-tab-land {
         @media (min-width: 56.25em) {
@@ -159,7 +159,7 @@
         }
 
         ; // 900px
-    }
+    };
 
     @if $breakpoint==google {
         @media (max-width: 71.37em) {
@@ -167,7 +167,7 @@
         }
 
         ; // 900px
-    }
+    };
 
     @if $breakpoint==tab-land {
         @media (max-width: 75em) {
@@ -175,7 +175,7 @@
         }
 
         ; //1200px
-    }
+    };
 
     @if $breakpoint==big-desk {
         @media (min-width: 112.5em) {
@@ -183,6 +183,36 @@
         }
 
         ; //1800px
+    };
+
+    @if $breakpoint == bp-64em {
+        @media (max-width: 64em) {
+            @content;
+        };
+    };
+
+    @if $breakpoint == bp-37em {
+        @media (max-width: 37.5em) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == bp-30em {
+        @media (max-width: 30rem) {
+            @content;
+        };
+    };
+
+    @if $breakpoint == bp-26em {
+        @media (max-width: 26.5625em) {
+            @content;
+        };
+    };
+
+    @if $breakpoint == bp-20em {
+        @media (max-width: 20em) {
+            @content;
+        }
     }
 }
 

@@ -55,6 +55,10 @@
             font-size: 3rem;
             margin-right: 5rem;
 
+            @include respond(bp-20em) {
+                margin-right: 4rem;
+            }
+
             & .fa-facebook-f {
                 transition: all .3s !important;
                 &:hover {

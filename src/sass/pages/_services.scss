@@ -3,6 +3,10 @@
   display: grid;
   grid-template-columns: [full-start] 1fr [center-start] repeat(12, [col-start] calc(1140px / 12) [col-end]) [center-end] 1fr [full-end];
 
+  @include respond(tab-land) {
+    grid-template-columns: [full-start] 1fr [center-start] repeat(12, [col-start] minmax(min-content, 100px) [col-start]) [center-end] 1fr [full-end];
+  }
+
   &Header {
     width: 100%;
     height: 60vh;
@@ -26,22 +30,29 @@
     min-height: 70vh;
     grid-column: full-start / full-end;
     display: flex;
-    margin: 7rem 0;
     flex-wrap: wrap;
     align-content: flex-start;
+    padding: 5rem 0 10rem;
+
+    @include respond(bp-37em) {
+      display: none;
+    }
 
     &__heading {
       font-size: 2.6rem;
       display: inline-block;
       width: 100%;
-      padding: 4rem 20% 0;
+      padding: 5rem 20%;
     }
 
     &__table {
       width: 1440px;
       margin: auto;
-      margin-top: 5%;
 
+     /*  @include respond() {
+
+      }
+ */
       table {
         width: 100%;
         border-collapse: collapse;
@@ -144,23 +155,78 @@
   &Plans {
     grid-column: full-start / full-end;
     width: 95%;
-    height: 85vh;
+    // height: 85vh;
     margin: 0 auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
-    align-content: center;
+    align-items: center;
+
+    @include respond(google) {
+      // height: auto;
+      flex-wrap: wrap;
+      justify-content: unset;
+      align-content: unset;
+    }
+
+    @include respond(bp-37em) {
+      padding: 3rem 0 13rem;
+    }
+
+    &__heading {
+      display: block;
+      width: 100%;
+      font-size: 3.2rem;
+      font-weight: 600;
+      color: #333;
+      padding: 0 20%;
+      margin-bottom: 4.2rem;
+    }
   }
 
   &Card {
     position: relative;
     display: flex;
-    height: 100%;
-    width: 480px;
+    height: 85vh;
+    width: 25%;
     border-radius: 5.8rem;
     overflow: hidden;
     @include shadow-light;
     transition: 0.3s linear;
     cursor: pointer;
+
+    @include respond(tab-land) {
+      height: 80vh;
+      margin: auto 0;
+    }
+    
+    @include respond(bp-64em) {
+      height: 75vh;
+      width: 27%;
+    }
+
+    @include respond(google) {
+      width: 90%;
+      height: 90vh;
+      margin: 5rem auto;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    @include respond(bp-37em) {
+      height: 80vh;
+      margin: 2rem auto;
+    }
+
+    @include respond(bp-20em) {
+      height: 60vh;
+    }
 
     &:hover {
       .svcsCard {
@@ -222,6 +288,10 @@
       letter-spacing: 1px;
       color: #fff;
       transition: 0.5s linear;
+
+      @include respond(bp-26em) {
+        font-size: 2rem;
+      }
     }
 
     &__content {
@@ -231,7 +301,7 @@
       z-index: 30;
       display: flex;
       flex-direction: column;
-      border-radius: 6rem;
+      // border-radius: 6rem;
       background-color: #fff;
       transform: translateY(100%);
       transition: transform 0.5s ease-in;
@@ -243,6 +313,8 @@
         font-size: 3.4rem;
         letter-spacing: 1px;
         color: $color-black;
+
+
       }
 
       .benefits {
@@ -253,12 +325,13 @@
         padding-block-start: 0;
         width: 80%;
         margin: auto;
-        margin-top: 4rem;
+        margin-top: 2rem;
       }
 
       .benefit {
         display: flex;
         padding: 1rem 0;
+        align-items: center;
 
         &::before {
           content: "";
@@ -266,8 +339,11 @@
           width: 1.5rem;
           height: 1.5rem;
           -webkit-mask: url('/assets/check.svg');
+          -webkit-mask-repeat: no-repeat;
           mask: url('/assets/check.svg');
-          margin: auto 1rem;
+          mask-repeat: no-repeat;
+          // margin: auto 1rem;
+          margin-right: 1.5rem;
         }
       }
 

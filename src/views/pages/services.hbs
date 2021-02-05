@@ -11,6 +11,7 @@
   </div>
 
   <div class="svcsPlans">
+    <div class="svcsPlans__heading">Planes</div>
     <form class="svcsCard svcsCard--ent" method="get" action="/contratar/emprendedor">
       <div class="svcsCard__bg svcsCard__bg--ent"></div>
       <h3 class="svcsCard__heading">Emprendedor</h3>
@@ -25,7 +26,7 @@
         <button class="cta cta--ent" type="submit">$2,499</button>
       </div>
     </form>
-    <form class="svcsCard svcsCard--emp" method="get" action="/contratar/empresario">
+    <form class="svcsCard svcsCard--emp" method="get" action="/contratar/empresario" onsubmit="(e) => e.preventDefault();">
       <div class="svcsCard__bg svcsCard__bg--emp"></div>
       <h3 class="svcsCard__heading">Empresario</h3>
       <div class="svcsCard__content svcsCard__content--emp">

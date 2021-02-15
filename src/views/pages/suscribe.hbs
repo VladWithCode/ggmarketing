@@ -1,9 +1,43 @@
-{{#> layouts/default}}
+{{#> layouts/payment}}
 
 {{#*inline "content-block"}}
 <div class="scr">
   <div class="scrHeader">
-    
+    <h1 class="scrHeader__heading">Contratar plan "<span class="plan">{{plan}}</span>".</h1>
+  </div>
+  <div class="scrForms">
+    <div class="scrCustomer">
+      <form action="/api/payment/init" method="POST" class="scrCustomer__form">
+        <div class="group">
+          <label for="names" class="label">Nombre(s)</label>
+          <input type="text" name="names" id="names" class="input">
+          <span class="errors"></span>
+        </div>
+        <div class="group">
+          <label for="plastname" class="label">Apellido Paterno</label>
+          <input type="text" name="plastname" id="plastname" class="input">
+        </div>
+        <div class="group">
+          <label for="mlastname" class="label">Apellido Materno</label>
+          <input type="text" name="mlastname" id="mlastname" class="input">
+        </div>
+        <div class="group">
+          <label for="email" class="label">Correo Electronico</label>
+          <input type="email" name="email" id="email" class="input">
+        </div>
+        <div class="group">
+          <label for="phone" class="label">Numero Telefonico</label>
+          <input type="text" name="phone" id="phone" class="input">
+        </div>
+        <button class="submit">Pagar</button>
+        {{!-- <div class="group">
+
+        </div> --}}
+      </form>
+    </div>
+    <div class="scrPayment">
+
+    </div>
   </div>
 </div>
 {{/inline}}
@@ -13,4 +47,4 @@
 <script src="/js/checkout.js" type="module" defer></script>
 {{/inline}}
 
-{{/layouts/default}}
+{{/layouts/payment}}

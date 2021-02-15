@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -12,24 +12,7 @@
     GG Marketing
     {{/if}}
   </title>
-  <script src="https://kit.fontawesome.com/c6bf5c5efb.js" crossorigin="anonymous" defer></script>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap"
-    rel="stylesheet">
-  <!-- Global site tag (gtag.js) - Google Ads: 580918654 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-580918654"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
 
-    gtag('config', 'AW-580918654');
-  </script>
-  <!-- Event snippet for Registro de clientes potenciales conversion page -->
-  <script>
-    gtag('event', 'conversion', { 'send_to': 'AW-580918654/CDjECOTzsvUBEP66gJUC' });
-  </script>
-  
   {{#> head-block}}
   {{!-- Custom head content per page --}}
   <link type="text/css" rel="stylesheet" href="/css/style.css" defer>
@@ -59,17 +42,15 @@
 <body>
 
   {{#> header-block}}
-  {{> includes/layout/navigation}}
+  {{> includes/layout/navigation-payment}}
   {{/header-block}}
 
   {{#> content-block}}{{/content-block}}
 
   {{#> footer-block}}
-  {{> includes/layout/footer}}
+  {{> includes/layout/footer-payment}}
   {{/footer-block}}
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-  <script src="/js/index.js" defer></script>
   {{#> scripts-block}}
   {{!-- Custom scripts per page --}}
   {{/scripts-block}}

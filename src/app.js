@@ -8,6 +8,7 @@ const flash = require('connect-flash');
 
 // Inits
 const app = express();
+require('./config/db');
 
 /* Route imports */
 const indexRoutes = require('./routes/index.routes');

@@ -1,182 +1,102 @@
 .clients {
-    // position: relative;
-    max-width: 90%;
-    margin: 0 auto 8rem auto;
-    // padding: 2rem 2rem;
-    animation-delay: 2.3s !important;
-    backface-visibility: hidden;
-    animation-fill-mode: backwards;
+    margin: 0 auto 5rem auto;
     text-align: center;
-    // background-color: red;
 
-    & img {
-        width: 25rem;
-    }
 
     & h3 {
-        font-size: 3rem;
-        margin-bottom: 4rem;
+        font-size: 35px;
+        margin-bottom: 3rem;
+        line-height: 1;
+        max-width: 95%;
 
-
+        @include respond(tab-port){
+            margin-top: 8rem;
+            margin-bottom: 1rem;
+            padding-top: 3rem;
+        }
     }
 
     &__container {
-        // display: flex;
-        // justify-content: center;
-        // align-items: center;
-        // background-color: rgba(255, 255, 255, 0.205);
-        // margin: 0 0 6rem 0;
-        // padding: 5rem !important;
-        
-        // flex-wrap: wrap;
-        // // border-radius: .5rem
-        
-        // // @include respond(from-tab-land){
-        // //     width: 80%;
-        // //     margin: 0 auto 6rem auto;
-        // // }
-
-        // $client-size: 20vw;
-
-        width: 75%;
-        margin: 3rem auto 0 auto;
-        display: flex;
-        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         justify-content: center;
-        // position: relative;
-        flex-wrap: wrap;
+        width: 1200px;
+        max-width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
 
-        $client-size: 30vh;
+        @include respond(tab-port){
+            margin-top: 8rem;
+        }
+
+        @include respond(phone){
+            grid-template-columns: repeat(1, 1fr);
+        }
+        
 
         & .client {
-            flex: 0 1 33%;
-
-
-            height: $client-size !important;
-            width: $client-size !important;
-
-            
-            transition: all ease-in-out;
-
-            flex: 0 1 calc(33% -1rem);
-
-            
-
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-
+            transition: .3s all ease-in-out;
             
+            position: relative;
 
-            & img {
-                max-height: 100%;
-                max-width: 100%;
+            cursor: pointer;
+
+            @include respond(tab-port){
+                height: auto !important;
             }
 
-            &:hover {
-                transform: scale(1.05) !important;
-                // border-radius: 5rem;
-                @include shadow-light;
-            }
-            
-        }
-
-        @include respond(tab-land) {
-            width: 85%;
-            
-            
-            & .client {
-                flex: 0 1 50%;
+            &:hover img {
+                transform: scale(1.1);
             }
 
-        }
-
-        @include respond(phone) {
+            &:hover p {
+                color: white;
+                background-color: rgba(29, 29, 29, 0.411);
+            }
             
-            & .client {
-                flex: 0 1 100%;
+            & a {
+                & img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: .3s all ease-in-out;
+                    transform: scale(1.05);
+                }
+
             }
 
-        }
+            & p {
+                position: absolute;
+                object-fit: cover;
+                font-weight: 800;
+                font-size: 30px;
+                top: 50%;
+                left: 50%;
+                color: transparent;
+                transform: translate(-50%, -50%);
+                text-transform: uppercase;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: .3s all ease-in-out;
+            }
 
+            &:first-child {
+                grid-column: 1 / -1;
+                height: 550px !important;
+                transform: scale(1);
 
-        @include respond(phone) {
-            width: 90%;
-           
-            & .client {
-                box-shadow: none;
-                flex: 0 1 100%;
-
-                &:last-child {
-                    align-self: center;
+                @include respond(tab-port){
+                    height: 320px !important;
                 }
             }
         }
-    
-        
-
-        
-
-    }
-
-
-
-    & a {
-        transition: all .3s;
-
-        
-    }
-
-    &__web-container {
-        background-color: $color-primary-dark;
-        border-radius: 5rem;
-        margin-bottom: 5rem;
-
-        animation-delay: .4s !important;
-
-        & img {
-            padding: 6rem;
-            width: 100%;
-        }
-
-        &__mobile {
-            display: flex;
-        }
-    }
-
-    @include respond(tab-port){
-
-        margin-top: 6rem;
-        & hr {
-            display: none;
-        }
-
-        & h3 {
-            font-size: 2.5rem;
-            margin-bottom: 4rem;
-        }
-    }
-
-    @include respond(phone){
-        // top: -13rem;
-
-        & h3 {
-            font-size: 4rem;
-            line-height: 3.8rem;
-
-        }
-
-        // &__container {
-        //     flex-direction: column;
-
-        //     & a {
-        //         padding: 3rem 0;
-        //     }
-        // }
-
-        &__web-container,
-        & .hide {
-            display: none;
-        }
     }
 }
+

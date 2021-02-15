@@ -2,8 +2,14 @@
   min-height: 100vh;
 
   &Header {
-    height: 90vh;
-    background-image: $background-gradient-image;
-    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 90%);
+    
+    &__heading {
+      font-size: 2rem;
+      font-weight: 400;
+
+      .plan {
+        text-transform: capitalize;
+      }
+    }
   }
 }

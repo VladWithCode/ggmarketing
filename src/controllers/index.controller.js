@@ -29,7 +29,11 @@ ctrl.renderContact = function (req, res, next) {
 }
 
 ctrl.renderSuscribe = function (req, res, next) {
-  res.render('pages/suscribe');
+  const { plan } = req.params;
+
+  res.render('pages/suscribe', {
+    plan
+  });
 }
 
 // Operation handlers

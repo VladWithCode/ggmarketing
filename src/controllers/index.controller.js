@@ -3,6 +3,8 @@ const { oAuth2Client, CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN } = require('../co
 
 // Libs
 const nodemailer = require('nodemailer');
+const stripe = require('../config/stripe');
+const Plan = require('../models/Plan');
 
 // Controller init
 const ctrl = {};
@@ -12,7 +14,7 @@ ctrl.renderIndex = function (req, res, next) {
   res.render('pages/index');
 }
 
-ctrl.renderServices = function(req, res, next) {
+ctrl.renderServices = function (req, res, next) {
   res.render('pages/services');
 }
 
@@ -28,11 +30,37 @@ ctrl.renderContact = function (req, res, next) {
   res.render('pages/contact');
 }
 
-ctrl.renderSuscribe = function (req, res, next) {
+ctrl.renderSuscribe = async function (req, res, next) {
   const { plan } = req.params;
+  let foundPlan;
 
-  res.render('pages/suscribe', {
-    plan
+  try {
+    foundPlan = await Plan.findOne({ $where: `this.name.toLowerCase() === '${plan}'` });
+  } catch (err) {
+    return next(err);
+  }
+
+  if (!foundPlan) return res.json({
+    status: 404,
+    statusTxt: "NOT_FOUND",
+    msg: `No se encontro el plan "${plan}"`
+  });
+
+  let paymentIntent;
+
+  try {
+    paymentIntent = await stripe.paymentIntents.create({
+      amount: foundPlan.price * 100, // Subtotal * 100 (Stripe uses smallest currency unit)
+      currency: 'mxn'
+    });
+  } catch (err) {
+    return next(err);
+  }
+
+  return res.render('pages/suscribe', {
+    plan,
+    planId: foundPlan.id,
+    clientSecret: paymentIntent.client_secret
   });
 }
 

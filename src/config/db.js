@@ -8,7 +8,7 @@ mongoose.connect(URI, {
   useUnifiedTopology: true,
   useFindAndModify: false
 }, err => {
-  if (err) console.log(err);
+  if (err) return console.log(err);
 
   console.log('Connected to DB');
 });

@@ -2,14 +2,155 @@
   min-height: 100vh;
 
   &Header {
-    
+    display: flex;
+    width: 100%;
+    height: 30vh;
+    background-image: $background-gradient-image;
+
     &__heading {
-      font-size: 2rem;
+      display: inline-block;
+      margin: auto;
+      margin-left: 8%;
+      margin-top: 6rem;
+      font-size: 3rem;
       font-weight: 400;
 
       .plan {
         text-transform: capitalize;
       }
+    }
+  }
+
+  &Forms {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr [center-start] repeat(4, [col-start] minmax(min-content, calc(1140px / 4)) [col-end]) [center-end] 1fr;
+  }
+
+  &Customer,
+  &Payment {
+    grid-column: col-start 2 / col-end 3;
+    grid-row: 1;
+    width: 80%;
+    margin: -10rem auto 0;
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: 2px 2px 6px 1px rgba($color-black, 0.15);
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    &.fade-out {
+      animation: fadeOut 1.3s ease 0s 1 normal forwards;
+    }
+
+    &.fade-in {
+      animation: fadeIn 0.8s ease 0s 1 normal forwards;
+    }
+
+    // Children
+    .heading {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 1rem auto;
+    }
+
+    .group {
+      display: inline-block;
+      margin: 0 auto 1rem;
+      width: 65%;
+
+      .label {
+        display: block;
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+      }
+
+      .input {
+        display: inline-block;
+        width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        padding: 5px 10px;
+        font-size: 1.15rem;
+      }
+    }
+
+    .submit {
+      display: flex;
+      margin: auto;
+      padding: 1rem 3rem;
+      background-color: $color-ggmkt;
+      color: $color-white;
+      border: 1px solid $color-ggmkt;
+      border-radius: 4px;
+      transition: 0.3s linear;
+
+      &:hover {
+        cursor: pointer;
+        background-color: darken($color-ggmkt, 8);
+        transform: scale(1.08);
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:disabled {
+        filter: brightness(80%);
+        pointer-events: none;
+      }
+
+      & > * {
+        margin: auto;
+      }
+
+      #text {
+        transition: .3s;
+        transform-origin: center;
+        font-size: 1.2rem;
+
+        &:hidden {
+          transform: scale(0);
+        }
+      }
+
+      .spinner {
+        display: none;
+        width: 0;
+        height: 0;
+        animation: loadingSpinner 1.5s ease infinite;
+        border: solid 3px #ddd;
+        border-bottom-color: $color-background;
+        border-radius: 50%;
+        transition: .2s linear;
+  
+        &.active {
+          display: inline-block;
+          width: 22px;
+          height: 22px;
+        }
+      }
+    }
+  }
+
+  &Customer {
+    height: 35rem;
+  }
+
+  &Payment {
+
+    p#card-error {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: red;
+    }
+
+    .submit {
+      margin: 2rem auto;
     }
   }
 }

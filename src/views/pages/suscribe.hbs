@@ -7,36 +7,46 @@
   </div>
   <div class="scrForms">
     <div class="scrCustomer">
-      <form action="/api/payment/init" method="POST" class="scrCustomer__form">
+      <form class="scrCustomer__form" id="infoForm">
+        <div class="heading">Datos Personales</div>
+        <input type="hidden" name="plan" value="{{planId}}">
         <div class="group">
-          <label for="names" class="label">Nombre(s)</label>
-          <input type="text" name="names" id="names" class="input">
+          <label for="name" class="label">Nombre(s)</label>
+          <input type="text" name="name" id="name" class="input" required>
           <span class="errors"></span>
         </div>
         <div class="group">
-          <label for="plastname" class="label">Apellido Paterno</label>
-          <input type="text" name="plastname" id="plastname" class="input">
-        </div>
-        <div class="group">
-          <label for="mlastname" class="label">Apellido Materno</label>
-          <input type="text" name="mlastname" id="mlastname" class="input">
+          <label for="lastname" class="label">Apellido(s)</label>
+          <input type="text" name="lastname" id="lastname" class="input" required>
+          <span class="errors"></span>
         </div>
         <div class="group">
           <label for="email" class="label">Correo Electronico</label>
-          <input type="email" name="email" id="email" class="input">
+          <input type="email" name="email" id="email" class="input" required>
+          <span class="errors"></span>
         </div>
         <div class="group">
-          <label for="phone" class="label">Numero Telefonico</label>
-          <input type="text" name="phone" id="phone" class="input">
+          <label for="phone" class="label">Número Telefonico</label>
+          <input type="tel" name="phone" id="phone" class="input" required>
+          <span class="errors"></span>
         </div>
-        <button class="submit">Pagar</button>
-        {{!-- <div class="group">
-
-        </div> --}}
+        <button class="submit" type="submit">Método de Pago</button>
       </form>
     </div>
-    <div class="scrPayment">
-
+    <div class="scrPayment d-none" data-client-secret="{{clientSecret}}">
+      <form class="scrPayment__form" id="paymentForm">
+        <div class="heading">Método de pago</div>
+        <div class="group">
+          <div id="card-element">{{!-- Created with JS --}}</div>
+        </div>
+        <div class="group">
+          <p id="card-error" role="alert"></p>
+        </div>
+        <button type="submit" class="submit" id="payment-submit">
+          <span class="spinner"></span>
+          <div id="text">Pagar</div>
+        </button>
+      </form>
     </div>
   </div>
 </div>

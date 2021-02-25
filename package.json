@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
@@ -13,6 +14,8 @@
     "mongoose": "^5.11.15",
     "morgan": "^1.10.0",
     "nodemailer": "^6.4.17",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "stripe": "^8.133.0"
   },
   "devDependencies": {

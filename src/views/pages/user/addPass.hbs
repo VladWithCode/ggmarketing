@@ -1,0 +1,39 @@
+{{#> layouts/payment}}
+
+{{#*inline "content-block"}}
+<div class="apw">
+  <div class="apwHeader">
+    <h1 class="apwHeader__heading">Subscripción exitosa</h1>
+    <p class="apwHeader__notice">Ahora sólo necesitas agregar una contraseña.</p>
+  </div>
+  <div class="apwContent">
+    <div class="apwContent__notice">Usarás esta contraseña para poder acceder al panel de administración de tu
+      subscripción.</div>
+    <form class="apwForm" id="addPassForm">
+      <h4 class="heading">Añadir contraseña</h4>
+      <input type="hidden" name="user" value="{{customerId}}">
+      <div class="group">
+        <label for="pass" class="label">Contraseña</label>
+        <input type="password" name="pass" id="pass" class="input" required>
+        <p class="errors"></p>
+      </div>
+      <div class="group">
+        <label for="confirmPass" class="label">Confirmar contraseña</label>
+        <input type="password" name="confirmPass" id="confirmPass" class="input" required>
+        <p class="errors"></p>
+      </div>
+      <button class="submit" type="submit">Confirmar</button>
+    </form>
+    <div class="apwContent__success d-none">
+      <h3 class="heading">Contraseña añadida con exito.</h3>
+      <p class="paraph">Ya puedes acceder al panel de administración de tu subscripción. Inicia sesión <a href="/iniciar-sesion">aquí</a>.</p>
+    </div>
+  </div>
+</div>
+{{/inline}}
+
+{{#*inline "scripts-block"}}
+<script src="/js/addpass.js"></script>
+{{/inline}}
+
+{{/layouts/payment}}

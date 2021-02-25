@@ -8,7 +8,8 @@ const {
   renderContact,
   sendMail,
   renderServices,
-  renderSuscribe
+  renderSuscribe,
+  renderAddPassword
 } = require('../controllers/index.controller.js');
 
 // Render Routes
@@ -21,6 +22,8 @@ Router.get('/nosotros', renderAbout);
 Router.get('/proyectos', renderProjects);
 
 Router.get('/contacto', renderContact);
+
+Router.get('/contratar/finalizar', renderAddPassword);
 
 Router.get('/contratar/:plan', renderSuscribe);
 

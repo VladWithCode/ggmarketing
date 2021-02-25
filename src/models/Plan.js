@@ -5,8 +5,8 @@ const PlanSchema = new Schema({
   stripe_id: { type: String, required: true },
   price: { type: Number, required: true },
   description: { type: String, required: true },
-  suscribers: [{ type: Types.ObjectId, ref: 'Customer' }],
-  suscriberCount: { type: Number, default: 0 },
+  subscribers: [{ type: Types.ObjectId, ref: 'Customer' }],
+  subscriberCount: { type: Number, default: 0 },
   lastSubscribed: Number,
   available: { type: Boolean, default: true },
 })

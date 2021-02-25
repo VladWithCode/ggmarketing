@@ -33,6 +33,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (err) {
       console.log(err);
+      if (err.code === 'email_invalid') {
+        let invalidField =document.getElementById('email');
+        invalidField.classList.add('invalid');
+        invalidField.nextElementSibling.textContent = 'Este campo contener un email válido';
+        invalidField.onchange = function (e) { this.classList.remove('invalid'); this.nextElementSibling.textContent = '' }
+      }
       return alert(msg);
     }
 
@@ -42,14 +48,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         return alert(msg);
       case 'OK':
         infoFormContainer.classList.add('fade-out');
-        infoFormContainer.addEventListener('transitionend', function (e) {
+        infoFormContainer.addEventListener('animationend', function (e) {
           this.classList.add('d-none');
           this.classList.remove('fade-out');
 
           paymentFormContainer.classList.remove('d-none');
           paymentFormContainer.classList.add('fade-in');
         });
-        paymentFormContainer.addEventListener('transitionend', function (e) {
+        paymentFormContainer.addEventListener('animationend', function (e) {
           this.classList.remove('fade-in')
         });
     }
@@ -162,22 +168,31 @@ document.addEventListener('DOMContentLoaded', async () => {
           paymentMethodId: customer.paymentMethodId
         });
 
-        if (payed !== true) return handleSuscriptionCreated(subscription, );
+        if (payed !== true) return handleSuscriptionCreated(subscription,);
 
         return await handleSubscriptionCompleted(subscription);
     }
   }
 
   async function handleSubscriptionCompleted(subscription) {
-    let result = await (await fetch('/api/subscriptions/new', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(subscription)
-    })).json();
+    try {
+      let result = await (await fetch('/api/subscriptions/create', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ subscription, customer })
+      })).json();
+
+      if (result.err) throw { ...result.err, msg: result.msg };
+
+      location.assign('/contratar/finalizar');
+    } catch (err) {
+      console.log(err);
+      return alert(err.msg);
+    }
   }
-  
+
   async function handleRequiresCustomerAction({
     subscription,
     invoice,
@@ -203,6 +218,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         err.message && displayError(err.message);
         return false;
       }
+    }
+  }
+
+  async function handleRequiresAction(subscription, paymentMethodId) {
+    let paymentIntent = subscription.latest_invoice?.payment_intent || subscription.payment_intent;
+
+    try {
+
+    } catch (err) {
+
     }
   }
 

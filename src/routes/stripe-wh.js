@@ -32,13 +32,14 @@ Router.post('/', async (req, res, next) => {
       // The status of the invoice will show up as paid. Store the status in your
       // database to reference when a user accesses your service to avoid hitting rate limits.
       console.log('Invoice paid!');
-      // console.log(dataObject)
+      console.log(dataObject)
       break;
     case 'invoice.payment_failed':
       // If the payment fails or the customer does not have a valid payment method,
       //  an invoice.payment_failed event is sent, the subscription becomes past_due.
       // Use this webhook to notify your user that their payment has
       // failed and to retrieve new card details.
+      console.log(dataObject);
       break;
     case 'customer.subscription.deleted':
       if (evt.request != null) {

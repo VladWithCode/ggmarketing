@@ -1,8 +1,8 @@
 // Modules
 const path = require('path');
 const express = require('express');
-const hbs = require('express-handlebars');
 const expSession = require('express-session');
+const hbs = require('express-handlebars');
 const flash = require('connect-flash');
 const cookieparser = require('cookie-parser');
 const morgan = require('morgan');
@@ -16,6 +16,7 @@ const indexRoutes = require('./routes/index.routes');
 const publicApiRoutes = require('./routes/public.routes');
 const privateApiRoutes = require('./routes/private.routes');
 const stripeWh = require('./routes/stripe-wh');
+const passport = require('passport');
 
 /* Helpers */
 
@@ -49,6 +50,8 @@ app.use(expSession({
   }
 }));
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session())
 app.use(morgan('dev'));
 
 /* if (process.env.NODE_ENV !== 'production') {

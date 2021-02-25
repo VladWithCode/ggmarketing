@@ -64,6 +64,14 @@ ctrl.renderSuscribe = async function (req, res, next) {
   });
 }
 
+ctrl.renderAddPassword = (req, res, next) => {
+  const { customer_id } = req.cookies;
+
+  res.render('pages/user/addPass', {
+    customerId: customer_id
+  })
+}
+
 // Operation handlers
 ctrl.sendMail = async function (req, res, next) {
   try {

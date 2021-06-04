@@ -1,5 +1,10 @@
 // Config import
-const { oAuth2Client, CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN } = require('../config/oauth');
+const {
+  oAuth2Client,
+  CLIENT_ID,
+  CLIENT_SECRET,
+  REFRESH_TOKEN,
+} = require('../config/oauth');
 
 // Libs
 const nodemailer = require('nodemailer');
@@ -12,46 +17,49 @@ const ctrl = {};
 // Render handlers
 ctrl.renderIndex = function (req, res, next) {
   res.render('pages/index');
-}
+};
 
 ctrl.renderServices = function (req, res, next) {
   res.render('pages/services');
-}
+};
 
 ctrl.renderAbout = function (req, res, next) {
   res.render('pages/about');
-}
+};
 
 ctrl.renderProjects = function (req, res, next) {
   res.render('pages/projects');
-}
+};
 
 ctrl.renderContact = function (req, res, next) {
   res.render('pages/contact');
-}
+};
 
 ctrl.renderSuscribe = async function (req, res, next) {
   const { plan } = req.params;
   let foundPlan;
 
   try {
-    foundPlan = await Plan.findOne({ $where: `this.name.toLowerCase() === '${plan}'` });
+    foundPlan = await Plan.findOne({
+      $where: `this.name.toLowerCase() === '${plan}'`,
+    });
   } catch (err) {
     return next(err);
   }
 
-  if (!foundPlan) return res.json({
-    status: 404,
-    statusTxt: "NOT_FOUND",
-    msg: `No se encontro el plan "${plan}"`
-  });
+  if (!foundPlan)
+    return res.json({
+      status: 404,
+      statusTxt: 'NOT_FOUND',
+      msg: `No se encontro el plan "${plan}"`,
+    });
 
   let paymentIntent;
 
   try {
     paymentIntent = await stripe.paymentIntents.create({
       amount: foundPlan.price * 100, // Subtotal * 100 (Stripe uses smallest currency unit)
-      currency: 'mxn'
+      currency: 'mxn',
     });
   } catch (err) {
     return next(err);
@@ -60,31 +68,27 @@ ctrl.renderSuscribe = async function (req, res, next) {
   return res.render('pages/suscribe', {
     plan,
     planId: foundPlan.id,
-    clientSecret: paymentIntent.client_secret
+    clientSecret: paymentIntent.client_secret,
   });
-}
+};
 
 ctrl.renderAddPassword = (req, res, next) => {
   const { customer_id } = req.cookies;
 
   res.render('pages/user/addPass', {
-    customerId: customer_id
-  })
-}
+    customerId: customer_id,
+  });
+};
 
 // Operation handlers
 ctrl.sendMail = async function (req, res, next) {
   try {
-    const {
-      mail,
-      name,
-      msg
-    } = req.body;
+    const { mail, name, msg } = req.body;
     const senderMail = process.env.SENDER_MAIL;
     const receiverMail = process.env.RECEIVER_MAIL;
 
+    console.log(REFRESH_TOKEN);
     const accessToken = await oAuth2Client.getAccessToken();
-    console.log(senderMail, receiverMail);
 
     const mailTransporter = nodemailer.createTransport({
       service: 'gmail',
@@ -94,8 +98,8 @@ ctrl.sendMail = async function (req, res, next) {
         clientId: CLIENT_ID,
         clientSecret: CLIENT_SECRET,
         refreshToken: REFRESH_TOKEN,
-        accessToken: accessToken
-      }
+        accessToken: accessToken,
+      },
     });
 
     const mailOptions = {
@@ -106,8 +110,8 @@ ctrl.sendMail = async function (req, res, next) {
         Usuario: ${name}
         Correo: ${mail}
         Consulta: ${msg}`,
-      html: createHTMLMessage(name, mail, msg)
-    }
+      html: createHTMLMessage(name, mail, msg),
+    };
 
     const mailSent = await mailTransporter.sendMail(mailOptions);
 
@@ -116,8 +120,11 @@ ctrl.sendMail = async function (req, res, next) {
     req.flash('success', 'Se ha enviado el correo');
     return res.redirect('/contacto');
   } catch (err) {
-    console.log(err)
-    req.flash('err', 'Se ha producido un error al enviar tu solicitud. Intenta de nuevo mas tarde.');
+    console.log(err);
+    req.flash(
+      'err',
+      'Se ha producido un error al enviar tu solicitud. Intenta de nuevo mas tarde.'
+    );
     return res.redirect('/contacto');
   }
 
@@ -125,9 +132,9 @@ ctrl.sendMail = async function (req, res, next) {
     return `<h1></h1>
     <p>Nombre: ${name}</p>
     <p>Correo: ${mail}</p>
-    <p>Consulta: ${msg}</p>`
+    <p>Consulta: ${msg}</p>`;
   }
-}
+};
 
 // Exporting
 module.exports = ctrl;

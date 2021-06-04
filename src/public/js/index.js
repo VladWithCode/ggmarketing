@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   AOS.init();
 
   // Get the navbar
-  let navbar = document.getElementById("navbar");
+  let navbar = document.getElementById('navbar');
 
   // Get the offset position of the navbar
   let sticky = navbar.offsetHeight;
@@ -17,15 +17,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  window.onscroll = function () { myFunction() };
+  window.onscroll = function () {
+    myFunction();
+  };
+
+  if (location.pathname !== '/') return;
 
   const optionsContainer = document.getElementById('options');
   const optionElements = document.querySelectorAll('.option');
   const optionCount = optionElements.length;
-  
+
   setTimeout(() => optionElements[0].classList.add('optionActive'), 250);
-  
-  setInterval(switchHeroText(optionsContainer, optionElements, optionCount), 3500);
+
+  setInterval(
+    switchHeroText(optionsContainer, optionElements, optionCount),
+    3500
+  );
 });
 
 function switchHeroText(container, elements, count) {
@@ -33,10 +40,10 @@ function switchHeroText(container, elements, count) {
     let currentIndex = +container.dataset.current;
     let nextIndex = currentIndex + 1;
 
-    elements[currentIndex % count].classList.remove("optionActive");
-    elements[nextIndex % count].classList.add("optionActive");
+    elements[currentIndex % count].classList.remove('optionActive');
+    elements[nextIndex % count].classList.add('optionActive');
 
     if (nextIndex >= count) nextIndex = 0;
     container.dataset.current = nextIndex;
-  }
+  };
 }

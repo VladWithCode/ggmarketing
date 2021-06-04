@@ -32,6 +32,7 @@ ctrl.renderProjects = function (req, res, next) {
 };
 
 ctrl.renderContact = function (req, res, next) {
+  console.log(REFRESH_TOKEN);
   res.render('pages/contact');
 };
 

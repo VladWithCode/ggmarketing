@@ -32,7 +32,6 @@ ctrl.renderProjects = function (req, res, next) {
 };
 
 ctrl.renderContact = function (req, res, next) {
-  console.log(REFRESH_TOKEN);
   res.render('pages/contact');
 };
 
@@ -88,7 +87,10 @@ ctrl.sendMail = async function (req, res, next) {
     const senderMail = process.env.SENDER_MAIL;
     const receiverMail = process.env.RECEIVER_MAIL;
 
-    console.log(REFRESH_TOKEN);
+    console.log(`Sender Mail: ${senderMail}.
+Receiver Mail: ${receiverMail}.
+Refresh Token: ${REFRESH_TOKEN}.`);
+
     const accessToken = await oAuth2Client.getAccessToken();
 
     const mailTransporter = nodemailer.createTransport({

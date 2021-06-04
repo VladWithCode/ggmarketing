@@ -87,9 +87,12 @@ ctrl.sendMail = async function (req, res, next) {
     const senderMail = process.env.SENDER_MAIL;
     const receiverMail = process.env.RECEIVER_MAIL;
 
-    console.log(`Sender Mail: ${senderMail}.
-Receiver Mail: ${receiverMail}.
-Refresh Token: ${REFRESH_TOKEN}.`);
+    console.log(`Sender Mail: ${senderMail}
+Receiver Mail: ${receiverMail}
+Refresh Token: ${REFRESH_TOKEN}
+Client ID: ${CLIENT_ID}
+Client SECRET: ${CLIENT_SECRET}
+`);
 
     const accessToken = await oAuth2Client.getAccessToken();
 

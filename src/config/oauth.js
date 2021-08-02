@@ -6,6 +6,7 @@ const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
 const REFRESH_TOKEN = process.env.GOOGLE_REFRESH_TOKEN || '1//04GBp3x8aNnjbCgYIARAAGAQSNwF-L9IrRCndXdL1TghT58wBKe3c0Hx2kkSxYsEHsYjOiLLUP2G8QaWwW0gThcsOVBSiLBoB_Gs';
 
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
+
 oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
 module.exports = {

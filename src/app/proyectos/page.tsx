@@ -7,7 +7,7 @@ import { listProjects } from "@/lib/projects";
 
 export const metadata: Metadata = {
   title: "Proyectos",
-  description: "Portafolio de proyectos desarrollados por el equipo de SIBRA DGO.",
+  description: "Portafolio de campañas, marcas y sitios web creados por GG Marketing.",
 };
 
 export default async function ProyectosPage() {

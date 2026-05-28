@@ -6,13 +6,13 @@ import { getSettings } from "@/lib/settings";
 
 export const metadata: Metadata = {
   title: "Contacto",
-  description: "Contáctanos para cotizar tu proyecto de software.",
+  description: "Contáctanos para impulsar tu marca con marketing digital y publicidad.",
 };
 
 export default async function ContactoPage() {
   const s = await getSettings();
   const wa = `https://wa.me/${s.whatsappNumber}?text=${encodeURIComponent(
-    "Hola SIBRA DGO, me interesa cotizar un proyecto.",
+    "Hola GG Marketing, quiero impulsar mi marca.",
   )}`;
   return (
     <section className="relative">
@@ -29,10 +29,10 @@ export default async function ContactoPage() {
             · Contacto
           </p>
           <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight md:text-6xl">
-            Hablemos de tu <span className="text-gradient">proyecto</span>.
+            Hablemos de tu <span className="text-gradient">marca</span>.
           </h1>
           <p className="mt-5 max-w-md text-white/65">
-            Respondemos en horas hábiles con un plan claro. Si necesitas algo urgente,
+            Respondemos en horas hábiles con una estrategia clara. Si necesitas algo urgente,
             escríbenos directamente por WhatsApp.
           </p>
 

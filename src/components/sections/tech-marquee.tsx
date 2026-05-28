@@ -1,8 +1,8 @@
 const row1 = [
-  "React", "Next.js", "TypeScript", "Node.js", "PostgreSQL", "Prisma", "Tailwind", "Vercel",
+  "Meta Ads", "Instagram", "Facebook", "TikTok", "Google Ads", "YouTube", "WhatsApp Business", "LinkedIn",
 ];
 const row2 = [
-  "React Native", "MySQL", "Firebase", "Docker", "AWS", "Python", "GraphQL", "Redis",
+  "Canva", "Adobe Photoshop", "Illustrator", "Premiere Pro", "CapCut", "Figma", "Mailchimp", "Metricool",
 ];
 
 function Chip({ label }: { label: string }) {
@@ -21,10 +21,10 @@ export function TechMarquee() {
 
       <div className="container-page mb-8 text-center">
         <p className="text-xs font-medium uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
-          · Stack
+          · Herramientas
         </p>
         <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight md:text-3xl">
-          Tecnologías que dominamos
+          Plataformas y herramientas que dominamos
         </h3>
       </div>
 

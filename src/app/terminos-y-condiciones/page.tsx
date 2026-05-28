@@ -21,9 +21,9 @@ export default function Page() {
 
       <h2>2. Servicios</h2>
       <p>
-        {siteConfig.name} ofrece servicios de desarrollo de software, sitios web, sistemas,
-        aplicaciones y automatización. La información de paquetes es referencial; el alcance y
-        precio final se definen por cotización.
+        {siteConfig.name} ofrece servicios de marketing digital, publicidad en redes sociales,
+        gestión de redes, branding, diseño de contenido y páginas web. La información de paquetes
+        es referencial; el alcance y precio final se definen por cotización.
       </p>
 
       <h2>3. Propiedad intelectual</h2>

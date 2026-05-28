@@ -23,7 +23,7 @@ export function Footer({ settings }: { settings?: SiteSettings }) {
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
             <h3 className="font-display text-2xl font-bold">
-              SIBRA <span className="text-[color:var(--color-accent)]">DGO</span>
+              GG <span className="text-[color:var(--color-accent)]">Marketing</span>
             </h3>
             <p className="mt-3 max-w-md text-sm text-white/60">{siteConfig.description}</p>
 

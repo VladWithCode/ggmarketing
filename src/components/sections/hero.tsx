@@ -2,15 +2,15 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Code2, LayoutDashboard, Smartphone, Workflow } from "lucide-react";
+import { ArrowRight, Sparkles, Megaphone, Instagram, PenTool, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Clouds } from "@/components/sections/clouds";
 
 const badges = [
-  { Icon: Code2, label: "Desarrollo web" },
-  { Icon: LayoutDashboard, label: "Sistemas y dashboards" },
-  { Icon: Workflow, label: "Automatización" },
-  { Icon: Smartphone, label: "Apps móviles" },
+  { Icon: Instagram, label: "Redes sociales" },
+  { Icon: Megaphone, label: "Campañas Meta Ads" },
+  { Icon: PenTool, label: "Contenido y branding" },
+  { Icon: Globe, label: "Páginas web" },
 ];
 
 export function Hero() {
@@ -34,7 +34,7 @@ export function Hero() {
             <span className="size-1 rounded-full bg-[color:var(--color-accent)]" />
           </span>
           <Sparkles className="size-3.5 text-[color:var(--color-accent)]" />
-          Equipo de software · Durango, México
+          Agencia de marketing digital · Durango, México
         </motion.div>
 
         <motion.h1
@@ -43,11 +43,11 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto mt-7 max-w-5xl font-display text-[2.6rem] font-bold leading-[1.02] tracking-tight sm:text-6xl md:text-7xl lg:text-[5rem]"
         >
-          <span className="text-gradient">Soluciones digitales</span>
+          <span className="text-gradient">Impulsamos tu marca</span>
           <br />
-          <span className="text-white/90">que hacen crecer</span>{" "}
+          <span className="text-white/90">con estrategia y</span>{" "}
           <span className="relative inline-block">
-            <span className="relative z-10">tu negocio.</span>
+            <span className="relative z-10">campañas digitales.</span>
             <span
               aria-hidden
               className="absolute inset-x-0 bottom-1 h-3 -skew-x-6 rounded-sm bg-[color:var(--color-accent)]/30 md:bottom-2 md:h-4"
@@ -61,8 +61,8 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.18 }}
           className="mx-auto mt-7 max-w-2xl text-balance text-base text-white/65 md:text-lg"
         >
-          En SIBRA DGO diseñamos y desarrollamos páginas web, sistemas administrativos,
-          dashboards, apps y automatizaciones a la medida de tu operación.
+          En GG Marketing creamos contenido, gestionamos tus redes, lanzamos campañas
+          de publicidad y diseñamos páginas web que conectan con tus clientes.
         </motion.p>
 
         <motion.div

@@ -48,10 +48,10 @@ export function Navbar() {
         >
           <Link href="/" className="flex items-center gap-2.5">
             <span className="grid size-8 place-items-center overflow-hidden rounded-lg bg-gradient-to-br from-[color:var(--color-accent)] to-[color:var(--color-accent-2)] shadow-lg">
-              <Image src="/logo.png" alt="SIBRA DGO" width={28} height={28} className="rounded-md" />
+              <Image src="/logo.png" alt="GG Marketing" width={28} height={28} className="rounded-md" />
             </span>
             <span className="font-display text-sm font-semibold tracking-tight">
-              SIBRA <span className="text-[color:var(--color-accent)]">DGO</span>
+              GG <span className="text-[color:var(--color-accent)]">Marketing</span>
             </span>
           </Link>
 

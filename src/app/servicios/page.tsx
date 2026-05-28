@@ -9,7 +9,7 @@ import { Clouds } from "@/components/sections/clouds";
 export const metadata: Metadata = {
   title: "Servicios y paquetes",
   description:
-    "Desarrollo web, sistemas administrativos, dashboards, apps móviles, automatización e integración de bases de datos. Paquetes Básico, Profesional y Empresarial.",
+    "Marketing digital, publicidad en redes, gestión de redes sociales, branding, campañas Meta Ads y páginas web. Paquetes Presencia Digital, Campañas y Redes, y Estrategia Integral.",
 };
 
 export default function ServiciosPage() {
@@ -25,11 +25,11 @@ export default function ServiciosPage() {
               · Servicios
             </p>
             <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold tracking-tight md:text-6xl">
-              Software a medida para <span className="text-gradient">resolver problemas reales</span>.
+              Marketing digital para <span className="text-gradient">hacer crecer tu marca</span>.
             </h1>
             <p className="mt-5 max-w-2xl text-white/65">
-              Construimos herramientas que se usan todos los días: rápidas, mantenibles y
-              diseñadas para tu equipo.
+              Contenido, publicidad, redes y presencia web. Estrategias que se ejecutan cada
+              día y se miden con resultados.
             </p>
           </Reveal>
         </div>

@@ -19,7 +19,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <div className="grid min-h-screen md:grid-cols-[240px_1fr]">
         <aside className="border-r border-white/10 bg-[color:var(--color-bg-soft)] p-5 md:sticky md:top-0 md:h-screen">
           <Link href="/admin" className="font-display text-lg font-semibold">
-            SIBRA <span className="text-[color:var(--color-accent)]">Admin</span>
+GG <span className="text-[color:var(--color-accent)]">Admin</span>
           </Link>
           <nav className="mt-8 space-y-1">
             {nav.map(({ href, label, Icon }) => (

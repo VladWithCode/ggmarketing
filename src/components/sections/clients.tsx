@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-// TODO: reemplazar con clientes/logos reales de SIBRA DGO (con permiso).
+// TODO: reemplazar con clientes/logos reales de GG Marketing (con permiso).
 // Monograma elegante como placeholder — sin logos externos random.
 const clients = [
   { name: "El Kilate", monogram: "EK", url: "https://elkilate.com.mx/" },

@@ -1,16 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Search, PenLine, Code2, ShieldCheck, Rocket, type LucideIcon } from "lucide-react";
+import { Search, PenLine, Megaphone, BarChart3, Rocket, type LucideIcon } from "lucide-react";
 
 type Step = { n: string; title: string; desc: string; Icon: LucideIcon };
 
 const steps: Step[] = [
-  { n: "01", title: "Diagnóstico", desc: "Escuchamos. Mapeamos tu operación, tus metas y los cuellos de botella reales.", Icon: Search },
-  { n: "02", title: "Diseño de solución", desc: "Definimos arquitectura, flujos y experiencia. Documentamos antes de codificar.", Icon: PenLine },
-  { n: "03", title: "Desarrollo", desc: "Construimos en sprints cortos, con entregas visibles cada semana.", Icon: Code2 },
-  { n: "04", title: "Pruebas", desc: "Validamos con datos y usuarios reales antes de cada lanzamiento.", Icon: ShieldCheck },
-  { n: "05", title: "Entrega y soporte", desc: "Despliegue, capacitación y acompañamiento post-lanzamiento.", Icon: Rocket },
+  { n: "01", title: "Diagnóstico", desc: "Escuchamos. Analizamos tu marca, tu público y tus objetivos reales.", Icon: Search },
+  { n: "02", title: "Estrategia y contenido", desc: "Definimos mensaje, calendario y creatividades. Planeamos antes de publicar.", Icon: PenLine },
+  { n: "03", title: "Campañas", desc: "Publicamos y lanzamos anuncios segmentados en redes para llegar a clientes.", Icon: Megaphone },
+  { n: "04", title: "Optimización", desc: "Medimos métricas y ajustamos creatividades y segmentación para mejor rendimiento.", Icon: BarChart3 },
+  { n: "05", title: "Reporte y crecimiento", desc: "Reportes claros y acompañamiento continuo para seguir escalando la marca.", Icon: Rocket },
 ];
 
 export function Process() {

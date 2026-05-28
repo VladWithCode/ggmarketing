@@ -1,30 +1,30 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Gauge, Layers, Wrench } from "lucide-react";
+import { Target, TrendingUp, Sparkles } from "lucide-react";
 
 const pillars = [
   {
-    Icon: Gauge,
-    title: "Rendimiento desde el día uno",
-    desc: "Optimizamos carga, base de datos y experiencia para que el sistema vuele incluso con miles de registros.",
+    Icon: Target,
+    title: "Estrategia, no improvisación",
+    desc: "Definimos objetivos, público y mensaje antes de publicar. Cada campaña tiene un para qué claro.",
   },
   {
-    Icon: Layers,
-    title: "Pensado para escalar",
-    desc: "Arquitectura modular y código limpio. Que sumar usuarios o módulos no implique empezar de cero.",
+    Icon: Sparkles,
+    title: "Contenido que detiene el scroll",
+    desc: "Diseño, copy y video pensados para tu marca. Publicaciones que la gente sí quiere ver y compartir.",
   },
   {
-    Icon: Wrench,
-    title: "Mantenimiento real",
-    desc: "Documentación clara y pruebas. Tú o tu equipo pueden seguir trabajando el proyecto cuando lo necesiten.",
+    Icon: TrendingUp,
+    title: "Resultados medibles",
+    desc: "Reportes claros de alcance, interacción y conversiones. Optimizamos sobre datos, no corazonadas.",
   },
 ];
 
 const metrics = [
-  { value: "Software hecho a la medida", sub: "Cada proyecto se construye desde sus necesidades, no de un template." },
-  { value: "Equipo local en Durango", sub: "Comunicación directa, sin intermediarios ni fricción horaria." },
-  { value: "Sistemas en operación real", sub: "No demos bonitos: herramientas que se usan todos los días." },
+  { value: "Campañas con propósito", sub: "Cada anuncio nace de una estrategia, no de un impulso." },
+  { value: "Equipo creativo en Durango", sub: "Comunicación directa, sin intermediarios ni fricción horaria." },
+  { value: "Marcas creciendo en redes", sub: "No solo likes: comunidad, leads y ventas reales." },
 ];
 
 export function Trust() {
@@ -39,15 +39,15 @@ export function Trust() {
           className="mx-auto max-w-3xl text-center"
         >
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
-            · Por qué SIBRA
+            · Por qué GG Marketing
           </p>
           <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight md:text-5xl">
-            No solo diseñamos bonito.{" "}
-            <span className="text-gradient">Construimos sistemas útiles.</span>
+            No solo publicamos bonito.{" "}
+            <span className="text-gradient">Hacemos crecer tu marca.</span>
           </h2>
           <p className="mt-5 text-white/65">
-            Trabajamos para que el software resuelva el problema real, hoy y dentro de tres
-            años. Ese es el estándar.
+            Trabajamos para que cada peso invertido en marketing se traduzca en presencia,
+            comunidad y ventas. Ese es el estándar.
           </p>
         </motion.div>
 

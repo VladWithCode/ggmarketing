@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion";
 import {
-  Code2,
-  LayoutDashboard,
-  Smartphone,
-  Cog,
+  Megaphone,
+  Instagram,
+  PenTool,
+  Palette,
+  Globe,
   BarChart3,
-  Database,
   type LucideIcon,
 } from "lucide-react";
 
@@ -15,39 +15,39 @@ type Item = { Icon: LucideIcon; title: string; desc: string; tone: string };
 
 const items: Item[] = [
   {
-    Icon: Code2,
-    title: "Desarrollo web",
-    desc: "Sitios y plataformas rápidas, accesibles y listas para SEO. Stack moderno, código mantenible.",
+    Icon: Instagram,
+    title: "Gestión de redes sociales",
+    desc: "Administramos tus perfiles con calendario de contenido, publicaciones constantes y comunidad activa.",
     tone: "from-[color:var(--color-accent)]/40 to-transparent",
   },
   {
-    Icon: LayoutDashboard,
-    title: "Sistemas administrativos",
-    desc: "Sistemas a medida para gestionar clientes, inventarios, ventas y reportes de tu operación real.",
+    Icon: Megaphone,
+    title: "Publicidad y campañas Meta Ads",
+    desc: "Anuncios en Facebook e Instagram segmentados para llegar a clientes reales y generar resultados.",
+    tone: "from-[color:var(--color-accent-2)]/40 to-transparent",
+  },
+  {
+    Icon: PenTool,
+    title: "Diseño de contenido",
+    desc: "Publicaciones, reels, historias y video con identidad propia que detienen el scroll y conectan.",
+    tone: "from-[color:var(--color-accent-3)]/40 to-transparent",
+  },
+  {
+    Icon: Palette,
+    title: "Branding e identidad visual",
+    desc: "Logo, paleta, tipografía y guía de marca para que tu negocio se vea profesional y memorable.",
+    tone: "from-[color:var(--color-accent)]/40 to-transparent",
+  },
+  {
+    Icon: Globe,
+    title: "Páginas web y landing pages",
+    desc: "Sitios rápidos y listos para SEO que convierten visitas en clientes. Soluciones web complementarias.",
     tone: "from-[color:var(--color-accent-2)]/40 to-transparent",
   },
   {
     Icon: BarChart3,
-    title: "Dashboards y reportes",
-    desc: "Tableros interactivos con métricas en tiempo real para decidir con datos, no con corazonadas.",
-    tone: "from-[color:var(--color-accent-3)]/40 to-transparent",
-  },
-  {
-    Icon: Smartphone,
-    title: "Apps móviles",
-    desc: "Apps iOS y Android con sincronización offline, notificaciones y experiencia nativa fluida.",
-    tone: "from-[color:var(--color-accent)]/40 to-transparent",
-  },
-  {
-    Icon: Cog,
-    title: "Automatización de procesos",
-    desc: "Eliminamos tareas repetitivas conectando tus herramientas y orquestando flujos confiables.",
-    tone: "from-[color:var(--color-accent-2)]/40 to-transparent",
-  },
-  {
-    Icon: Database,
-    title: "Integración de bases de datos",
-    desc: "Conectamos sistemas, migramos datos y construimos APIs sólidas que escalan con tu negocio.",
+    title: "Estrategia, reportes y optimización",
+    desc: "Plan digital con objetivos claros y reportes mensuales de alcance, interacción y conversiones.",
     tone: "from-[color:var(--color-accent-3)]/40 to-transparent",
   },
 ];
@@ -66,11 +66,11 @@ export function ServicesGrid() {
             · Servicios
           </p>
           <h2 className="mt-3 max-w-3xl font-display text-4xl font-semibold tracking-tight md:text-6xl">
-            Lo que hacemos por <span className="text-gradient">tu operación</span>.
+            Lo que hacemos por <span className="text-gradient">tu marca</span>.
           </h2>
           <p className="mt-5 max-w-2xl text-white/60">
-            Cada servicio se construye con foco en rendimiento, escalabilidad y mantenimiento
-            desde el día uno.
+            Marketing digital, publicidad y presencia web pensados para que tu negocio crezca
+            con estrategia desde el día uno.
           </p>
         </motion.div>
 

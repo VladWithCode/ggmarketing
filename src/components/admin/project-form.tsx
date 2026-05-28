@@ -141,7 +141,7 @@ export function ProjectForm({ id, initial }: Props) {
         </div>
         <div className="space-y-2">
           <Label>Categoría *</Label>
-          <Input {...register("category")} placeholder="Sistema web" />
+          <Input {...register("category")} placeholder="Marketing en redes" />
         </div>
       </div>
 
@@ -163,7 +163,7 @@ export function ProjectForm({ id, initial }: Props) {
             control={control}
             name="technologies"
             render={({ field }) => (
-              <CsvField value={field.value} onChange={field.onChange} placeholder="Next.js, PostgreSQL" />
+              <CsvField value={field.value} onChange={field.onChange} placeholder="Meta Ads, Instagram, Canva" />
             )}
           />
         </div>

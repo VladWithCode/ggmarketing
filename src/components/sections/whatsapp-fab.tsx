@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/utils";
 export function WhatsAppFab({ whatsapp }: { whatsapp?: string }) {
   const number = whatsapp || siteConfig.whatsapp;
   const href = `https://wa.me/${number}?text=${encodeURIComponent(
-    "Hola SIBRA DGO, me interesa cotizar un proyecto.",
+    "Hola GG Marketing, quiero impulsar mi marca.",
   )}`;
   return (
     <a

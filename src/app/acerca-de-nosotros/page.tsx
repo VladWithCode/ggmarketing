@@ -4,14 +4,14 @@ import { CtaSection } from "@/components/sections/cta";
 
 export const metadata: Metadata = {
   title: "Nosotros",
-  description: "Quiénes somos en SIBRA DGO: equipo de software local en Durango.",
+  description: "Quiénes somos en GG Marketing: agencia de marketing digital y publicidad en Durango.",
 };
 
 const values = [
-  { title: "Trabajo cercano", desc: "Equipo local. Hablamos contigo, no detrás de un ticket." },
-  { title: "Código mantenible", desc: "Construimos para durar: pruebas, claridad y documentación." },
-  { title: "Resultados medibles", desc: "Cada proyecto se entrega con métricas claras de éxito." },
-  { title: "Tecnología moderna", desc: "Stack actual, ágil y compatible con tu equipo." },
+  { title: "Trabajo cercano", desc: "Equipo local y creativo. Hablamos contigo, no detrás de un ticket." },
+  { title: "Contenido con identidad", desc: "Diseño y copy hechos para tu marca, no plantillas genéricas." },
+  { title: "Resultados medibles", desc: "Cada campaña se entrega con métricas claras de alcance y conversión." },
+  { title: "Estrategia primero", desc: "Definimos objetivos y público antes de publicar o pautar." },
 ];
 
 export default function NosotrosPage() {
@@ -23,12 +23,12 @@ export default function NosotrosPage() {
             Nosotros
           </p>
           <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold tracking-tight md:text-6xl">
-            Equipo de software en Durango.
+            Agencia de marketing digital en Durango.
           </h1>
           <p className="mt-6 max-w-2xl text-white/65">
-            Somos SIBRA DGO. Diseñamos y desarrollamos software a medida para negocios,
-            instituciones y proyectos reales. Nos importa la calidad del código tanto como
-            el resultado para el cliente.
+            Somos GG Marketing. Creamos contenido, gestionamos redes, lanzamos campañas de
+            publicidad y diseñamos presencia web para negocios que quieren crecer. Nos importa
+            tu marca tanto como tus resultados.
           </p>
         </Reveal>
       </section>

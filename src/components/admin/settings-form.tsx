@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 const fields: { name: keyof SettingsInput; label: string; placeholder?: string }[] = [
   { name: "siteName", label: "Nombre del sitio" },
   { name: "tagline", label: "Tagline" },
-  { name: "email", label: "Email", placeholder: "contacto@sibradgo.com" },
+  { name: "email", label: "Email", placeholder: "contacto@ggmarketing.com" },
   { name: "phone", label: "Teléfono" },
   { name: "whatsappNumber", label: "WhatsApp (solo dígitos)", placeholder: "528000000000" },
   { name: "instagramUrl", label: "Instagram URL" },

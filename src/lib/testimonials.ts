@@ -9,19 +9,19 @@ export type Testimonial = {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "Pasamos de hojas de cálculo a un sistema que todo el equipo usa a diario. La operación es más rápida y dejamos de perder información.",
-    role: "Dirección de operaciones · Empresa de servicios",
-    initials: "OP",
+      "Nuestras redes pasaron de estar abandonadas a generar mensajes y reservas todos los días. El contenido por fin se ve profesional.",
+    role: "Dirección · Restaurante local",
+    initials: "RL",
   },
   {
     quote:
-      "Entregaron en tiempo y con comunicación clara en cada etapa. El panel de reportes nos dio visibilidad que no teníamos.",
+      "Las campañas de publicidad nos trajeron clientes reales, no solo likes. La comunicación fue clara y los reportes muy fáciles de entender.",
     role: "Gerencia comercial · Negocio local",
     initials: "GC",
   },
   {
     quote:
-      "El sitio carga rápido, se ve profesional y por fin podemos actualizar el contenido sin depender de nadie.",
+      "El branding y la página nos dieron una imagen seria y coherente. Ahora la marca se ve igual de bien en todos lados.",
     role: "Coordinación de marketing · PyME",
     initials: "CM",
   },

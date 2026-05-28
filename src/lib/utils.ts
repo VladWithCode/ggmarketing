@@ -17,17 +17,17 @@ export function slugify(input: string) {
 }
 
 export const siteConfig = {
-  name: "SIBRA DGO",
-  tagline: "Equipo de software en Durango",
+  name: "GG Marketing",
+  tagline: "Agencia de marketing digital y publicidad",
   description:
-    "Creamos soluciones digitales a medida para negocios, instituciones y proyectos reales.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://sibradgo.com",
+    "Impulsamos tu marca con estrategia, contenido, campañas en redes y sitios web que conectan con tus clientes.",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://ggmarketing.com",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "528000000000",
-  email: "contacto@sibradgo.com",
+  email: "contacto@ggmarketing.com",
   social: {
-    instagram: "https://instagram.com/sibradgo",
-    facebook: "https://facebook.com/sibradgo",
-    linkedin: "https://linkedin.com/company/sibradgo",
-    github: "https://github.com/sibradgo",
+    instagram: "https://instagram.com/ggmarketing",
+    facebook: "https://facebook.com/ggmarketing",
+    linkedin: "https://linkedin.com/company/ggmarketing",
+    github: "https://github.com/ggmarketing",
   },
 };

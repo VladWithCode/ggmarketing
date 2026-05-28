@@ -8,7 +8,7 @@ import { siteConfig } from "@/lib/utils";
 export async function Pricing() {
   const plans = await getPlans();
   const wa = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
-    "Hola SIBRA DGO, quiero cotizar un paquete.",
+    "Hola GG Marketing, quiero cotizar un paquete.",
   )}`;
 
   return (
@@ -22,7 +22,7 @@ export async function Pricing() {
             Elige por dónde <span className="text-gradient">empezar</span>.
           </h2>
           <p className="mt-5 max-w-2xl text-white/60">
-            Cada proyecto es distinto. Estos paquetes son punto de partida; el precio final
+            Cada marca es distinta. Estos paquetes son punto de partida; la inversión final
             depende del alcance. Agenda una llamada y te damos una cotización clara.
           </p>
         </Reveal>

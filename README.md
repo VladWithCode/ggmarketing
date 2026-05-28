@@ -1,6 +1,8 @@
-# SIBRA DGO
+# GG Marketing
 
-Sitio web del equipo de software SIBRA DGO. Next.js 15 (App Router) + TypeScript + Tailwind v4 + shadcn/ui + Framer Motion + Prisma/Neon + Clerk + UploadThing.
+Sitio web de GG Marketing, agencia de marketing digital y publicidad. Next.js 15 (App Router) + TypeScript + Tailwind v4 + shadcn/ui + Framer Motion + Prisma/Neon + Clerk + UploadThing.
+
+> Nota técnica: el repositorio se llama `sibradgo.com` por historia del proyecto, pero el producto/marca es **GG Marketing**.
 
 ## Stack
 
@@ -66,7 +68,7 @@ middleware.ts               → Clerk auth para /admin
 
 ## Paquetes y checkout (Stripe)
 
-Estructura comercial inspirada en GG Marketing, re-tematizada a SIBRA DGO:
+Estructura comercial de GG Marketing:
 paquetes **Básico / Profesional / Empresarial** (`src/lib/plans.ts`) con tabla
 comparativa en `/servicios`.
 

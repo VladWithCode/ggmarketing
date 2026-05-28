@@ -24,11 +24,11 @@ export function Comparison() {
               <thead className="bg-white/[0.04] text-xs uppercase tracking-wider text-white/60">
                 <tr>
                   <th className="px-5 py-4 font-medium">Característica</th>
-                  <th className="px-5 py-4 text-center font-medium">Básico</th>
+                  <th className="px-5 py-4 text-center font-medium">Presencia Digital</th>
                   <th className="px-5 py-4 text-center font-medium text-[color:var(--color-accent)]">
-                    Profesional
+                    Campañas y Redes
                   </th>
-                  <th className="px-5 py-4 text-center font-medium">Empresarial</th>
+                  <th className="px-5 py-4 text-center font-medium">Estrategia Integral</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">

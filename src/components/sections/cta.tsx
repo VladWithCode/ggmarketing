@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/utils";
 
 export function CtaSection() {
   const wa = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
-    "Hola SIBRA DGO, me interesa cotizar un proyecto.",
+    "Hola GG Marketing, quiero impulsar mi marca.",
   )}`;
   return (
     <section className="relative py-28">
@@ -31,17 +31,17 @@ export function CtaSection() {
                 · Contacto
               </p>
               <h2 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
-                ¿Tienes una idea o proceso que quieres{" "}
-                <span className="text-gradient">convertir en software</span>?
+                ¿Listo para que tu marca{" "}
+                <span className="text-gradient">crezca en redes</span>?
               </h2>
               <p className="mt-5 max-w-xl text-white/65">
-                Cuéntanos qué necesitas. Te respondemos con un plan claro, honesto y un
-                rango realista de tiempo y costo.
+                Cuéntanos sobre tu negocio. Te respondemos con una estrategia clara,
+                contenido, campañas y un rango realista de inversión.
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
                 <Button asChild variant="accent" size="lg" className="group">
                   <Link href="/contacto">
-                    Cotizar proyecto
+                    Impulsar mi marca
                     <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </Button>

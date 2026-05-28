@@ -19,7 +19,7 @@ async function notify(data: ContactInput) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        source: "sibradgo.com/contacto",
+        source: "ggmarketing/contacto",
         notifyEmail: process.env.CONTACT_NOTIFY_EMAIL ?? null,
         receivedAt: new Date().toISOString(),
         ...data,

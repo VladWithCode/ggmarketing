@@ -101,10 +101,10 @@ model Subscription {
 
 model Settings {
   id            String  @id @default("singleton")
-  siteName      String  @default("SIBRA DGO")
-  tagline       String  @default("Equipo de software en Durango")
+  siteName      String  @default("GG Marketing")
+  tagline       String  @default("Agencia de marketing digital y publicidad")
   whatsappNumber String @default("528000000000")
-  email         String  @default("contacto@sibradgo.com")
+  email         String  @default("contacto@ggmarketing.com")
   phone         String?
   instagramUrl  String?
   facebookUrl   String?

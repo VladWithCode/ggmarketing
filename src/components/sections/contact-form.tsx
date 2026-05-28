@@ -60,8 +60,27 @@ export function ContactForm() {
           <Input id="company" placeholder="Opcional" {...register("company")} />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="projectType">Tipo de proyecto</Label>
-          <Input id="projectType" placeholder="Sitio web, sistema, app…" {...register("projectType")} />
+          <Label htmlFor="projectType">¿Qué te interesa?</Label>
+          <select
+            id="projectType"
+            defaultValue=""
+            {...register("projectType")}
+            className="flex h-10 w-full rounded-md border border-white/15 bg-white/[0.03] px-3 text-sm text-white outline-none transition focus:border-[color:var(--color-accent)]/60 focus:ring-2 focus:ring-[color:var(--color-accent)]/30"
+          >
+            <option value="" disabled className="bg-[color:var(--color-bg-soft)]">Selecciona una opción</option>
+            {[
+              "Marketing digital",
+              "Publicidad en redes sociales",
+              "Gestión de redes",
+              "Branding",
+              "Página web / landing page",
+              "Campaña Meta Ads",
+              "Estrategia digital",
+              "Otro",
+            ].map((o) => (
+              <option key={o} value={o} className="bg-[color:var(--color-bg-soft)]">{o}</option>
+            ))}
+          </select>
         </div>
         <div className="space-y-2">
           <Label htmlFor="budget">Presupuesto aprox.</Label>
@@ -69,11 +88,11 @@ export function ContactForm() {
         </div>
       </div>
       <div className="space-y-2">
-        <Label htmlFor="message">Cuéntanos tu idea *</Label>
+        <Label htmlFor="message">Cuéntanos sobre tu marca *</Label>
         <Textarea
           id="message"
           rows={6}
-          placeholder="Describe brevemente qué quieres construir, automatizar o resolver."
+          placeholder="Cuéntanos sobre tu negocio, tus objetivos en redes y qué te gustaría lograr."
           {...register("message")}
         />
         {errors.message && <p className="text-xs text-red-400">{errors.message.message}</p>}
@@ -87,7 +106,7 @@ export function ContactForm() {
           .
         </p>
         <Button type="submit" variant="accent" size="lg" disabled={submitting} className="group">
-          {submitting ? "Enviando…" : "Enviar mensaje"}
+          {submitting ? "Enviando…" : "Impulsar mi marca"}
           <Send className="size-4 transition-transform group-hover:translate-x-0.5" />
         </Button>
       </div>

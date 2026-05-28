@@ -44,6 +44,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const settings = await getSettings();
   return (
     <html lang="es" className={`${inter.variable} ${montserrat.variable}`}>
+      <head>
+        {/* Fallback: if JS is disabled, IntersectionObserver never fires —
+            force reveal/rise content visible so nothing stays hidden. */}
+        <noscript>
+          <style>{`.reveal{opacity:1!important;transform:none!important;filter:none!important}.rise{opacity:1!important;animation:none!important}`}</style>
+        </noscript>
+      </head>
       <body className="min-h-screen antialiased">
         <OrgJsonLd />
         <Navbar />

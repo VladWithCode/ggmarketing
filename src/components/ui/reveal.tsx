@@ -32,7 +32,9 @@ export function Reveal({
           io.disconnect();
         }
       },
-      { rootMargin: "-80px" },
+      // Trigger when ~15% of the element rises into the lower viewport
+      // (shrink only the bottom edge) so the reveal plays in view, not early.
+      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
     );
     io.observe(el);
     return () => io.disconnect();

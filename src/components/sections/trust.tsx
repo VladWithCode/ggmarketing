@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import { Reveal } from "@/components/ui/reveal";
 import { Target, TrendingUp, Sparkles } from "lucide-react";
 
 const pillars = [
@@ -31,13 +29,7 @@ export function Trust() {
   return (
     <section className="relative py-28">
       <div className="container-page">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="mx-auto max-w-3xl text-center"
-        >
+        <Reveal className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
             · Por qué GG Marketing
           </p>
@@ -49,16 +41,14 @@ export function Trust() {
             Trabajamos para que cada peso invertido en marketing se traduzca en presencia,
             comunidad y ventas. Ese es el estándar.
           </p>
-        </motion.div>
+        </Reveal>
 
         <div className="mt-16 grid gap-5 md:grid-cols-3">
           {pillars.map((p, i) => (
-            <motion.article
+            <Reveal
               key={p.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, delay: i * 0.08 }}
+              as="article"
+              delay={i * 0.08}
               className="rounded-3xl border border-white/10 bg-white/[0.025] p-7"
             >
               <div className="inline-flex size-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[color:var(--color-accent)]">
@@ -66,7 +56,7 @@ export function Trust() {
               </div>
               <h3 className="mt-5 font-display text-lg font-semibold">{p.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-white/60">{p.desc}</p>
-            </motion.article>
+            </Reveal>
           ))}
         </div>
 

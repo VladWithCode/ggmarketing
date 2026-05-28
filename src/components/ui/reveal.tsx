@@ -1,35 +1,50 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
-import { type ReactNode } from "react";
+import { createElement, useEffect, useRef, useState, type ReactNode } from "react";
 
-const variants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0 },
-};
+type Tag = "div" | "section" | "article" | "figure" | "li" | "ul" | "h1" | "h2" | "p";
 
+/**
+ * Lightweight scroll-reveal. IntersectionObserver + CSS classes — no Framer
+ * Motion in the bundle. Respects prefers-reduced-motion via globals.css.
+ */
 export function Reveal({
   children,
   delay = 0,
-  className,
+  className = "",
   as = "div",
 }: {
   children: ReactNode;
   delay?: number;
   className?: string;
-  as?: "div" | "section" | "h1" | "h2" | "p";
+  as?: Tag;
 }) {
-  const Comp = motion[as] as typeof motion.div;
-  return (
-    <Comp
-      className={className}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
-      variants={variants}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay }}
-    >
-      {children}
-    </Comp>
+  const ref = useRef<HTMLElement>(null);
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShown(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "-80px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return createElement(
+    as,
+    {
+      ref,
+      className: `reveal ${shown ? "reveal-in" : ""} ${className}`.trim(),
+      style: delay ? { transitionDelay: `${delay}s` } : undefined,
+    },
+    children,
   );
 }

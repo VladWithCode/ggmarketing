@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import { Reveal } from "@/components/ui/reveal";
 import {
   Megaphone,
   Instagram,
@@ -56,12 +54,7 @@ export function ServicesGrid() {
   return (
     <section id="servicios" className="relative py-28">
       <div className="container-page">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        >
+        <Reveal>
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
             · Servicios
           </p>
@@ -72,25 +65,14 @@ export function ServicesGrid() {
             Marketing digital, publicidad y presencia web pensados para que tu negocio crezca
             con estrategia desde el día uno.
           </p>
-        </motion.div>
+        </Reveal>
 
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={{
-            hidden: {},
-            show: { transition: { staggerChildren: 0.06 } },
-          }}
-          className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {items.map((s) => (
-            <motion.article
+        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((s, i) => (
+            <Reveal
               key={s.title}
-              variants={{
-                hidden: { opacity: 0, y: 24 },
-                show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
-              }}
+              as="article"
+              delay={i * 0.06}
               className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.025] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-white/25"
             >
               <div
@@ -110,9 +92,9 @@ export function ServicesGrid() {
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-white/60">{s.desc}</p>
               </div>
-            </motion.article>
+            </Reveal>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

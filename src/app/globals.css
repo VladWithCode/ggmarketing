@@ -74,6 +74,22 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.001ms !important;
     }
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .rise { opacity: 1 !important; animation: none !important; }
+  }
+  /* CSS scroll-reveal (replaces per-section Framer Motion) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal-in { opacity: 1; transform: none; }
+  /* On-load entrance (hero) */
+  .rise {
+    opacity: 0;
+    animation: reveal-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
   /* Hover underline reveal for inline links */
   .link-underline {
@@ -158,6 +174,14 @@
 @keyframes pulse-soft {
   0%, 100% { opacity: 0.45; }
   50% { opacity: 0.85; }
+}
+@keyframes reveal-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes cloud-drift {
+  0%, 100% { opacity: 0.3; transform: translate(0, 0) scale(0.96); }
+  50% { opacity: 0.5; transform: translate(20px, -16px) scale(1.06); }
 }
 
 .animate-marquee { animation: marquee 40s linear infinite; }

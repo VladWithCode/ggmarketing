@@ -5,7 +5,6 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -68,11 +67,7 @@ export function Navbar() {
                     )}
                   >
                     {active && (
-                      <motion.span
-                        layoutId="nav-active"
-                        className="absolute inset-0 -z-10 rounded-full bg-white/10"
-                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                      />
+                      <span className="absolute inset-0 -z-10 rounded-full bg-white/10" />
                     )}
                     {l.label}
                   </Link>
@@ -101,15 +96,8 @@ export function Navbar() {
         </nav>
       </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="mx-auto mt-3 max-w-6xl px-4 md:hidden"
-          >
+      {open && (
+        <div className="mx-auto mt-3 max-w-6xl px-4 md:hidden motion-safe:animate-[reveal-rise_0.2s_ease-out]">
             <div className="rounded-3xl border border-white/10 bg-[color:var(--color-bg)]/90 p-3 backdrop-blur-xl">
               {links.map((l) => (
                 <Link
@@ -127,9 +115,8 @@ export function Navbar() {
                 Cotizar proyecto <ArrowRight className="size-4" />
               </Link>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      )}
     </header>
   );
 }

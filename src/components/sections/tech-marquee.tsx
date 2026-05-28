@@ -1,0 +1,45 @@
+const row1 = [
+  "React", "Next.js", "TypeScript", "Node.js", "PostgreSQL", "Prisma", "Tailwind", "Vercel",
+];
+const row2 = [
+  "React Native", "MySQL", "Firebase", "Docker", "AWS", "Python", "GraphQL", "Redis",
+];
+
+function Chip({ label }: { label: string }) {
+  return (
+    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 font-display text-base font-medium text-white/80 backdrop-blur">
+      <span className="size-1.5 rounded-full bg-[color:var(--color-accent)]" />
+      {label}
+    </span>
+  );
+}
+
+export function TechMarquee() {
+  return (
+    <section className="relative border-y border-white/5 py-14">
+      <div className="absolute inset-0 -z-10 dot-grid opacity-30 [mask-image:radial-gradient(60%_60%_at_50%_50%,black,transparent)]" />
+
+      <div className="container-page mb-8 text-center">
+        <p className="text-xs font-medium uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
+          · Stack
+        </p>
+        <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight md:text-3xl">
+          Tecnologías que dominamos
+        </h3>
+      </div>
+
+      <div className="space-y-4 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+        <div className="flex w-max gap-4 whitespace-nowrap pr-4 animate-marquee">
+          {[...row1, ...row1].map((t, i) => (
+            <Chip key={`r1-${t}-${i}`} label={t} />
+          ))}
+        </div>
+        <div className="flex w-max gap-4 whitespace-nowrap pr-4 animate-marquee-rev">
+          {[...row2, ...row2].map((t, i) => (
+            <Chip key={`r2-${t}-${i}`} label={t} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

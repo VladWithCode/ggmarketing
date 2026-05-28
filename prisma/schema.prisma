@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Project {
+  id               String   @id @default(cuid())
+  slug             String   @unique
+  title            String
+  clientName       String?
+  shortDescription String
+  fullDescription  String
+  category         String
+  technologies     String[]
+  services         String[]
+  heroImage        String
+  galleryImages    String[]
+  liveUrl          String?
+  repoUrl          String?
+  results          Json?
+  featured         Boolean  @default(false)
+  published        Boolean  @default(true)
+  order            Int      @default(0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([published, featured, order])
+}
+
+enum ContactStatus {
+  nuevo
+  leido
+  contactado
+  archivado
+}
+
+model Contact {
+  id          String        @id @default(cuid())
+  name        String
+  email       String
+  phone       String?
+  company     String?
+  projectType String?
+  budget      String?
+  message     String
+  status      ContactStatus @default(nuevo)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([status, createdAt])
+}
+
+model Settings {
+  id            String  @id @default("singleton")
+  siteName      String  @default("SIBRA DGO")
+  tagline       String  @default("Equipo de software en Durango")
+  whatsappNumber String @default("528000000000")
+  email         String  @default("contacto@sibradgo.com")
+  instagramUrl  String?
+  facebookUrl   String?
+  linkedinUrl   String?
+  githubUrl     String?
+  address       String?
+  updatedAt     DateTime @updatedAt
+}

@@ -28,7 +28,7 @@ export function TechMarquee() {
         </h3>
       </div>
 
-      <div className="space-y-4 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+      <div className="marquee-group space-y-4 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
         <div className="flex w-max gap-4 whitespace-nowrap pr-4 animate-marquee">
           {[...row1, ...row1].map((t, i) => (
             <Chip key={`r1-${t}-${i}`} label={t} />

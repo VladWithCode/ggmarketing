@@ -62,12 +62,12 @@ export function Navbar() {
                   <Link
                     href={l.href}
                     className={cn(
-                      "relative inline-block rounded-full px-3.5 py-1.5 text-sm transition-colors",
-                      active ? "text-white" : "text-white/65 hover:text-white",
+                      "nav-link relative inline-block rounded-full px-3.5 py-1.5 text-sm transition-colors",
+                      active ? "nav-link-active text-white" : "text-white/65 hover:text-white",
                     )}
                   >
                     {active && (
-                      <span className="absolute inset-0 -z-10 rounded-full bg-white/10" />
+                      <span className="absolute inset-0 -z-10 rounded-full bg-white/10 transition-all duration-300" />
                     )}
                     {l.label}
                   </Link>

@@ -17,6 +17,16 @@ export function Hero() {
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 line-grid opacity-[0.3] [mask-image:radial-gradient(60%_50%_at_50%_25%,black,transparent)]" />
         <Clouds className="[mask-image:radial-gradient(70%_70%_at_50%_30%,black,transparent)]" />
+        {/* Light CSS-only floating accents */}
+        <div className="animate-float-slow absolute left-[14%] top-[24%] size-2 rounded-full bg-[color:var(--color-accent)]/70 shadow-[0_0_24px_6px_color-mix(in_oklab,var(--color-accent)_50%,transparent)]" />
+        <div
+          className="animate-float-slow absolute right-[16%] top-[34%] size-1.5 rounded-full bg-[color:var(--color-accent-3)]/70 shadow-[0_0_20px_5px_color-mix(in_oklab,var(--color-accent-3)_50%,transparent)]"
+          style={{ animationDelay: "1.5s", animationDuration: "11s" }}
+        />
+        <div
+          className="animate-float-slow absolute left-[28%] bottom-[20%] size-1.5 rounded-full bg-[color:var(--color-accent-2)]/60 shadow-[0_0_20px_5px_color-mix(in_oklab,var(--color-accent-2)_45%,transparent)]"
+          style={{ animationDelay: "3s", animationDuration: "13s" }}
+        />
       </div>
 
       <div className="container-page text-center">

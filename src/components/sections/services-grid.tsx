@@ -84,8 +84,8 @@ export function ServicesGrid() {
                 }}
               />
               <div className="relative">
-                <div className="inline-flex size-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[color:var(--color-accent)] transition-all duration-500 group-hover:border-[color:var(--color-accent)]/40 group-hover:bg-[color:var(--color-accent)]/10 group-hover:text-white">
-                  <s.Icon className="size-5" />
+                <div className="inline-flex size-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[color:var(--color-accent)] transition-all duration-500 group-hover:-translate-y-0.5 group-hover:scale-105 group-hover:border-[color:var(--color-accent)]/40 group-hover:bg-[color:var(--color-accent)]/10 group-hover:text-white">
+                  <s.Icon className="size-5 transition-transform duration-500 group-hover:-rotate-6" />
                 </div>
                 <h3 className="mt-6 font-display text-xl font-semibold tracking-tight">
                   {s.title}

@@ -21,9 +21,9 @@ export function Testimonials() {
               key={t.role}
               as="figure"
               delay={i * 0.08}
-              className="card-hover flex h-full flex-col rounded-3xl border border-white/10 bg-white/[0.03] p-7 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]"
+              className="group card-hover flex h-full flex-col rounded-3xl border border-white/10 bg-white/[0.03] p-7 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]"
             >
-              <Quote className="size-6 text-[color:var(--color-accent)]/70" />
+              <Quote className="size-6 text-[color:var(--color-accent)]/70 transition-all duration-500 group-hover:scale-110 group-hover:text-[color:var(--color-accent)]" />
               <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-white/80">
                 “{t.quote}”
               </blockquote>

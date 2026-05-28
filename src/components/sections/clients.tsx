@@ -29,7 +29,7 @@ export function Clients() {
                   {...(isReal ? { href: c.url, target: "_blank", rel: "noreferrer" } : {})}
                   className="group flex flex-col items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-6 text-center transition hover:border-white/25 hover:bg-white/[0.04]"
                 >
-                  <span className="grid size-12 place-items-center rounded-xl bg-gradient-to-br from-[color:var(--color-accent)]/25 to-[color:var(--color-accent-2)]/25 font-display text-sm font-bold text-white/80 transition group-hover:text-white">
+                  <span className="grid size-12 place-items-center rounded-xl bg-gradient-to-br from-[color:var(--color-accent)]/25 to-[color:var(--color-accent-2)]/25 font-display text-sm font-bold text-white/80 transition duration-500 group-hover:scale-110 group-hover:text-white">
                     {c.monogram}
                   </span>
                   <span className="text-xs font-medium text-white/45 transition group-hover:text-white/80">

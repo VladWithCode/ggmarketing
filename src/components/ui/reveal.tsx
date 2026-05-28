@@ -5,8 +5,9 @@ import { createElement, useEffect, useRef, useState, type ReactNode } from "reac
 type Tag = "div" | "section" | "article" | "figure" | "li" | "ul" | "h1" | "h2" | "p";
 
 /**
- * Lightweight scroll-reveal. IntersectionObserver + CSS classes — no Framer
- * Motion in the bundle. Respects prefers-reduced-motion via globals.css.
+ * Lightweight scroll-reveal. Primary mechanism is IntersectionObserver, with a
+ * scroll/resize getBoundingClientRect fallback so it still fires in browsers or
+ * embedded webviews where IO callbacks are unreliable. No Framer Motion.
  */
 export function Reveal({
   children,
@@ -25,19 +26,46 @@ export function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShown(true);
-          io.disconnect();
-        }
-      },
-      // Trigger when ~15% of the element rises into the lower viewport
-      // (shrink only the bottom edge) so the reveal plays in view, not early.
-      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
-    );
-    io.observe(el);
-    return () => io.disconnect();
+
+    let done = false;
+    const reveal = () => {
+      if (done) return;
+      done = true;
+      setShown(true);
+      io?.disconnect();
+      window.removeEventListener("scroll", check, true);
+      window.removeEventListener("resize", check);
+    };
+
+    // Reveal once the element's top edge has risen past 88% of the viewport
+    // (i.e. it is genuinely on screen, not just peeking by 1px).
+    const check = () => {
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      if (r.top < vh * 0.88 && r.bottom > 0) reveal();
+    };
+
+    let io: IntersectionObserver | null = null;
+    if (typeof IntersectionObserver !== "undefined") {
+      io = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) reveal();
+        },
+        { threshold: 0.25, rootMargin: "0px 0px -15% 0px" },
+      );
+      io.observe(el);
+    }
+
+    // Fallback + initial state (element already in view on load).
+    window.addEventListener("scroll", check, true);
+    window.addEventListener("resize", check);
+    check();
+
+    return () => {
+      io?.disconnect();
+      window.removeEventListener("scroll", check, true);
+      window.removeEventListener("resize", check);
+    };
   }, []);
 
   return createElement(

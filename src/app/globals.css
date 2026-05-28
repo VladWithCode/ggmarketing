@@ -67,40 +67,51 @@
     background: color-mix(in oklab, var(--color-accent) 55%, transparent);
     background-clip: padding-box;
   }
-  /* Respect reduced motion */
+  /* Respect reduced motion: kill decorative LOOPING animations (marquee,
+     float, clouds) but keep a gentle opacity fade for scroll-reveal so the
+     page still feels alive — no large translate/blur, just a soft fade. */
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.001ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.001ms !important;
+    .animate-marquee, .animate-marquee-rev, .animate-float, .animate-float-slow,
+    .animate-pulse-soft {
+      animation: none !important;
     }
-    .reveal { opacity: 1 !important; transform: none !important; filter: none !important; }
-    .rise { opacity: 1 !important; animation: none !important; }
+    .reveal {
+      transform: none !important;
+      filter: none !important;
+      transition: opacity 500ms ease !important;
+    }
+    .reveal.reveal-in { opacity: 1 !important; }
+    .rise {
+      opacity: 0;
+      transform: none !important;
+      animation: reveal-fade 500ms ease forwards !important;
+    }
   }
+  @keyframes reveal-fade { from { opacity: 0; } to { opacity: 1; } }
   /* CSS scroll-reveal (replaces per-section Framer Motion) */
   .reveal {
     opacity: 0;
-    transform: translateY(28px);
-    filter: blur(6px);
+    transform: translateY(36px);
+    filter: blur(8px);
     transition:
-      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-      filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
+      opacity 800ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 800ms cubic-bezier(0.22, 1, 0.36, 1),
+      filter 800ms cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .reveal-in {
+  .reveal.reveal-in {
     opacity: 1;
-    transform: none;
-    filter: none;
+    transform: translateY(0);
+    filter: blur(0);
   }
   /* Shorter, subtler reveal on small screens */
   @media (max-width: 640px) {
     .reveal {
-      transform: translateY(18px);
-      filter: none;
+      transform: translateY(22px);
+      filter: blur(4px);
       transition:
-        opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+        filter 600ms cubic-bezier(0.22, 1, 0.36, 1);
     }
   }
   /* On-load entrance (hero) */

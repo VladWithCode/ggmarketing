@@ -11,7 +11,7 @@ export function CtaSection() {
   return (
     <section className="relative py-28">
       <div className="container-page">
-        <Reveal>
+        <div>
           <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[color:var(--color-bg-soft)] p-10 md:p-16">
             <div
               aria-hidden
@@ -27,18 +27,18 @@ export function CtaSection() {
             />
 
             <div className="relative">
-              <p className="text-xs font-medium uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
+              <Reveal as="p" className="text-xs font-medium uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
                 · Contacto
-              </p>
-              <h2 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
+              </Reveal>
+              <Reveal as="h2" delay={0.09} className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
                 ¿Listo para que tu marca{" "}
                 <span className="text-gradient">crezca en redes</span>?
-              </h2>
-              <p className="mt-5 max-w-xl text-white/65">
+              </Reveal>
+              <Reveal as="p" delay={0.18} className="mt-5 max-w-xl text-white/65">
                 Cuéntanos sobre tu negocio. Te respondemos con una estrategia clara,
                 contenido, campañas y un rango realista de inversión.
-              </p>
-              <div className="mt-9 flex flex-wrap gap-3">
+              </Reveal>
+              <Reveal delay={0.27} className="mt-9 flex flex-wrap gap-3">
                 <Button asChild variant="accent" size="lg" className="group">
                   <Link href="/contacto">
                     Impulsar mi marca
@@ -55,10 +55,10 @@ export function CtaSection() {
                     <Mail className="size-4" /> {siteConfig.email}
                   </a>
                 </Button>
-              </div>
+              </Reveal>
             </div>
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

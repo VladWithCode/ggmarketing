@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { seedProjects } from "../src/lib/projects-seed";
+import { plans } from "../src/lib/plans";
 
 const prisma = new PrismaClient();
 
@@ -22,6 +23,21 @@ async function main() {
         results: p.results ?? undefined,
         featured: p.featured,
         published: true,
+      },
+    });
+  }
+  for (const [i, p] of plans.entries()) {
+    await prisma.plan.upsert({
+      where: { slug: p.slug },
+      update: {},
+      create: {
+        slug: p.slug,
+        name: p.name,
+        tagline: p.tagline,
+        priceLabel: p.priceLabel,
+        features: p.features,
+        featured: p.featured ?? false,
+        order: i,
       },
     });
   }

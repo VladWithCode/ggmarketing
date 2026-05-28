@@ -61,7 +61,23 @@ middleware.ts               → Clerk auth para /admin
 
 ## Modelo de datos
 
-`Project`, `Contact`, `Settings`. Ver `prisma/schema.prisma`.
+`Project`, `Contact`, `Plan`, `Subscription`, `Settings`. Ver `prisma/schema.prisma`.
+
+## Paquetes y checkout (Stripe)
+
+Estructura comercial inspirada en GG Marketing, re-tematizada a SIBRA DGO:
+paquetes **Básico / Profesional / Empresarial** (`src/lib/plans.ts`) con tabla
+comparativa en `/servicios`.
+
+Precios actuales = "cotización personalizada" (CTA a contacto/WhatsApp).
+El checkout Stripe está como **scaffolding inactivo** (`src/app/api/checkout/route.ts`
+devuelve 501). Para activarlo:
+
+1. `npm install stripe`
+2. Setear `STRIPE_SECRET_KEY` + `STRIPE_WEBHOOK_SECRET` en env
+3. Setear `Plan.priceCents` + `Plan.stripePriceId` (admin/DB)
+4. Implementar `stripe.checkout.sessions.create(...)` en `/api/checkout`
+5. Implementar `/api/stripe/webhook` para persistir `Subscription`
 
 ## Variables de entorno
 

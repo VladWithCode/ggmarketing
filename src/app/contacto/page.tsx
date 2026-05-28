@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import { Mail, MessageCircle, MapPin, Github, Instagram, Linkedin } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { ContactForm } from "@/components/sections/contact-form";
-import { siteConfig } from "@/lib/utils";
+import { getSettings } from "@/lib/settings";
 
 export const metadata: Metadata = {
   title: "Contacto",
   description: "Contáctanos para cotizar tu proyecto de software.",
 };
 
-export default function ContactoPage() {
-  const wa = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
+export default async function ContactoPage() {
+  const s = await getSettings();
+  const wa = `https://wa.me/${s.whatsappNumber}?text=${encodeURIComponent(
     "Hola SIBRA DGO, me interesa cotizar un proyecto.",
   )}`;
   return (
@@ -48,13 +49,13 @@ export default function ContactoPage() {
                 </span>
                 <div>
                   <div className="font-medium">WhatsApp directo</div>
-                  <div className="text-xs text-white/50">+{siteConfig.whatsapp}</div>
+                  <div className="text-xs text-white/50">+{s.whatsappNumber}</div>
                 </div>
               </a>
             </li>
             <li>
               <a
-                href={`mailto:${siteConfig.email}`}
+                href={`mailto:${s.email}`}
                 className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition hover:border-white/25"
               >
                 <span className="grid size-10 place-items-center rounded-xl bg-[color:var(--color-accent)]/15 text-[color:var(--color-accent)]">
@@ -62,7 +63,7 @@ export default function ContactoPage() {
                 </span>
                 <div>
                   <div className="font-medium">Correo</div>
-                  <div className="text-xs text-white/50">{siteConfig.email}</div>
+                  <div className="text-xs text-white/50">{s.email}</div>
                 </div>
               </a>
             </li>
@@ -71,7 +72,7 @@ export default function ContactoPage() {
                 <MapPin className="size-4" />
               </span>
               <div>
-                <div className="font-medium">Durango, México</div>
+                <div className="font-medium">{s.address || "Durango, México"}</div>
                 <div className="text-xs text-white/50">Trabajamos remoto en LATAM</div>
               </div>
             </li>
@@ -79,10 +80,10 @@ export default function ContactoPage() {
 
           <div className="mt-8 flex gap-2">
             {[
-              { href: siteConfig.social.instagram, Icon: Instagram, label: "Instagram" },
-              { href: siteConfig.social.linkedin, Icon: Linkedin, label: "LinkedIn" },
-              { href: siteConfig.social.github, Icon: Github, label: "GitHub" },
-            ].map(({ href, Icon, label }) => (
+              { href: s.instagramUrl, Icon: Instagram, label: "Instagram" },
+              { href: s.linkedinUrl, Icon: Linkedin, label: "LinkedIn" },
+              { href: s.githubUrl, Icon: Github, label: "GitHub" },
+            ].filter((x) => x.href).map(({ href, Icon, label }) => (
               <a
                 key={label}
                 href={href}

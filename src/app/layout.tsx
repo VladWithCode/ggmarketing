@@ -6,6 +6,7 @@ import { Navbar } from "@/components/sections/navbar";
 import { Footer } from "@/components/sections/footer";
 import { WhatsAppFab } from "@/components/sections/whatsapp-fab";
 import { OrgJsonLd } from "@/components/seo/org-jsonld";
+import { getSettings } from "@/lib/settings";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -39,15 +40,16 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const settings = await getSettings();
   return (
     <html lang="es" className={`${inter.variable} ${montserrat.variable}`}>
       <body className="min-h-screen antialiased">
         <OrgJsonLd />
         <Navbar />
         <main>{children}</main>
-        <Footer />
-        <WhatsAppFab />
+        <Footer settings={settings} />
+        <WhatsAppFab whatsapp={settings.whatsappNumber} />
         <Toaster theme="dark" position="bottom-right" richColors />
       </body>
     </html>

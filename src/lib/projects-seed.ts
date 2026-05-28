@@ -47,7 +47,12 @@ export const seedProjects: SeedProject[] = [
     technologies: ["React Native", "Expo", "Node.js", "PostgreSQL"],
     services: ["Aplicaciones móviles", "Automatización de procesos"],
     heroImage: "/placeholder-2.svg",
-    galleryImages: ["/placeholder-2.svg"],
+    galleryImages: ["/placeholder-2.svg", "/placeholder-1.svg"],
+    results: [
+      { label: "Registros offline", value: "100%" },
+      { label: "Tiempo de captura", value: "−60%" },
+      { label: "Adopción del equipo", value: "3 semanas" },
+    ],
     featured: true,
   },
   {
@@ -61,7 +66,12 @@ export const seedProjects: SeedProject[] = [
     technologies: ["Next.js", "Tailwind", "Vercel"],
     services: ["Desarrollo web", "Soporte y mantenimiento"],
     heroImage: "/placeholder-3.svg",
-    galleryImages: ["/placeholder-3.svg"],
+    galleryImages: ["/placeholder-3.svg", "/placeholder-1.svg"],
+    results: [
+      { label: "Lighthouse Performance", value: "95+" },
+      { label: "Tiempo de carga", value: "< 1.5 s" },
+      { label: "Publicación sin código", value: "Sí" },
+    ],
     featured: false,
   },
 ];

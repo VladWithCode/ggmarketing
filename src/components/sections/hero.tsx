@@ -2,26 +2,24 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, LayoutDashboard, Smartphone, Workflow, Globe } from "lucide-react";
+import { ArrowRight, Sparkles, Code2, LayoutDashboard, Smartphone, Workflow } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { HeroMockup } from "@/components/sections/hero-mockup";
+import { Clouds } from "@/components/sections/clouds";
 
 const badges = [
-  { Icon: Globe, label: "Web apps" },
-  { Icon: LayoutDashboard, label: "Dashboards" },
+  { Icon: Code2, label: "Desarrollo web" },
+  { Icon: LayoutDashboard, label: "Sistemas y dashboards" },
   { Icon: Workflow, label: "Automatización" },
   { Icon: Smartphone, label: "Apps móviles" },
 ];
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-28 pb-24">
-      {/* Background decoration */}
+    <section className="relative overflow-hidden pt-32 pb-28">
+      {/* Background: clouds + grid */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 line-grid opacity-[0.35] [mask-image:radial-gradient(60%_50%_at_50%_20%,black,transparent)]" />
-        <div className="orb left-[10%] top-[5%] size-[420px] bg-[color:var(--color-accent)]/40" />
-        <div className="orb right-[5%] top-[15%] size-[360px] bg-[color:var(--color-accent-2)]/35" />
-        <div className="orb left-1/2 top-[60%] size-[520px] -translate-x-1/2 bg-[color:var(--color-accent-3)]/20" />
+        <div className="absolute inset-0 line-grid opacity-[0.3] [mask-image:radial-gradient(60%_50%_at_50%_25%,black,transparent)]" />
+        <Clouds className="[mask-image:radial-gradient(70%_70%_at_50%_30%,black,transparent)]" />
       </div>
 
       <div className="container-page text-center">
@@ -36,20 +34,20 @@ export function Hero() {
             <span className="size-1 rounded-full bg-[color:var(--color-accent)]" />
           </span>
           <Sparkles className="size-3.5 text-[color:var(--color-accent)]" />
-          Estudio de software · Durango, México
+          Equipo de software · Durango, México
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mt-7 max-w-5xl font-display text-[2.6rem] font-bold leading-[1.02] tracking-tight sm:text-6xl md:text-7xl lg:text-[5.25rem]"
+          className="mx-auto mt-7 max-w-5xl font-display text-[2.6rem] font-bold leading-[1.02] tracking-tight sm:text-6xl md:text-7xl lg:text-[5rem]"
         >
-          <span className="text-gradient">Construimos software</span>
+          <span className="text-gradient">Soluciones digitales</span>
           <br />
-          <span className="text-white/90">que convierte ideas</span>{" "}
+          <span className="text-white/90">que hacen crecer</span>{" "}
           <span className="relative inline-block">
-            <span className="relative z-10">en sistemas reales.</span>
+            <span className="relative z-10">tu negocio.</span>
             <span
               aria-hidden
               className="absolute inset-x-0 bottom-1 h-3 -skew-x-6 rounded-sm bg-[color:var(--color-accent)]/30 md:bottom-2 md:h-4"
@@ -63,8 +61,8 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.18 }}
           className="mx-auto mt-7 max-w-2xl text-balance text-base text-white/65 md:text-lg"
         >
-          Diseñamos y desarrollamos páginas web, sistemas administrativos, dashboards,
-          apps y automatizaciones para negocios que quieren operar mejor.
+          En SIBRA DGO diseñamos y desarrollamos páginas web, sistemas administrativos,
+          dashboards, apps y automatizaciones a la medida de tu operación.
         </motion.p>
 
         <motion.div
@@ -80,7 +78,7 @@ export function Hero() {
             </Link>
           </Button>
           <Button asChild size="lg" variant="outline">
-            <Link href="/proyectos">Ver proyectos</Link>
+            <Link href="/servicios">Ver paquetes</Link>
           </Button>
         </motion.div>
 
@@ -91,7 +89,7 @@ export function Hero() {
             hidden: {},
             show: { transition: { staggerChildren: 0.08, delayChildren: 0.4 } },
           }}
-          className="mx-auto mt-10 flex flex-wrap items-center justify-center gap-2"
+          className="mx-auto mt-12 flex max-w-3xl flex-wrap items-center justify-center gap-2"
         >
           {badges.map(({ Icon, label }) => (
             <motion.li
@@ -100,15 +98,13 @@ export function Hero() {
                 hidden: { opacity: 0, y: 8 },
                 show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
               }}
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-white/70 backdrop-blur"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-white/75 backdrop-blur"
             >
-              <Icon className="size-3.5 text-[color:var(--color-accent)]" />
+              <Icon className="size-4 text-[color:var(--color-accent)]" />
               {label}
             </motion.li>
           ))}
         </motion.ul>
-
-        <HeroMockup />
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ClerkProvider, UserButton } from "@clerk/nextjs";
-import { LayoutDashboard, FolderKanban, MessageSquare, Settings } from "lucide-react";
+import { LayoutDashboard, FolderKanban, MessageSquare, Settings, Package } from "lucide-react";
 
 // Admin requires Clerk env at runtime; skip static prerender.
 export const dynamic = "force-dynamic";
@@ -8,6 +8,7 @@ export const dynamic = "force-dynamic";
 const nav = [
   { href: "/admin", label: "Dashboard", Icon: LayoutDashboard },
   { href: "/admin/proyectos", label: "Proyectos", Icon: FolderKanban },
+  { href: "/admin/planes", label: "Planes", Icon: Package },
   { href: "/admin/contactos", label: "Contactos", Icon: MessageSquare },
   { href: "/admin/configuracion", label: "Configuración", Icon: Settings },
 ];

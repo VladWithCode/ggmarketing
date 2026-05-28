@@ -55,12 +55,57 @@ model Contact {
   @@index([status, createdAt])
 }
 
+model Plan {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  name          String
+  tagline       String
+  priceLabel    String   @default("Desde cotización personalizada")
+  // Optional real price for future Stripe checkout (in cents). Null = quote only.
+  priceCents    Int?
+  currency      String   @default("mxn")
+  stripePriceId String?
+  features      String[]
+  featured      Boolean  @default(false)
+  published     Boolean  @default(true)
+  order         Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  subscriptions Subscription[]
+
+  @@index([published, order])
+}
+
+enum SubscriptionStatus {
+  pendiente
+  activa
+  cancelada
+}
+
+model Subscription {
+  id                   String             @id @default(cuid())
+  planId               String
+  plan                 Plan               @relation(fields: [planId], references: [id])
+  customerName         String
+  customerEmail        String
+  customerPhone        String?
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  status               SubscriptionStatus @default(pendiente)
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+
+  @@index([status, createdAt])
+}
+
 model Settings {
   id            String  @id @default("singleton")
   siteName      String  @default("SIBRA DGO")
   tagline       String  @default("Equipo de software en Durango")
   whatsappNumber String @default("528000000000")
   email         String  @default("contacto@sibradgo.com")
+  phone         String?
   instagramUrl  String?
   facebookUrl   String?
   linkedinUrl   String?

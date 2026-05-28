@@ -33,10 +33,16 @@ export async function Pricing() {
               <div
                 className={
                   p.featured
-                    ? "relative flex h-full flex-col rounded-3xl border border-[color:var(--color-accent)]/40 bg-gradient-to-b from-[color:var(--color-accent)]/10 to-transparent p-7"
-                    : "relative flex h-full flex-col rounded-3xl border border-white/10 bg-white/[0.03] p-7"
+                    ? "card-hover relative flex h-full flex-col rounded-3xl border border-[color:var(--color-accent)]/50 bg-gradient-to-b from-[color:var(--color-accent)]/12 to-transparent p-7 shadow-[0_24px_70px_-30px_color-mix(in_oklab,var(--color-accent)_70%,transparent)] hover:-translate-y-1.5 md:-translate-y-3 md:scale-[1.02]"
+                    : "card-hover relative flex h-full flex-col rounded-3xl border border-white/10 bg-white/[0.03] p-7 hover:-translate-y-1 hover:border-white/25"
                 }
               >
+                {p.featured && (
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute -top-px left-1/2 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-[color:var(--color-accent)] to-transparent"
+                  />
+                )}
                 {p.featured && (
                   <span className="absolute right-6 top-6 rounded-full bg-[color:var(--color-accent)] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-black">
                     Popular

@@ -49,13 +49,14 @@ src/
     ui/                     → primitivas shadcn
     seo/                    → JSON-LD
   lib/
-    prisma.ts, utils.ts, fonts.ts, services.ts,
-    projects.ts, projects-seed.ts,
-    project-schema.ts, contact-schema.ts, uploadthing.ts
+    prisma.ts, utils.ts, fonts.ts, settings.ts,
+    projects.ts, projects-seed.ts, plans.ts, testimonials.ts,
+    project-schema.ts, plan-schema.ts, settings-schema.ts,
+    contact-schema.ts, uploadthing.ts
 prisma/
   schema.prisma, seed.ts
 public/
-  logo.png, placeholder-*.svg, noise.png (TODO)
+  logo.png, placeholder-*.svg
 middleware.ts               → Clerk auth para /admin
 ```
 
@@ -107,11 +108,10 @@ Ver `.env.example`. Mínimas para deploy completo:
 
 ## TODO / pendientes reales
 
-- Reemplazar textos legales (`/aviso-de-privacidad`, `/terminos-y-condiciones`, `/politica-de-cookies`).
-- Editor de Settings en `/admin/configuracion` (modelo ya existe).
-- Notificación por email/WhatsApp al recibir contacto (`src/app/api/contact/route.ts`).
-- Subir `public/noise.png` (textura) o quitar `.grain`.
+- Revisión legal por abogado de los textos base (`/aviso-de-privacidad`, `/terminos-y-condiciones`, `/politica-de-cookies`).
+- Notificación por email nativo al recibir contacto (hoy webhook opcional via `CONTACT_WEBHOOK_URL`).
 - Reemplazar placeholders `/placeholder-*.svg` con imágenes reales.
+- Logos/testimonios reales de clientes.
 - Página/sección de equipo con fotos.
 - Blog opcional (`/blog`, `/blog/[slug]`) — no implementado en esta tanda.
 - Filtros/búsqueda en `/proyectos` cuando crezca el portafolio.

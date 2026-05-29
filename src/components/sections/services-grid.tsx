@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/ui/reveal";
+import { CloudBullet } from "@/components/ui/cloud-shape";
 import {
   Megaphone,
   Instagram,
@@ -6,74 +7,76 @@ import {
   Palette,
   Globe,
   BarChart3,
+  ArrowUpRight,
   type LucideIcon,
 } from "lucide-react";
 
 type Item = { Icon: LucideIcon; title: string; desc: string };
 
+// First item is the featured/hero service (big card).
+const featured: Item = {
+  Icon: Instagram,
+  title: "Publicidad en redes sociales",
+  desc: "Campañas Meta Ads en Facebook e Instagram, segmentadas y optimizadas para llegar a clientes reales y vender — no solo likes.",
+};
+
 const items: Item[] = [
-  {
-    Icon: Instagram,
-    title: "Publicidad en redes sociales",
-    desc: "Campañas Meta Ads en Facebook e Instagram segmentadas para llegar a clientes reales.",
-  },
-  {
-    Icon: PenTool,
-    title: "Gestión de contenido",
-    desc: "Calendario, publicaciones, reels e historias con identidad propia que detienen el scroll.",
-  },
-  {
-    Icon: Globe,
-    title: "Páginas web y landing pages",
-    desc: "Sitios rápidos y listos para SEO que convierten visitas en clientes.",
-  },
-  {
-    Icon: Palette,
-    title: "Branding digital",
-    desc: "Logo, paleta, tipografía y guía de marca para verte profesional y memorable.",
-  },
-  {
-    Icon: Megaphone,
-    title: "Estrategia de campañas",
-    desc: "Plan digital con objetivos claros, mensajes y embudos pensados para vender.",
-  },
-  {
-    Icon: BarChart3,
-    title: "Reportes y optimización",
-    desc: "Medimos alcance, interacción y conversiones cada mes y ajustamos para mejorar.",
-  },
+  { Icon: PenTool, title: "Gestión de contenido", desc: "Calendario, reels e historias con identidad propia." },
+  { Icon: Globe, title: "Páginas web y landings", desc: "Sitios rápidos, listos para SEO, que convierten." },
+  { Icon: Palette, title: "Branding digital", desc: "Logo, paleta y guía de marca memorable." },
+  { Icon: Megaphone, title: "Estrategia de campañas", desc: "Mensajes y embudos pensados para vender." },
+  { Icon: BarChart3, title: "Reportes y optimización", desc: "Medimos y ajustamos cada mes sobre datos." },
 ];
 
 export function ServicesGrid() {
   return (
     <section id="servicios" className="relative bg-white py-24">
       <div className="container-page">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
-            ¿Qué ofrecemos para tu negocio?
+        <Reveal className="max-w-2xl">
+          <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
+            <CloudBullet /> ¿Qué ofrecemos?
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold tracking-tight md:text-5xl">
-            Conoce nuestros <span className="text-gradient">servicios digitales</span>
+            Servicios digitales que <span className="text-gradient">mueven tu marca</span>
           </h2>
-          <p className="mt-5 text-[color:var(--color-muted)]">
-            Marketing digital, publicidad y desarrollo web pensados para que tu marca crezca
-            con estrategia desde el día uno.
-          </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* editorial asymmetric grid: featured spans 2 rows on lg */}
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2">
+          {/* Featured card */}
+          <Reveal as="article" className="group relative overflow-hidden rounded-[2rem] grad-brand p-8 text-white shadow-soft-lg lg:row-span-2 lg:p-10">
+            <div aria-hidden className="absolute -right-10 -top-10 size-48 rounded-full bg-white/10" />
+            <div aria-hidden className="absolute -bottom-16 -left-10 size-56 rounded-full bg-white/10" />
+            <div className="relative flex h-full flex-col">
+              <span className="inline-flex w-fit items-center rounded-full bg-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-wider">
+                Lo más solicitado
+              </span>
+              <div className="mt-8 inline-flex size-16 items-center justify-center rounded-2xl bg-white/15 ring-1 ring-white/30">
+                <featured.Icon className="size-8" />
+              </div>
+              <h3 className="mt-6 font-display text-2xl font-bold md:text-3xl">{featured.title}</h3>
+              <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/85">{featured.desc}</p>
+              <div className="mt-auto pt-8">
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold">
+                  Cómo lo hacemos <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Smaller cards */}
           {items.map((s, i) => (
             <Reveal
               key={s.title}
               as="article"
-              delay={i * 0.06}
-              className="card-hover group soft-card p-7 text-center"
+              delay={i * 0.05}
+              className="card-hover group soft-card p-6"
             >
-              <div className="mx-auto inline-flex size-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[color:var(--color-accent)]/12 to-[color:var(--color-accent-2)]/12 text-[color:var(--color-accent)] ring-1 ring-[color:var(--color-accent)]/15 transition-transform duration-500 group-hover:-translate-y-1">
-                <s.Icon className="size-7" />
+              <div className="inline-flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[color:var(--color-accent)]/12 to-[color:var(--color-accent-2)]/12 text-[color:var(--color-accent)] ring-1 ring-[color:var(--color-accent)]/15 transition-transform duration-500 group-hover:-translate-y-1">
+                <s.Icon className="size-6" />
               </div>
-              <h3 className="mt-6 font-display text-lg font-bold tracking-tight">{s.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[color:var(--color-muted)]">{s.desc}</p>
+              <h3 className="mt-4 font-display text-lg font-bold tracking-tight">{s.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-[color:var(--color-muted)]">{s.desc}</p>
             </Reveal>
           ))}
         </div>

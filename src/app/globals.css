@@ -73,7 +73,8 @@
   /* Reduced motion: kill looping anims, keep gentle reveal fade */
   @media (prefers-reduced-motion: reduce) {
     .animate-marquee, .animate-marquee-rev, .animate-float, .animate-float-slow,
-    .animate-pulse-soft, .animate-cloud { animation: none !important; }
+    .animate-pulse-soft, .animate-cloud, .animate-cloud-rev, .animate-cloud-bob,
+    .animate-cloud-breathe, .animate-spotlight { animation: none !important; }
     .reveal { transform: none !important; transition: opacity 500ms ease !important; }
     .reveal.reveal-in { opacity: 1 !important; }
     .rise { opacity: 0; transform: none !important; animation: reveal-fade 500ms ease forwards !important; }
@@ -180,6 +181,25 @@
   from { transform: translate3d(-8%, 0, 0); }
   to { transform: translate3d(8%, 0, 0); }
 }
+@keyframes cloud-drift-x-rev {
+  from { transform: translate3d(8%, 0, 0); }
+  to { transform: translate3d(-8%, 0, 0); }
+}
+/* gentle vertical bob for foreground clouds */
+@keyframes cloud-bob {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -14px, 0); }
+}
+/* big hero cloud behind text — barely breathes */
+@keyframes cloud-breathe {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.92; }
+  50% { transform: translate3d(0, -10px, 0) scale(1.015); opacity: 1; }
+}
+/* soft spotlight pulse behind hero content */
+@keyframes spotlight-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.8; }
+}
 /* rotating headline words */
 @keyframes word-cycle {
   0%, 26% { opacity: 1; transform: translateY(0); }
@@ -192,6 +212,10 @@
 .animate-float-slow { animation: float-slow 9s ease-in-out infinite; }
 .animate-pulse-soft { animation: pulse-soft 4s ease-in-out infinite; }
 .animate-cloud { animation: cloud-drift-x 26s ease-in-out infinite alternate; }
+.animate-cloud-rev { animation: cloud-drift-x-rev 30s ease-in-out infinite alternate; }
+.animate-cloud-bob { animation: cloud-bob 7s ease-in-out infinite; }
+.animate-cloud-breathe { animation: cloud-breathe 12s ease-in-out infinite; }
+.animate-spotlight { animation: spotlight-pulse 6s ease-in-out infinite; }
 .marquee-group:hover .animate-marquee,
 .marquee-group:hover .animate-marquee-rev { animation-play-state: paused; }
 

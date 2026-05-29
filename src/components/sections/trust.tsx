@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/ui/reveal";
 import { Target, TrendingUp, Sparkles } from "lucide-react";
+import { CloudShape } from "@/components/ui/cloud-shape";
 
 const pillars = [
   {
@@ -21,8 +22,10 @@ const pillars = [
 
 export function Trust() {
   return (
-    <section className="relative bg-[color:var(--color-bg)] py-24">
-      <div className="container-page">
+    <section className="relative overflow-hidden bg-[color:var(--color-bg)] py-24">
+      <CloudShape variant="puffy" fill="#ffffff" opacity={0.7} className="animate-cloud pointer-events-none absolute left-[-3%] top-12 w-60" />
+      <CloudShape variant="wide" fill="#ffffff" opacity={0.6} className="animate-cloud-rev pointer-events-none absolute right-[-4%] bottom-16 w-72" />
+      <div className="container-page relative">
         <Reveal className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center rounded-full grad-brand px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-soft">
             #OptimizarOMorir

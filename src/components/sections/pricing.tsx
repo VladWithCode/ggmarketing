@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { getPlans } from "@/lib/plans";
 import { siteConfig } from "@/lib/utils";
+import { CloudBullet, CloudShape } from "@/components/ui/cloud-shape";
 
 // Simple Corporate-Memphis style illustration (flat blobs + circle).
 function MemphisArt({ i }: { i: number }) {
@@ -29,11 +30,13 @@ export async function Pricing() {
   )}`;
 
   return (
-    <section id="paquetes" className="relative bg-[color:var(--color-bg)] py-24">
-      <div className="container-page">
+    <section id="paquetes" className="relative overflow-hidden bg-[color:var(--color-bg)] py-24">
+      <CloudShape variant="wide" fill="#ffffff" opacity={0.6} className="animate-cloud pointer-events-none absolute left-[-4%] top-10 w-64" />
+      <CloudShape variant="puffy" fill="#ffffff" opacity={0.5} className="animate-cloud-rev pointer-events-none absolute right-[-2%] top-24 w-56" />
+      <div className="container-page relative">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
-            · Planes
+          <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
+            <CloudBullet /> Planes
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold tracking-tight md:text-5xl">
             Elige por dónde <span className="text-gradient">empezar</span>
@@ -50,14 +53,17 @@ export async function Pricing() {
               <div
                 className={
                   p.featured
-                    ? "card-hover relative flex h-full flex-col rounded-3xl border-2 border-[color:var(--color-accent)]/40 bg-white p-7 shadow-soft-lg md:-translate-y-3"
+                    ? "card-hover relative flex h-full flex-col overflow-hidden rounded-3xl border-2 border-[color:var(--color-accent)]/40 bg-white p-7 shadow-soft-lg md:-translate-y-3"
                     : "card-hover relative flex h-full flex-col rounded-3xl border border-[color:var(--color-border)] bg-white p-7 shadow-soft"
                 }
               >
                 {p.featured && (
-                  <span className="absolute right-6 top-6 rounded-full grad-brand px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">
-                    Popular
-                  </span>
+                  <>
+                    <span className="absolute right-6 top-6 z-10 rounded-full grad-brand px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">
+                      Popular
+                    </span>
+                    <CloudShape variant="puffy" fill="var(--color-accent)" opacity={0.08} className="pointer-events-none absolute -left-6 -top-6 w-40" />
+                  </>
                 )}
                 <MemphisArt i={i} />
                 <h3 className="mt-4 font-display text-xl font-bold">{p.name}</h3>

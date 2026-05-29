@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Instagram, Facebook, Linkedin, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
 import { siteConfig } from "@/lib/utils";
 import type { SiteSettings } from "@/lib/settings";
+import { WaveDivider } from "@/components/ui/wave-divider";
+import { CloudShape } from "@/components/ui/cloud-shape";
 
 export function Footer({ settings }: { settings?: SiteSettings }) {
   const s = settings;
@@ -19,8 +21,13 @@ export function Footer({ settings }: { settings?: SiteSettings }) {
   const siteName = s?.siteName || siteConfig.name;
 
   return (
-    <footer className="mt-24 bg-[color:var(--color-navy)] text-white">
-      <div className="container-page py-16">
+    <footer className="relative mt-24 overflow-hidden bg-[color:var(--color-navy)] text-white">
+      {/* organic wave transition into the navy footer */}
+      <WaveDivider fill="var(--color-navy)" flip className="absolute inset-x-0 top-0 -translate-y-[99%]" />
+      {/* faint cloud watermark motif */}
+      <CloudShape variant="puffy" fill="#ffffff" opacity={0.05} className="pointer-events-none absolute -right-10 top-10 w-72" />
+      <CloudShape variant="wide" fill="#ffffff" opacity={0.04} className="pointer-events-none absolute left-[30%] bottom-0 w-80" />
+      <div className="container-page relative py-16">
         <div className="grid gap-12 md:grid-cols-2">
           {/* Left: contact */}
           <div>

@@ -3,6 +3,8 @@ import { Mail, MessageCircle, MapPin, Instagram, Linkedin, Facebook } from "luci
 import { Reveal } from "@/components/ui/reveal";
 import { ContactForm } from "@/components/sections/contact-form";
 import { getSettings } from "@/lib/settings";
+import { Clouds } from "@/components/sections/clouds";
+import { CloudBullet } from "@/components/ui/cloud-shape";
 
 export const metadata: Metadata = {
   title: "Contacto",
@@ -15,17 +17,18 @@ export default async function ContactoPage() {
     "Hola GG Marketing, quiero impulsar mi marca.",
   )}`;
   return (
-    <section className="relative bg-[color:var(--color-bg)]">
-      {/* soft light blobs */}
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[60vh]">
-        <div className="absolute left-[12%] top-24 size-72 rounded-full bg-[color:var(--color-accent)]/15 blur-2xl" />
-        <div className="absolute right-[10%] top-10 size-72 rounded-full bg-[color:var(--color-accent-2)]/15 blur-2xl" />
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#dcebff] to-[color:var(--color-bg)]">
+      {/* cloudscape + soft blobs */}
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[70vh]">
+        <Clouds density="soft" className="opacity-80" />
+        <div className="absolute left-[12%] top-24 size-72 rounded-full bg-[color:var(--color-accent)]/12 blur-2xl" />
+        <div className="absolute right-[10%] top-10 size-72 rounded-full bg-[color:var(--color-accent-2)]/12 blur-2xl" />
       </div>
 
       <div className="container-page grid gap-12 pt-32 pb-24 md:grid-cols-[1fr_1.3fr] md:gap-16">
         <Reveal>
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
-            · Contacto
+          <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
+            <CloudBullet /> Contacto
           </p>
           <h1 className="mt-3 font-display text-4xl font-bold tracking-tight md:text-5xl">
             Hablemos de tu <span className="text-gradient">marca</span>

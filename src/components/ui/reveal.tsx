@@ -5,20 +5,26 @@ import { createElement, useEffect, useRef, useState, type ReactNode } from "reac
 type Tag = "div" | "section" | "article" | "figure" | "li" | "ul" | "h1" | "h2" | "p";
 
 /**
- * Lightweight scroll-reveal. Primary mechanism is IntersectionObserver, with a
- * scroll/resize getBoundingClientRect fallback so it still fires in browsers or
- * embedded webviews where IO callbacks are unreliable. No Framer Motion.
+ * Lightweight scroll-reveal. IntersectionObserver primary, with an
+ * rAF-throttled scroll/resize getBoundingClientRect fallback for webviews
+ * where IO callbacks are unreliable. No Framer Motion.
+ *
+ * once=false (default): reversible — element re-hides when it leaves the
+ * viewport and re-animates on return ("page breathes"). once=true: classic
+ * one-shot reveal (disconnects after first show).
  */
 export function Reveal({
   children,
   delay = 0,
   className = "",
   as = "div",
+  once = false,
 }: {
   children: ReactNode;
   delay?: number;
   className?: string;
   as?: Tag;
+  once?: boolean;
 }) {
   const ref = useRef<HTMLElement>(null);
   const [shown, setShown] = useState(false);
@@ -27,46 +33,53 @@ export function Reveal({
     const el = ref.current;
     if (!el) return;
 
-    let done = false;
-    const reveal = () => {
-      if (done) return;
-      done = true;
-      setShown(true);
-      io?.disconnect();
-      window.removeEventListener("scroll", check, true);
-      window.removeEventListener("resize", check);
+    let raf = 0;
+    let io: IntersectionObserver | null = null;
+
+    const setVisible = (visible: boolean) => {
+      setShown(visible);
+      if (visible && once) cleanup();
     };
 
-    // Reveal once the element's top edge has risen past 88% of the viewport
-    // (i.e. it is genuinely on screen, not just peeking by 1px).
-    const check = () => {
+    // Element counts as "in view" when it sits inside a comfortable band,
+    // not just peeking 1px. Used by both IO fallback and scroll fallback.
+    const computeVisible = () => {
       const r = el.getBoundingClientRect();
       const vh = window.innerHeight || document.documentElement.clientHeight;
-      if (r.top < vh * 0.88 && r.bottom > 0) reveal();
+      return r.top < vh * 0.88 && r.bottom > vh * 0.12;
     };
 
-    let io: IntersectionObserver | null = null;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        setVisible(computeVisible());
+      });
+    };
+
+    function cleanup() {
+      io?.disconnect();
+      io = null;
+      window.removeEventListener("scroll", onScroll, true);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    }
+
     if (typeof IntersectionObserver !== "undefined") {
       io = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) reveal();
-        },
-        { threshold: 0.25, rootMargin: "0px 0px -15% 0px" },
+        ([entry]) => setVisible(entry.isIntersecting),
+        { threshold: 0.25, rootMargin: "0px 0px -12% 0px" },
       );
       io.observe(el);
     }
 
-    // Fallback + initial state (element already in view on load).
-    window.addEventListener("scroll", check, true);
-    window.addEventListener("resize", check);
-    check();
+    // Fallback (also sets initial state for elements in view on load).
+    window.addEventListener("scroll", onScroll, true);
+    window.addEventListener("resize", onScroll);
+    setVisible(computeVisible());
 
-    return () => {
-      io?.disconnect();
-      window.removeEventListener("scroll", check, true);
-      window.removeEventListener("resize", check);
-    };
-  }, []);
+    return cleanup;
+  }, [once]);
 
   return createElement(
     as,

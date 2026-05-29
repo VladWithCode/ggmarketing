@@ -8,7 +8,7 @@ export default function Page() {
   return (
     <article className="container-page prose-invert mx-auto max-w-3xl pt-32 pb-24">
       <h1 className="font-display text-4xl font-semibold tracking-tight">Términos y condiciones</h1>
-      <p className="mt-2 text-sm text-white/45">Última actualización: {new Date().getFullYear()}</p>
+      <p className="mt-2 text-sm text-[color:var(--color-muted)]">Última actualización: {new Date().getFullYear()}</p>
       <div className="mt-8">
         <LegalNotice />
       </div>

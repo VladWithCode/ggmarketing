@@ -16,8 +16,8 @@ const nav = [
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
     <ClerkProvider>
-      <div className="grid min-h-screen md:grid-cols-[240px_1fr]">
-        <aside className="border-r border-white/10 bg-[color:var(--color-bg-soft)] p-5 md:sticky md:top-0 md:h-screen">
+      <div className="grid min-h-screen bg-[#0c1740] text-white md:grid-cols-[240px_1fr]">
+        <aside className="border-r border-white/10 bg-[#0a1130] p-5 md:sticky md:top-0 md:h-screen">
           <Link href="/admin" className="font-display text-lg font-semibold">
 GG <span className="text-[color:var(--color-accent)]">Admin</span>
           </Link>
@@ -37,7 +37,7 @@ GG <span className="text-[color:var(--color-accent)]">Admin</span>
             <UserButton afterSignOutUrl="/" />
           </div>
         </aside>
-        <div className="bg-[color:var(--color-bg)] p-6 md:p-10">{children}</div>
+        <div className="p-6 md:p-10">{children}</div>
       </div>
     </ClerkProvider>
   );

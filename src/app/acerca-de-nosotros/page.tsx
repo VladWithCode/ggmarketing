@@ -17,29 +17,29 @@ const values = [
 export default function NosotrosPage() {
   return (
     <>
-      <section className="container-page pt-32 pb-20">
+      <section className="container-page pt-32 pb-16 text-center">
         <Reveal>
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--color-accent)]">
-            Nosotros
-          </p>
-          <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold tracking-tight md:text-6xl">
-            Agencia de marketing digital en Durango.
+          <span className="inline-flex items-center rounded-full grad-brand px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-soft">
+            #OptimizarOMorir
+          </span>
+          <h1 className="mx-auto mt-5 max-w-3xl font-display text-4xl font-bold tracking-tight md:text-6xl">
+            Agencia de <span className="text-gradient">marketing digital</span> en Durango
           </h1>
-          <p className="mt-6 max-w-2xl text-white/65">
-            Somos GG Marketing. Creamos contenido, gestionamos redes, lanzamos campañas de
-            publicidad y diseñamos presencia web para negocios que quieren crecer. Nos importa
-            tu marca tanto como tus resultados.
+          <p className="mx-auto mt-6 max-w-2xl text-[color:var(--color-muted)]">
+            Somos un equipo creativo que combina estrategia, diseño, publicidad y desarrollo
+            web para ayudar a marcas a crecer en digital. Nos importa tu marca tanto como tus
+            resultados.
           </p>
         </Reveal>
       </section>
 
       <section className="container-page pb-24">
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {values.map((v, i) => (
             <Reveal key={v.title} delay={i * 0.05}>
-              <div className="h-full rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-                <h3 className="font-display text-lg font-semibold">{v.title}</h3>
-                <p className="mt-2 text-sm text-white/60">{v.desc}</p>
+              <div className="card-hover h-full soft-card p-6">
+                <h3 className="font-display text-lg font-bold">{v.title}</h3>
+                <p className="mt-2 text-sm text-[color:var(--color-muted)]">{v.desc}</p>
               </div>
             </Reveal>
           ))}

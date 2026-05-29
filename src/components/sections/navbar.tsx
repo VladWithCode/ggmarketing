@@ -31,25 +31,20 @@ export function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <div
-        className={cn(
-          "mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 transition-all duration-500",
-          scrolled ? "mt-3" : "mt-0",
-        )}
-      >
+      <div className={cn("mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 transition-all duration-500", scrolled ? "mt-3" : "mt-0")}>
         <nav
           className={cn(
             "flex h-14 w-full items-center justify-between rounded-full px-2 pl-4 transition-all duration-500",
             scrolled
-              ? "border border-white/10 bg-[color:var(--color-bg)]/85 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.6)] backdrop-blur-md"
+              ? "border border-[color:var(--color-border)] bg-white/85 shadow-soft backdrop-blur-md"
               : "border border-transparent",
           )}
         >
           <Link href="/" className="flex items-center gap-2.5">
-            <span className="grid size-8 place-items-center overflow-hidden rounded-lg bg-gradient-to-br from-[color:var(--color-accent)] to-[color:var(--color-accent-2)] shadow-lg">
+            <span className="grid size-8 place-items-center overflow-hidden rounded-lg grad-brand shadow-soft">
               <Image src="/logo.png" alt="GG Marketing" width={28} height={28} className="rounded-md" />
             </span>
-            <span className="font-display text-sm font-semibold tracking-tight">
+            <span className="font-display text-sm font-bold tracking-tight text-[color:var(--color-navy)]">
               GG <span className="text-[color:var(--color-accent)]">Marketing</span>
             </span>
           </Link>
@@ -62,13 +57,12 @@ export function Navbar() {
                   <Link
                     href={l.href}
                     className={cn(
-                      "nav-link relative inline-block rounded-full px-3.5 py-1.5 text-sm transition-colors",
-                      active ? "nav-link-active text-white" : "text-white/65 hover:text-white",
+                      "relative inline-block rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors",
+                      active
+                        ? "grad-brand text-white shadow-soft"
+                        : "text-[color:var(--color-navy)]/70 hover:text-[color:var(--color-accent)]",
                     )}
                   >
-                    {active && (
-                      <span className="absolute inset-0 -z-10 rounded-full bg-white/10 transition-all duration-300" />
-                    )}
                     {l.label}
                   </Link>
                 </li>
@@ -79,7 +73,7 @@ export function Navbar() {
           <div className="hidden md:block">
             <Link
               href="/contacto"
-              className="group inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition hover:bg-white/90"
+              className="group inline-flex items-center gap-1.5 rounded-full grad-brand px-4 py-2 text-sm font-semibold text-white shadow-soft transition hover:brightness-105"
             >
               Cotizar
               <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -88,7 +82,7 @@ export function Navbar() {
 
           <button
             aria-label="Menu"
-            className="grid size-10 place-items-center rounded-full border border-white/10 bg-white/[0.03] md:hidden"
+            className="grid size-10 place-items-center rounded-full border border-[color:var(--color-border)] bg-white text-[color:var(--color-navy)] md:hidden"
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X className="size-4" /> : <Menu className="size-4" />}
@@ -98,23 +92,23 @@ export function Navbar() {
 
       {open && (
         <div className="mx-auto mt-3 max-w-6xl px-4 md:hidden motion-safe:animate-[reveal-rise_0.2s_ease-out]">
-            <div className="rounded-3xl border border-white/10 bg-[color:var(--color-bg)]/95 p-3 backdrop-blur-md">
-              {links.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className="block rounded-2xl px-4 py-3 text-sm text-white/80 hover:bg-white/5"
-                >
-                  {l.label}
-                </Link>
-              ))}
+          <div className="rounded-3xl border border-[color:var(--color-border)] bg-white/95 p-3 shadow-soft backdrop-blur-md">
+            {links.map((l) => (
               <Link
-                href="/contacto"
-                className="mt-2 inline-flex w-full items-center justify-center gap-1.5 rounded-2xl bg-white px-4 py-3 text-sm font-medium text-black"
+                key={l.href}
+                href={l.href}
+                className="block rounded-2xl px-4 py-3 text-sm font-medium text-[color:var(--color-navy)]/80 hover:bg-[color:var(--color-accent)]/8"
               >
-                Cotizar proyecto <ArrowRight className="size-4" />
+                {l.label}
               </Link>
-            </div>
+            ))}
+            <Link
+              href="/contacto"
+              className="mt-2 inline-flex w-full items-center justify-center gap-1.5 rounded-2xl grad-brand px-4 py-3 text-sm font-semibold text-white"
+            >
+              Cotizar proyecto <ArrowRight className="size-4" />
+            </Link>
+          </div>
         </div>
       )}
     </header>

@@ -7,7 +7,7 @@ const row2 = [
 
 function Chip({ label }: { label: string }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-5 py-2.5 font-display text-base font-medium text-white/80">
+    <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-border)] bg-white px-5 py-2.5 font-display text-base font-medium text-[color:var(--color-fg)]/80 shadow-soft">
       <span className="size-1.5 rounded-full bg-[color:var(--color-accent)]" />
       {label}
     </span>
@@ -16,14 +16,14 @@ function Chip({ label }: { label: string }) {
 
 export function TechMarquee() {
   return (
-    <section className="relative border-y border-white/5 py-14">
-      <div className="absolute inset-0 -z-10 dot-grid opacity-30 [mask-image:radial-gradient(60%_60%_at_50%_50%,black,transparent)]" />
+    <section className="relative bg-[color:var(--color-bg)] py-16">
+      <div className="absolute inset-0 -z-10 dot-grid opacity-40 [mask-image:radial-gradient(60%_60%_at_50%_50%,black,transparent)]" />
 
       <div className="container-page mb-8 text-center">
-        <p className="text-xs font-medium uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
           · Herramientas
         </p>
-        <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight md:text-3xl">
+        <h3 className="mt-2 font-display text-2xl font-bold tracking-tight md:text-3xl">
           Plataformas y herramientas que dominamos
         </h3>
       </div>

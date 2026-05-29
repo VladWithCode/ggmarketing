@@ -5,6 +5,23 @@ import { Reveal } from "@/components/ui/reveal";
 import { getPlans } from "@/lib/plans";
 import { siteConfig } from "@/lib/utils";
 
+// Simple Corporate-Memphis style illustration (flat blobs + circle).
+function MemphisArt({ i }: { i: number }) {
+  const palette = [
+    ["#2f6bff", "#8b5cf6"],
+    ["#8b5cf6", "#a855f7"],
+    ["#f43f6b", "#fbbf24"],
+  ][i % 3];
+  return (
+    <svg viewBox="0 0 120 70" className="h-16 w-full" aria-hidden>
+      <circle cx="28" cy="34" r="20" fill={palette[0]} opacity="0.9" />
+      <rect x="50" y="18" width="34" height="34" rx="12" fill={palette[1]} opacity="0.9" />
+      <path d="M86 50 q14 -28 28 0" fill="none" stroke={palette[0]} strokeWidth="5" strokeLinecap="round" />
+      <circle cx="100" cy="20" r="6" fill={palette[1]} />
+    </svg>
+  );
+}
+
 export async function Pricing() {
   const plans = await getPlans();
   const wa = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
@@ -12,60 +29,55 @@ export async function Pricing() {
   )}`;
 
   return (
-    <section id="paquetes" className="relative py-28">
+    <section id="paquetes" className="relative bg-[color:var(--color-bg)] py-24">
       <div className="container-page">
-        <Reveal>
-          <p className="text-xs font-medium uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
-            · Paquetes
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
+            · Planes
           </p>
-          <h2 className="mt-3 max-w-3xl font-display text-4xl font-semibold tracking-tight md:text-5xl">
-            Elige por dónde <span className="text-gradient">empezar</span>.
+          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight md:text-5xl">
+            Elige por dónde <span className="text-gradient">empezar</span>
           </h2>
-          <p className="mt-5 max-w-2xl text-white/60">
-            Cada marca es distinta. Estos paquetes son punto de partida; la inversión final
+          <p className="mt-5 text-[color:var(--color-muted)]">
+            Cada marca es distinta. Estos planes son punto de partida; la inversión final
             depende del alcance. Agenda una llamada y te damos una cotización clara.
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
           {plans.map((p, i) => (
             <Reveal key={p.slug} delay={i * 0.06}>
               <div
                 className={
                   p.featured
-                    ? "card-hover relative flex h-full flex-col rounded-3xl border border-[color:var(--color-accent)]/50 bg-gradient-to-b from-[color:var(--color-accent)]/12 to-transparent p-7 shadow-[0_24px_70px_-30px_color-mix(in_oklab,var(--color-accent)_70%,transparent)] hover:-translate-y-1.5 md:-translate-y-3 md:scale-[1.02]"
-                    : "card-hover relative flex h-full flex-col rounded-3xl border border-white/10 bg-white/[0.03] p-7 hover:-translate-y-1 hover:border-white/25"
+                    ? "card-hover relative flex h-full flex-col rounded-3xl border-2 border-[color:var(--color-accent)]/40 bg-white p-7 shadow-soft-lg md:-translate-y-3"
+                    : "card-hover relative flex h-full flex-col rounded-3xl border border-[color:var(--color-border)] bg-white p-7 shadow-soft"
                 }
               >
                 {p.featured && (
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute -top-px left-1/2 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-[color:var(--color-accent)] to-transparent"
-                  />
-                )}
-                {p.featured && (
-                  <span className="absolute right-6 top-6 rounded-full bg-[color:var(--color-accent)] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-black">
+                  <span className="absolute right-6 top-6 rounded-full grad-brand px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">
                     Popular
                   </span>
                 )}
-                <h3 className="font-display text-xl font-semibold">{p.name}</h3>
-                <p className="mt-1.5 text-sm text-white/55">{p.tagline}</p>
-                <p className="mt-5 font-display text-lg font-semibold text-[color:var(--color-accent)]">
-                  {p.priceLabel}
-                </p>
+                <MemphisArt i={i} />
+                <h3 className="mt-4 font-display text-xl font-bold">{p.name}</h3>
+                <p className="mt-1.5 text-sm text-[color:var(--color-muted)]">{p.tagline}</p>
 
-                <ul className="mt-6 flex-1 space-y-2.5 text-sm text-white/75">
+                <ul className="mt-6 flex-1 space-y-2.5 text-sm text-[color:var(--color-fg)]/80">
                   {p.features.map((f) => (
                     <li key={f} className="flex items-start gap-2">
-                      <Check className="mt-0.5 size-4 shrink-0 text-[color:var(--color-accent)]" />
+                      <Check className="mt-0.5 size-4 shrink-0 text-[color:var(--color-accent-2)]" />
                       <span>{f}</span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="mt-7 flex flex-col gap-2">
+                <div className="mt-6 flex flex-col gap-3">
+                  <span className="inline-flex w-fit items-center rounded-full bg-[color:var(--color-price)]/12 px-3 py-1 text-xs font-semibold text-[color:var(--color-price)]">
+                    {p.priceLabel}
+                  </span>
                   <Button asChild variant={p.featured ? "accent" : "outline"}>
-                    <Link href="/contacto">Cotizar este paquete</Link>
+                    <Link href="/contacto">Cotizar este plan</Link>
                   </Button>
                   <Button asChild variant="ghost" size="sm">
                     <a href={wa} target="_blank" rel="noreferrer">

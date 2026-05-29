@@ -9,89 +9,71 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-type Item = { Icon: LucideIcon; title: string; desc: string; tone: string };
+type Item = { Icon: LucideIcon; title: string; desc: string };
 
 const items: Item[] = [
   {
     Icon: Instagram,
-    title: "Gestión de redes sociales",
-    desc: "Administramos tus perfiles con calendario de contenido, publicaciones constantes y comunidad activa.",
-    tone: "from-[color:var(--color-accent)]/40 to-transparent",
-  },
-  {
-    Icon: Megaphone,
-    title: "Publicidad y campañas Meta Ads",
-    desc: "Anuncios en Facebook e Instagram segmentados para llegar a clientes reales y generar resultados.",
-    tone: "from-[color:var(--color-accent-2)]/40 to-transparent",
+    title: "Publicidad en redes sociales",
+    desc: "Campañas Meta Ads en Facebook e Instagram segmentadas para llegar a clientes reales.",
   },
   {
     Icon: PenTool,
-    title: "Diseño de contenido",
-    desc: "Publicaciones, reels, historias y video con identidad propia que detienen el scroll y conectan.",
-    tone: "from-[color:var(--color-accent-3)]/40 to-transparent",
-  },
-  {
-    Icon: Palette,
-    title: "Branding e identidad visual",
-    desc: "Logo, paleta, tipografía y guía de marca para que tu negocio se vea profesional y memorable.",
-    tone: "from-[color:var(--color-accent)]/40 to-transparent",
+    title: "Gestión de contenido",
+    desc: "Calendario, publicaciones, reels e historias con identidad propia que detienen el scroll.",
   },
   {
     Icon: Globe,
     title: "Páginas web y landing pages",
-    desc: "Sitios rápidos y listos para SEO que convierten visitas en clientes. Soluciones web complementarias.",
-    tone: "from-[color:var(--color-accent-2)]/40 to-transparent",
+    desc: "Sitios rápidos y listos para SEO que convierten visitas en clientes.",
+  },
+  {
+    Icon: Palette,
+    title: "Branding digital",
+    desc: "Logo, paleta, tipografía y guía de marca para verte profesional y memorable.",
+  },
+  {
+    Icon: Megaphone,
+    title: "Estrategia de campañas",
+    desc: "Plan digital con objetivos claros, mensajes y embudos pensados para vender.",
   },
   {
     Icon: BarChart3,
-    title: "Estrategia, reportes y optimización",
-    desc: "Plan digital con objetivos claros y reportes mensuales de alcance, interacción y conversiones.",
-    tone: "from-[color:var(--color-accent-3)]/40 to-transparent",
+    title: "Reportes y optimización",
+    desc: "Medimos alcance, interacción y conversiones cada mes y ajustamos para mejorar.",
   },
 ];
 
 export function ServicesGrid() {
   return (
-    <section id="servicios" className="relative py-28">
+    <section id="servicios" className="relative bg-white py-24">
       <div className="container-page">
-        <Reveal>
-          <p className="text-xs font-medium uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
-            · Servicios
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
+            ¿Qué ofrecemos para tu negocio?
           </p>
-          <h2 className="mt-3 max-w-3xl font-display text-4xl font-semibold tracking-tight md:text-6xl">
-            Lo que hacemos por <span className="text-gradient">tu marca</span>.
+          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight md:text-5xl">
+            Conoce nuestros <span className="text-gradient">servicios digitales</span>
           </h2>
-          <p className="mt-5 max-w-2xl text-white/60">
-            Marketing digital, publicidad y presencia web pensados para que tu negocio crezca
+          <p className="mt-5 text-[color:var(--color-muted)]">
+            Marketing digital, publicidad y desarrollo web pensados para que tu marca crezca
             con estrategia desde el día uno.
           </p>
         </Reveal>
 
-        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((s, i) => (
             <Reveal
               key={s.title}
               as="article"
               delay={i * 0.06}
-              className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.025] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-white/25"
+              className="card-hover group soft-card p-7 text-center"
             >
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -right-20 -top-20 size-56 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
-                style={{
-                  background:
-                    "radial-gradient(circle at center, color-mix(in oklab, var(--color-accent) 50%, transparent), transparent 70%)",
-                }}
-              />
-              <div className="relative">
-                <div className="inline-flex size-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[color:var(--color-accent)] transition-all duration-500 group-hover:-translate-y-0.5 group-hover:scale-105 group-hover:border-[color:var(--color-accent)]/40 group-hover:bg-[color:var(--color-accent)]/10 group-hover:text-white">
-                  <s.Icon className="size-5 transition-transform duration-500 group-hover:-rotate-6" />
-                </div>
-                <h3 className="mt-6 font-display text-xl font-semibold tracking-tight">
-                  {s.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/60">{s.desc}</p>
+              <div className="mx-auto inline-flex size-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[color:var(--color-accent)]/12 to-[color:var(--color-accent-2)]/12 text-[color:var(--color-accent)] ring-1 ring-[color:var(--color-accent)]/15 transition-transform duration-500 group-hover:-translate-y-1">
+                <s.Icon className="size-7" />
               </div>
+              <h3 className="mt-6 font-display text-lg font-bold tracking-tight">{s.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[color:var(--color-muted)]">{s.desc}</p>
             </Reveal>
           ))}
         </div>

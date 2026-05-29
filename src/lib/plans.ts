@@ -14,7 +14,7 @@ export type Plan = {
 export const plans: Plan[] = [
   {
     slug: "presencia-digital",
-    name: "Presencia Digital",
+    name: "Emprendedor",
     tagline: "Para arrancar tu marca en redes",
     priceLabel: "Desde cotización personalizada",
     features: [
@@ -28,7 +28,7 @@ export const plans: Plan[] = [
   },
   {
     slug: "campanas-y-redes",
-    name: "Campañas y Redes",
+    name: "Empresario",
     tagline: "Contenido + publicidad que vende",
     priceLabel: "Cotización según alcance",
     features: [
@@ -44,7 +44,7 @@ export const plans: Plan[] = [
   },
   {
     slug: "estrategia-integral",
-    name: "Estrategia Integral / A medida",
+    name: "Magnate",
     tagline: "Marca, campañas y presencia web",
     priceLabel: "Agenda una llamada para cotizar",
     features: [

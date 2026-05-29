@@ -15,15 +15,15 @@ export default async function ProyectosPage() {
 
   return (
     <>
-      <section className="container-page pt-32 pb-12">
+      <section className="container-page pt-32 pb-12 text-center">
         <Reveal>
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--color-accent)]">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-accent)]">
             Portafolio
           </p>
-          <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold tracking-tight md:text-6xl">
-            Proyectos que hemos construido.
+          <h1 className="mx-auto mt-3 max-w-3xl font-display text-4xl font-bold tracking-tight md:text-6xl">
+            Algunos de nuestros <span className="text-gradient">clientes</span>
           </h1>
-          <p className="mt-5 max-w-2xl text-white/65">
+          <p className="mx-auto mt-5 max-w-2xl text-[color:var(--color-muted)]">
             Una muestra del trabajo real entregado a nuestros clientes.
           </p>
         </Reveal>
@@ -35,7 +35,7 @@ export default async function ProyectosPage() {
             <Reveal key={p.slug} delay={(i % 3) * 0.05}>
               <Link
                 href={`/proyectos/${p.slug}`}
-                className="group block h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] transition hover:border-white/25"
+                className="card-hover group block h-full overflow-hidden rounded-3xl border border-[color:var(--color-border)] bg-white shadow-soft"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
@@ -48,13 +48,13 @@ export default async function ProyectosPage() {
                 </div>
                 <div className="p-5">
                   <div className="flex items-center justify-between">
-                    <span className="text-[11px] uppercase tracking-wider text-white/50">
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-accent)]">
                       {p.category}
                     </span>
-                    <ArrowUpRight className="size-4 text-white/50 transition group-hover:text-white" />
+                    <ArrowUpRight className="size-4 text-[color:var(--color-muted)] transition group-hover:text-[color:var(--color-accent)]" />
                   </div>
-                  <h3 className="mt-2 text-lg font-semibold">{p.title}</h3>
-                  <p className="mt-1.5 line-clamp-2 text-sm text-white/60">{p.shortDescription}</p>
+                  <h3 className="mt-2 text-lg font-bold">{p.title}</h3>
+                  <p className="mt-1.5 line-clamp-2 text-sm text-[color:var(--color-muted)]">{p.shortDescription}</p>
                 </div>
               </Link>
             </Reveal>

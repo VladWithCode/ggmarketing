@@ -13,35 +13,35 @@ const steps: Step[] = [
 
 export function Process() {
   return (
-    <section className="relative py-28">
+    <section className="relative bg-white py-24">
       <div className="container-page">
-        <Reveal>
-          <p className="text-xs font-medium uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
             · Proceso
           </p>
-          <h2 className="mt-3 max-w-3xl font-display text-4xl font-semibold tracking-tight md:text-6xl">
-            Cómo <span className="text-gradient">trabajamos</span>.
+          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight md:text-5xl">
+            Cómo <span className="text-gradient">trabajamos</span>
           </h2>
-          <p className="mt-5 max-w-2xl text-white/60">
+          <p className="mt-5 text-[color:var(--color-muted)]">
             Un proceso simple, transparente y enfocado en resultados. Sin promesas vacías.
           </p>
         </Reveal>
 
         {/* Desktop timeline */}
-        <div className="mt-20 hidden md:block">
+        <div className="mt-16 hidden md:block">
           <div className="relative">
-            <div className="absolute left-0 right-0 top-7 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+            <div className="absolute left-0 right-0 top-8 h-0.5 bg-gradient-to-r from-transparent via-[color:var(--color-accent)]/25 to-transparent" />
             <ol className="relative grid grid-cols-5 gap-4">
               {steps.map((s, i) => (
                 <Reveal key={s.n} as="li" delay={i * 0.08} className="text-center">
-                  <div className="relative mx-auto grid size-14 place-items-center rounded-full border border-white/10 bg-[color:var(--color-bg-soft)] text-[color:var(--color-accent)]">
-                    <s.Icon className="size-5" />
-                    <span className="absolute -bottom-2 -right-2 rounded-full bg-[color:var(--color-accent)] px-1.5 py-0.5 text-[10px] font-semibold text-black">
+                  <div className="relative mx-auto grid size-16 place-items-center rounded-full bg-white text-[color:var(--color-accent)] shadow-soft ring-1 ring-[color:var(--color-border)]">
+                    <s.Icon className="size-6" />
+                    <span className="absolute -bottom-2 -right-1 rounded-full grad-brand px-1.5 py-0.5 text-[10px] font-bold text-white">
                       {s.n}
                     </span>
                   </div>
-                  <h3 className="mt-6 font-display text-base font-semibold">{s.title}</h3>
-                  <p className="mt-2 text-xs leading-relaxed text-white/55">{s.desc}</p>
+                  <h3 className="mt-6 font-display text-base font-bold">{s.title}</h3>
+                  <p className="mt-2 text-xs leading-relaxed text-[color:var(--color-muted)]">{s.desc}</p>
                 </Reveal>
               ))}
             </ol>
@@ -49,23 +49,23 @@ export function Process() {
         </div>
 
         {/* Mobile timeline */}
-        <ol className="mt-12 space-y-5 md:hidden">
+        <ol className="mt-12 space-y-4 md:hidden">
           {steps.map((s, i) => (
             <Reveal
               key={s.n}
               as="li"
               delay={i * 0.06}
-              className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5"
+              className="flex gap-4 rounded-2xl border border-[color:var(--color-border)] bg-white p-5 shadow-soft"
             >
-              <div className="relative grid size-12 shrink-0 place-items-center rounded-full border border-white/10 bg-white/5 text-[color:var(--color-accent)]">
+              <div className="relative grid size-12 shrink-0 place-items-center rounded-full bg-[color:var(--color-accent)]/10 text-[color:var(--color-accent)]">
                 <s.Icon className="size-5" />
-                <span className="absolute -bottom-1.5 -right-1.5 rounded-full bg-[color:var(--color-accent)] px-1.5 py-0.5 text-[9px] font-semibold text-black">
+                <span className="absolute -bottom-1.5 -right-1.5 rounded-full grad-brand px-1.5 py-0.5 text-[9px] font-bold text-white">
                   {s.n}
                 </span>
               </div>
               <div>
-                <h3 className="font-display text-base font-semibold">{s.title}</h3>
-                <p className="mt-1 text-xs text-white/60">{s.desc}</p>
+                <h3 className="font-display text-base font-bold">{s.title}</h3>
+                <p className="mt-1 text-xs text-[color:var(--color-muted)]">{s.desc}</p>
               </div>
             </Reveal>
           ))}

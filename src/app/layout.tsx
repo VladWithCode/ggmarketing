@@ -57,7 +57,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <main>{children}</main>
         <Footer settings={settings} />
         <WhatsAppFab whatsapp={settings.whatsappNumber} />
-        <Toaster theme="dark" position="bottom-right" richColors />
+        <Toaster theme="light" position="bottom-right" richColors />
       </body>
     </html>
   );

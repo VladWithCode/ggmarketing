@@ -1,6 +1,7 @@
 import { Hero } from "@/components/sections/hero";
 import { Clients } from "@/components/sections/clients";
 import { ServicesGrid } from "@/components/sections/services-grid";
+import { WebDesign } from "@/components/sections/web-design";
 import { FeaturedProjects } from "@/components/sections/featured-projects";
 import { Pricing } from "@/components/sections/pricing";
 import { Process } from "@/components/sections/process";
@@ -15,6 +16,7 @@ export default function HomePage() {
       <Hero />
       <Clients />
       <ServicesGrid />
+      <WebDesign />
       <FeaturedProjects />
       <Pricing />
       <TechMarquee />

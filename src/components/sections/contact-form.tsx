@@ -44,12 +44,12 @@ export function ContactForm() {
         <div className="space-y-2">
           <Label htmlFor="name">Nombre *</Label>
           <Input id="name" placeholder="Tu nombre" {...register("name")} />
-          {errors.name && <p className="text-xs text-red-400">{errors.name.message}</p>}
+          {errors.name && <p className="text-xs text-[color:var(--color-price)]">{errors.name.message}</p>}
         </div>
         <div className="space-y-2">
           <Label htmlFor="email">Email *</Label>
           <Input id="email" type="email" placeholder="tu@correo.com" {...register("email")} />
-          {errors.email && <p className="text-xs text-red-400">{errors.email.message}</p>}
+          {errors.email && <p className="text-xs text-[color:var(--color-price)]">{errors.email.message}</p>}
         </div>
         <div className="space-y-2">
           <Label htmlFor="phone">Teléfono</Label>
@@ -65,9 +65,9 @@ export function ContactForm() {
             id="projectType"
             defaultValue=""
             {...register("projectType")}
-            className="flex h-10 w-full rounded-md border border-white/15 bg-white/[0.03] px-3 text-sm text-white outline-none transition focus:border-[color:var(--color-accent)]/60 focus:ring-2 focus:ring-[color:var(--color-accent)]/30"
+            className="flex h-12 w-full rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-bg)] px-5 text-sm text-[color:var(--color-fg)] shadow-[inset_0_2px_6px_rgba(30,58,138,0.06)] outline-none transition focus:border-[color:var(--color-accent)]/50 focus:bg-white focus:ring-4 focus:ring-[color:var(--color-accent)]/10"
           >
-            <option value="" disabled className="bg-[color:var(--color-bg-soft)]">Selecciona una opción</option>
+            <option value="" disabled>Selecciona una opción</option>
             {[
               "Marketing digital",
               "Publicidad en redes sociales",
@@ -78,7 +78,7 @@ export function ContactForm() {
               "Estrategia digital",
               "Otro",
             ].map((o) => (
-              <option key={o} value={o} className="bg-[color:var(--color-bg-soft)]">{o}</option>
+              <option key={o} value={o}>{o}</option>
             ))}
           </select>
         </div>
@@ -95,12 +95,12 @@ export function ContactForm() {
           placeholder="Cuéntanos sobre tu negocio, tus objetivos en redes y qué te gustaría lograr."
           {...register("message")}
         />
-        {errors.message && <p className="text-xs text-red-400">{errors.message.message}</p>}
+        {errors.message && <p className="text-xs text-[color:var(--color-price)]">{errors.message.message}</p>}
       </div>
       <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
-        <p className="text-xs text-white/45">
+        <p className="text-xs text-[color:var(--color-muted)]">
           Tus datos se usan solo para responderte. Ver{" "}
-          <a href="/aviso-de-privacidad" className="link-underline">
+          <a href="/aviso-de-privacidad" className="text-[color:var(--color-accent)] hover:underline">
             aviso de privacidad
           </a>
           .

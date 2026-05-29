@@ -19,53 +19,38 @@ const pillars = [
   },
 ];
 
-const metrics = [
-  { value: "Campañas con propósito", sub: "Cada anuncio nace de una estrategia, no de un impulso." },
-  { value: "Equipo creativo en Durango", sub: "Comunicación directa, sin intermediarios ni fricción horaria." },
-  { value: "Marcas creciendo en redes", sub: "No solo likes: comunidad, leads y ventas reales." },
-];
-
 export function Trust() {
   return (
-    <section className="relative py-28">
+    <section className="relative bg-[color:var(--color-bg)] py-24">
       <div className="container-page">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
-            · Por qué GG Marketing
-          </p>
-          <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight md:text-5xl">
+          <span className="inline-flex items-center rounded-full grad-brand px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-soft">
+            #OptimizarOMorir
+          </span>
+          <h2 className="mt-5 font-display text-3xl font-bold tracking-tight md:text-5xl">
             No solo publicamos bonito.{" "}
             <span className="text-gradient">Hacemos crecer tu marca.</span>
           </h2>
-          <p className="mt-5 text-white/65">
-            Trabajamos para que cada peso invertido en marketing se traduzca en presencia,
-            comunidad y ventas. Ese es el estándar.
+          <p className="mt-5 text-[color:var(--color-muted)]">
+            Somos un equipo creativo que combina estrategia, diseño, publicidad y desarrollo
+            web para ayudar a marcas a crecer en digital.
           </p>
         </Reveal>
 
-        <div className="mt-16 grid gap-5 md:grid-cols-3">
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
           {pillars.map((p, i) => (
             <Reveal
               key={p.title}
               as="article"
               delay={i * 0.08}
-              className="rounded-3xl border border-white/10 bg-white/[0.025] p-7"
+              className="card-hover rounded-3xl bg-[color:var(--color-navy)] p-7 text-white shadow-soft"
             >
-              <div className="inline-flex size-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[color:var(--color-accent)]">
+              <div className="inline-flex size-12 items-center justify-center rounded-2xl bg-white/10 text-white ring-1 ring-white/15">
                 <p.Icon className="size-5" />
               </div>
-              <h3 className="mt-5 font-display text-lg font-semibold">{p.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/60">{p.desc}</p>
+              <h3 className="mt-5 font-display text-lg font-bold">{p.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/70">{p.desc}</p>
             </Reveal>
-          ))}
-        </div>
-
-        <div className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/5 md:grid-cols-3">
-          {metrics.map((m) => (
-            <div key={m.value} className="bg-[color:var(--color-bg)] p-7">
-              <div className="font-display text-lg font-semibold tracking-tight">{m.value}</div>
-              <div className="mt-2 text-sm text-white/55">{m.sub}</div>
-            </div>
           ))}
         </div>
       </div>

@@ -3,38 +3,36 @@ import { Reveal } from "@/components/ui/reveal";
 import { compareRows } from "@/lib/plans";
 
 function Cell({ value }: { value: boolean | string }) {
-  if (value === true) return <Check className="mx-auto size-4 text-[color:var(--color-accent)]" />;
-  if (value === false) return <X className="mx-auto size-4 text-white/25" />;
-  return <span className="text-xs text-white/70">{value}</span>;
+  if (value === true) return <Check className="mx-auto size-4 text-[color:var(--color-accent-2)]" />;
+  if (value === false) return <X className="mx-auto size-4 text-[color:var(--color-price)]/70" />;
+  return <span className="text-xs text-[color:var(--color-muted)]">{value}</span>;
 }
 
 export function Comparison() {
   return (
-    <section className="relative py-20">
+    <section className="relative bg-white py-20">
       <div className="container-page">
-        <Reveal>
-          <h2 className="font-display text-2xl font-semibold tracking-tight md:text-4xl">
-            Compara los paquetes
+        <Reveal className="text-center">
+          <h2 className="font-display text-2xl font-bold tracking-tight md:text-4xl">
+            Compara los <span className="text-gradient">planes</span>
           </h2>
         </Reveal>
 
         <Reveal delay={0.05}>
-          <div className="mt-10 overflow-x-auto rounded-2xl border border-white/10">
+          <div className="mt-10 overflow-x-auto rounded-2xl border border-[color:var(--color-border)] shadow-soft">
             <table className="w-full min-w-[640px] text-left text-sm">
-              <thead className="bg-white/[0.04] text-xs uppercase tracking-wider text-white/60">
+              <thead className="bg-[color:var(--color-bg)] text-xs uppercase tracking-wider text-[color:var(--color-muted)]">
                 <tr>
-                  <th className="px-5 py-4 font-medium">Característica</th>
-                  <th className="px-5 py-4 text-center font-medium">Presencia Digital</th>
-                  <th className="px-5 py-4 text-center font-medium text-[color:var(--color-accent)]">
-                    Campañas y Redes
-                  </th>
-                  <th className="px-5 py-4 text-center font-medium">Estrategia Integral</th>
+                  <th className="px-5 py-4 font-semibold">Característica</th>
+                  <th className="px-5 py-4 text-center font-semibold">Emprendedor</th>
+                  <th className="px-5 py-4 text-center font-semibold text-[color:var(--color-accent)]">Empresario</th>
+                  <th className="px-5 py-4 text-center font-semibold">Magnate</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5">
+              <tbody className="divide-y divide-[color:var(--color-border)] bg-white">
                 {compareRows.map((r) => (
-                  <tr key={r.feature} className="hover:bg-white/[0.02]">
-                    <th className="px-5 py-3.5 text-left font-normal text-white/80">{r.feature}</th>
+                  <tr key={r.feature} className="hover:bg-[color:var(--color-bg)]/60">
+                    <th className="px-5 py-3.5 text-left font-normal text-[color:var(--color-fg)]/80">{r.feature}</th>
                     <td className="px-5 py-3.5 text-center"><Cell value={r.basico} /></td>
                     <td className="px-5 py-3.5 text-center"><Cell value={r.profesional} /></td>
                     <td className="px-5 py-3.5 text-center"><Cell value={r.empresarial} /></td>

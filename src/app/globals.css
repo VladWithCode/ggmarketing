@@ -4,30 +4,35 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
 
-  /* Premium dark palette */
-  --color-bg: #07070b;
-  --color-bg-soft: #0c0c14;
-  --color-surface: #11111c;
-  --color-fg: #f5f6fa;
-  --color-muted: #8a8b99;
-  --color-border: #1c1c2a;
+  /* Light "cloud agency" palette */
+  --color-bg: #eef4ff;          /* very light blue page bg */
+  --color-bg-soft: #e3edff;     /* slightly deeper light blue */
+  --color-surface: #ffffff;     /* card surface */
+  --color-fg: #101a3a;          /* navy text */
+  --color-muted: #5d6a8e;       /* muted slate-blue */
+  --color-border: #dde6f7;      /* soft border */
 
-  /* Brand accents (electric blue → violet → cyan) */
-  --color-accent: #7c8cff;
-  --color-accent-2: #b388ff;
-  --color-accent-3: #6ce6ce;
+  /* Brand */
+  --color-accent: #2f6bff;      /* corporate blue */
+  --color-navy: #0c1740;        /* dark navy (footer / dark cards) */
+  --color-accent-2: #8b5cf6;    /* lilac / purple */
+  --color-accent-3: #a855f7;    /* vibrant purple */
+  --color-price: #f43f6b;       /* soft pink/red for price tags */
 
-  --radius-sm: 0.5rem;
-  --radius-md: 0.875rem;
-  --radius-lg: 1.25rem;
-  --radius-xl: 1.75rem;
+  --radius-sm: 0.6rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
 
-  --shadow-glow: 0 0 80px -10px color-mix(in oklab, var(--color-accent) 35%, transparent);
+  /* Soft UI shadows */
+  --shadow-soft: 0 18px 40px -22px rgba(30, 58, 138, 0.35);
+  --shadow-soft-lg: 0 30px 70px -30px rgba(30, 58, 138, 0.4);
+  --shadow-glow: 0 0 60px -10px color-mix(in oklab, var(--color-accent) 35%, transparent);
 }
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
   html, body {
     background: var(--color-bg);
@@ -37,62 +42,45 @@
   }
   body {
     font-family: var(--font-sans);
+    /* light, airy top wash — painted once, NOT fixed (no scroll repaint) */
     background-image:
-      radial-gradient(1200px 600px at 50% -200px, color-mix(in oklab, var(--color-accent) 18%, transparent), transparent 60%),
-      radial-gradient(900px 500px at 100% 10%, color-mix(in oklab, var(--color-accent-2) 12%, transparent), transparent 60%);
+      radial-gradient(1200px 600px at 50% -260px, rgba(139, 92, 246, 0.14), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(47, 107, 255, 0.12), transparent 60%);
     background-repeat: no-repeat;
-    /* NOT background-attachment: fixed — that forces a full-viewport repaint
-       on every scroll frame (major jank). Gradient paints once with the page. */
   }
   h1, h2, h3, h4, h5 {
     font-family: var(--font-display);
     letter-spacing: -0.025em;
+    color: var(--color-fg);
   }
   ::selection {
-    background: color-mix(in oklab, var(--color-accent) 40%, transparent);
-    color: white;
+    background: color-mix(in oklab, var(--color-accent) 30%, transparent);
+    color: var(--color-navy);
   }
-  /* Premium scrollbar */
   * {
     scrollbar-width: thin;
-    scrollbar-color: color-mix(in oklab, var(--color-accent) 40%, transparent) transparent;
+    scrollbar-color: color-mix(in oklab, var(--color-accent) 45%, transparent) transparent;
   }
   *::-webkit-scrollbar { width: 10px; height: 10px; }
   *::-webkit-scrollbar-track { background: transparent; }
   *::-webkit-scrollbar-thumb {
-    background: color-mix(in oklab, var(--color-accent) 35%, transparent);
+    background: color-mix(in oklab, var(--color-accent) 40%, transparent);
     border-radius: 9999px;
     border: 2px solid transparent;
     background-clip: padding-box;
   }
-  *::-webkit-scrollbar-thumb:hover {
-    background: color-mix(in oklab, var(--color-accent) 55%, transparent);
-    background-clip: padding-box;
-  }
-  /* Respect reduced motion: kill decorative LOOPING animations (marquee,
-     float, clouds) but keep a gentle opacity fade for scroll-reveal so the
-     page still feels alive — no large translate/blur, just a soft fade. */
+
+  /* Reduced motion: kill looping anims, keep gentle reveal fade */
   @media (prefers-reduced-motion: reduce) {
     .animate-marquee, .animate-marquee-rev, .animate-float, .animate-float-slow,
-    .animate-pulse-soft {
-      animation: none !important;
-    }
-    .reveal {
-      transform: none !important;
-      filter: none !important;
-      transition: opacity 500ms ease !important;
-    }
+    .animate-pulse-soft, .animate-cloud { animation: none !important; }
+    .reveal { transform: none !important; transition: opacity 500ms ease !important; }
     .reveal.reveal-in { opacity: 1 !important; }
-    .rise {
-      opacity: 0;
-      transform: none !important;
-      animation: reveal-fade 500ms ease forwards !important;
-    }
+    .rise { opacity: 0; transform: none !important; animation: reveal-fade 500ms ease forwards !important; }
   }
   @keyframes reveal-fade { from { opacity: 0; } to { opacity: 1; } }
-  /* CSS scroll-reveal (replaces per-section Framer Motion).
-     opacity + translateY ONLY — no filter:blur (animating blur is paint-heavy
-     and was a scroll-jank source). Both props are GPU-composited. */
+
+  /* Scroll reveal — opacity + translateY only (GPU composited, no blur) */
   .reveal {
     opacity: 0;
     transform: translateY(28px);
@@ -100,11 +88,7 @@
       opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
       transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .reveal.reveal-in {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  /* Shorter, subtler reveal on small screens */
+  .reveal.reveal-in { opacity: 1; transform: translateY(0); }
   @media (max-width: 640px) {
     .reveal {
       transform: translateY(18px);
@@ -113,39 +97,9 @@
         transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
     }
   }
-  /* On-load entrance (hero) */
-  .rise {
-    opacity: 0;
-    animation: reveal-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
-  /* Animated underline for navbar links */
-  .nav-link::after {
-    content: "";
-    position: absolute;
-    left: 14px;
-    right: 14px;
-    bottom: 4px;
-    height: 1.5px;
-    border-radius: 9999px;
-    background: var(--color-accent);
-    transform: scaleX(0);
-    transform-origin: center;
-    opacity: 0.8;
-    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .nav-link:hover::after { transform: scaleX(1); }
-  .nav-link-active::after { display: none; }
-  /* Hover underline reveal for inline links */
-  .link-underline {
-    background-image: linear-gradient(currentColor, currentColor);
-    background-position: 0 100%;
-    background-repeat: no-repeat;
-    background-size: 0 1px;
-    transition: background-size 0.35s ease;
-  }
-  .link-underline:hover {
-    background-size: 100% 1px;
-  }
+
+  /* Hero on-load entrance */
+  .rise { opacity: 0; animation: reveal-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
 }
 
 /* ---------- Utilities ---------- */
@@ -157,103 +111,79 @@
   padding-inline: 1.25rem;
 }
 
-/* Dot grid background */
-@utility dot-grid {
-  background-image: radial-gradient(circle, color-mix(in oklab, var(--color-fg) 18%, transparent) 1px, transparent 1px);
-  background-size: 22px 22px;
-  background-position: 0 0;
+/* Soft white card */
+@utility soft-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
 }
 
-/* Faint line grid */
-@utility line-grid {
-  background-image:
-    linear-gradient(to right, color-mix(in oklab, var(--color-fg) 6%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklab, var(--color-fg) 6%, transparent) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
+@utility soft-shadow { box-shadow: var(--shadow-soft); }
+@utility soft-shadow-lg { box-shadow: var(--shadow-soft-lg); }
 
-/* Glass card surface */
-@utility glass {
-  background: linear-gradient(180deg, color-mix(in oklab, white 5%, transparent), color-mix(in oklab, white 1.5%, transparent));
-  border: 1px solid color-mix(in oklab, white 10%, transparent);
+/* Light glass (navbar / floating cards) */
+@utility glass-light {
+  background: color-mix(in oklab, white 78%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-accent) 14%, transparent);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
-/* Stronger glass for elevated surfaces */
-@utility glass-strong {
-  background: linear-gradient(180deg, color-mix(in oklab, white 8%, transparent), color-mix(in oklab, white 2.5%, transparent));
-  border: 1px solid color-mix(in oklab, white 14%, transparent);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
+/* Dot + line grids (light) */
+@utility dot-grid {
+  background-image: radial-gradient(circle, color-mix(in oklab, var(--color-accent) 16%, transparent) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+@utility line-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--color-accent) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--color-accent) 8%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
 }
 
-/* Smooth premium hover transition for cards */
-@utility card-hover {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
-}
-.card-hover:hover {
-  box-shadow: 0 24px 60px -32px color-mix(in oklab, var(--color-accent) 55%, transparent);
-}
-
-/* Reusable soft glow that fades in on group hover (CSS-only) */
-@utility card-glow {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-  background: radial-gradient(
-    120% 80% at 50% 0%,
-    color-mix(in oklab, var(--color-accent) 22%, transparent),
-    transparent 60%
-  );
-}
-.group:hover .card-glow { opacity: 1; }
-
-/* Accent gradient text */
+/* Purple→blue gradient text */
 @utility text-gradient {
-  background: linear-gradient(120deg, #ffffff 0%, #ffffff 40%, color-mix(in oklab, var(--color-accent) 80%, white) 65%, color-mix(in oklab, var(--color-accent-2) 80%, white) 100%);
+  background: linear-gradient(100deg, var(--color-accent) 0%, var(--color-accent-2) 55%, var(--color-accent-3) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
+/* Purple→blue gradient surface (active pill, CTA) */
+@utility grad-brand {
+  background: linear-gradient(120deg, var(--color-accent) 0%, var(--color-accent-2) 60%, var(--color-accent-3) 100%);
+}
+
+/* Card hover lift */
+@utility card-hover {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-soft-lg);
+}
+
 /* ---------- Keyframes ---------- */
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-@keyframes marquee-rev {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
-}
-@keyframes float-y {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-@keyframes pulse-soft {
-  0%, 100% { opacity: 0.45; }
-  50% { opacity: 0.85; }
-}
-@keyframes reveal-rise {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-/* translate + opacity only — no scale. Scaling a blurred layer forces the
-   browser to re-rasterize the blur every frame (expensive). Translate stays
-   on the compositor. */
-@keyframes cloud-drift {
-  0% { opacity: 0.30; transform: translate3d(0, 0, 0); }
-  33% { opacity: 0.5; transform: translate3d(22px, -14px, 0); }
-  66% { opacity: 0.4; transform: translate3d(-14px, 12px, 0); }
-  100% { opacity: 0.30; transform: translate3d(0, 0, 0); }
-}
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@keyframes float-y { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 @keyframes float-slow {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  50% { transform: translateY(-14px) translateX(6px); }
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -16px, 0); }
+}
+@keyframes pulse-soft { 0%, 100% { opacity: 0.45; } 50% { opacity: 0.9; } }
+@keyframes reveal-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+/* slow horizontal cloud drift — translate only (compositor) */
+@keyframes cloud-drift-x {
+  from { transform: translate3d(-8%, 0, 0); }
+  to { transform: translate3d(8%, 0, 0); }
+}
+/* rotating headline words */
+@keyframes word-cycle {
+  0%, 26% { opacity: 1; transform: translateY(0); }
+  33%, 100% { opacity: 0; transform: translateY(-100%); }
 }
 
 .animate-marquee { animation: marquee 40s linear infinite; }
@@ -261,26 +191,12 @@
 .animate-float { animation: float-y 6s ease-in-out infinite; }
 .animate-float-slow { animation: float-slow 9s ease-in-out infinite; }
 .animate-pulse-soft { animation: pulse-soft 4s ease-in-out infinite; }
-/* Pause marquee on hover for readability */
+.animate-cloud { animation: cloud-drift-x 26s ease-in-out infinite alternate; }
 .marquee-group:hover .animate-marquee,
 .marquee-group:hover .animate-marquee-rev { animation-play-state: paused; }
 
-/* Aurora orb */
-@utility orb {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(80px);
-  opacity: 0.55;
-  pointer-events: none;
-}
-
-/* Prose dark tweaks */
-.prose-invert {
-  color: color-mix(in oklab, var(--color-fg) 85%, transparent);
-}
-.prose-invert h1, .prose-invert h2 {
-  color: var(--color-fg);
-  font-family: var(--font-display);
-}
+/* Prose (legal pages) — light */
+.prose-invert { color: var(--color-muted); }
+.prose-invert h1, .prose-invert h2 { color: var(--color-fg); font-family: var(--font-display); }
 .prose-invert a { color: var(--color-accent); }
 .prose-invert p { line-height: 1.7; margin: 1em 0; }

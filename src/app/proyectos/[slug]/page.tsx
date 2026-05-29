@@ -38,7 +38,7 @@ export default async function ProyectoPage({ params }: { params: Promise<Params>
       <article className="container-page pt-32 pb-16">
         <Link
           href="/proyectos"
-          className="inline-flex items-center gap-2 text-sm text-white/60 transition hover:text-white"
+          className="inline-flex items-center gap-2 text-sm text-[color:var(--color-muted)] transition hover:text-[color:var(--color-accent)]"
         >
           <ArrowLeft className="size-4" /> Volver a proyectos
         </Link>
@@ -46,10 +46,10 @@ export default async function ProyectoPage({ params }: { params: Promise<Params>
         <header className="mt-8 grid gap-10 md:grid-cols-[1.4fr_1fr] md:items-end">
           <div>
             <Badge>{p.category}</Badge>
-            <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight md:text-6xl">
+            <h1 className="mt-4 font-display text-4xl font-bold tracking-tight md:text-6xl">
               {p.title}
             </h1>
-            <p className="mt-5 max-w-xl text-white/65">{p.shortDescription}</p>
+            <p className="mt-5 max-w-xl text-[color:var(--color-muted)]">{p.shortDescription}</p>
             <div className="mt-6 flex flex-wrap gap-3">
               {p.liveUrl && (
                 <Button asChild variant="accent">
@@ -70,22 +70,22 @@ export default async function ProyectoPage({ params }: { params: Promise<Params>
 
           <dl className="grid grid-cols-2 gap-4 text-sm">
             {p.clientName && (
-              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                <dt className="text-[11px] uppercase tracking-wider text-white/45">Cliente</dt>
+              <div className="rounded-2xl border border-[color:var(--color-border)] bg-white p-4 shadow-soft">
+                <dt className="text-[11px] uppercase tracking-wider text-[color:var(--color-muted)]">Cliente</dt>
                 <dd className="mt-1 font-medium">{p.clientName}</dd>
               </div>
             )}
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-              <dt className="text-[11px] uppercase tracking-wider text-white/45">Categoría</dt>
+            <div className="rounded-2xl border border-[color:var(--color-border)] bg-white p-4 shadow-soft">
+              <dt className="text-[11px] uppercase tracking-wider text-[color:var(--color-muted)]">Categoría</dt>
               <dd className="mt-1 font-medium">{p.category}</dd>
             </div>
-            <div className="col-span-2 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-              <dt className="text-[11px] uppercase tracking-wider text-white/45">Tecnologías</dt>
+            <div className="col-span-2 rounded-2xl border border-[color:var(--color-border)] bg-white p-4 shadow-soft">
+              <dt className="text-[11px] uppercase tracking-wider text-[color:var(--color-muted)]">Tecnologías</dt>
               <dd className="mt-2 flex flex-wrap gap-1.5">
                 {p.technologies.map((t) => (
                   <span
                     key={t}
-                    className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[11px] text-white/70"
+                    className="rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-bg)] px-2.5 py-0.5 text-[11px] text-[color:var(--color-muted)]"
                   >
                     {t}
                   </span>
@@ -95,7 +95,7 @@ export default async function ProyectoPage({ params }: { params: Promise<Params>
           </dl>
         </header>
 
-        <div className="relative mt-12 aspect-[16/9] overflow-hidden rounded-3xl border border-white/10">
+        <div className="relative mt-12 aspect-[16/9] overflow-hidden rounded-3xl border border-[color:var(--color-border)] shadow-soft">
           <Image
             src={p.heroImage}
             alt={p.title}
@@ -111,13 +111,13 @@ export default async function ProyectoPage({ params }: { params: Promise<Params>
             <h2 className="font-display text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-accent)]">
               Problema
             </h2>
-            <p className="mt-3 text-white/75">{p.shortDescription}</p>
+            <p className="mt-3 text-[color:var(--color-fg)]/80">{p.shortDescription}</p>
           </section>
           <section>
             <h2 className="font-display text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-accent)]">
               Solución
             </h2>
-            <p className="mt-3 text-white/75">{p.fullDescription}</p>
+            <p className="mt-3 text-[color:var(--color-fg)]/80">{p.fullDescription}</p>
           </section>
         </div>
 
@@ -137,11 +137,11 @@ export default async function ProyectoPage({ params }: { params: Promise<Params>
         {p.results && p.results.length > 0 && (
           <section className="mt-12 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
             {p.results.map((r) => (
-              <div key={r.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-                <div className="font-display text-3xl font-semibold text-[color:var(--color-accent)]">
+              <div key={r.label} className="rounded-2xl border border-[color:var(--color-border)] bg-white p-6 shadow-soft">
+                <div className="font-display text-3xl font-bold text-[color:var(--color-accent)]">
                   {r.value}
                 </div>
-                <div className="mt-1 text-sm text-white/60">{r.label}</div>
+                <div className="mt-1 text-sm text-[color:var(--color-muted)]">{r.label}</div>
               </div>
             ))}
           </section>
@@ -152,7 +152,7 @@ export default async function ProyectoPage({ params }: { params: Promise<Params>
             {p.galleryImages.map((src, i) => (
               <div
                 key={`${src}-${i}`}
-                className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10"
+                className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[color:var(--color-border)] shadow-soft"
               >
                 <Image src={src} alt={`${p.title} ${i + 1}`} fill sizes="50vw" className="object-cover" />
               </div>

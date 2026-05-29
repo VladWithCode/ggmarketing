@@ -12,7 +12,9 @@ type Tag = "div" | "section" | "article" | "figure" | "li" | "ul" | "h1" | "h2" 
  * the node guarantees a deterministic hide->show order and a real transition
  * every time the element re-enters the viewport.
  *
- * once=false (default): reversible. once=true: stops observing after first show.
+ * once=true (default): clean one-shot entrance — animates in once and stays.
+ * This is the calm, professional behaviour. once=false makes it reversible
+ * (re-hides on exit, re-animates on return) for cases that want it.
  * Stagger delay applies ONLY on enter; hiding is immediate.
  */
 export function Reveal({
@@ -20,7 +22,7 @@ export function Reveal({
   delay = 0,
   className = "",
   as = "div",
-  once = false,
+  once = true,
 }: {
   children: ReactNode;
   delay?: number;

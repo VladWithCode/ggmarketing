@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ArrowRight, Instagram, Facebook, MessageCircle, Search, Megaphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Clouds } from "@/components/sections/clouds";
-import { RotatingWords } from "@/components/sections/rotating-words";
 import { WaveDivider } from "@/components/ui/wave-divider";
 import { CloudShape, CloudBullet } from "@/components/ui/cloud-shape";
 
@@ -63,10 +62,7 @@ export function Hero() {
 
         <h1 className="rise mx-auto mt-7 max-w-4xl font-display text-[2.7rem] font-extrabold leading-[1.04] tracking-tight sm:text-6xl md:text-7xl" style={{ animationDelay: "0.08s" }}>
           <span className="block text-[color:var(--color-navy)]">Hacemos crecer tu marca con</span>
-          <RotatingWords
-            words={["Marketing Digital", "Desarrollo Web", "Publicidad en Redes", "Branding Digital"]}
-            className="mt-1 w-full"
-          />
+          <span className="text-gradient">Marketing Digital</span>
         </h1>
 
         <p className="rise mx-auto mt-6 max-w-2xl text-balance text-base text-[color:var(--color-muted)] md:text-lg" style={{ animationDelay: "0.18s" }}>

@@ -23,7 +23,7 @@ export function Process() {
       <div className="container-page relative">
         <Reveal>
           <SectionEyebrow tone="dark">Cómo trabajamos</SectionEyebrow>
-          <h2 className="mt-4 max-w-2xl font-display text-3xl font-bold tracking-tight md:text-5xl">
+          <h2 className="mt-4 max-w-2xl font-display text-3xl font-bold tracking-tight text-white md:text-5xl">
             Tu marca, paso a paso, <span className="text-gradient">hasta las nubes</span>
           </h2>
         </Reveal>

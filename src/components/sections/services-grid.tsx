@@ -1,5 +1,5 @@
 import { Reveal } from "@/components/ui/reveal";
-import { CloudBullet } from "@/components/ui/cloud-shape";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 import {
   Megaphone,
   Instagram,
@@ -33,10 +33,8 @@ export function ServicesGrid() {
     <section id="servicios" className="relative bg-white py-24">
       <div className="container-page">
         <Reveal className="max-w-2xl">
-          <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
-            <CloudBullet /> ¿Qué ofrecemos?
-          </p>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight md:text-5xl">
+          <SectionEyebrow index="01">¿Qué ofrecemos?</SectionEyebrow>
+          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight md:text-5xl">
             Servicios digitales que <span className="text-gradient">mueven tu marca</span>
           </h2>
         </Reveal>

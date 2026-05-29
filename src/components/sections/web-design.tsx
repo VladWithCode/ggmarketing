@@ -2,17 +2,16 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { Clouds } from "@/components/sections/clouds";
-import { CloudBullet, CloudShape } from "@/components/ui/cloud-shape";
+import { CloudShape } from "@/components/ui/cloud-shape";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 
 export function WebDesign() {
   return (
     <section className="relative overflow-hidden bg-white py-24">
       <div className="container-page grid items-center gap-12 lg:grid-cols-2">
         <Reveal>
-          <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
-            <CloudBullet /> Diseño web · Landing pages
-          </p>
-          <h2 className="mt-3 font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+          <SectionEyebrow index="02">Diseño web · Landing pages</SectionEyebrow>
+          <h2 className="mt-4 font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl">
             Llevamos tu <span className="text-gradient">presencia digital</span> al siguiente nivel
           </h2>
           <p className="mt-5 text-[color:var(--color-muted)]">

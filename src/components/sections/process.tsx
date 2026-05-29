@@ -1,71 +1,68 @@
 import { Reveal } from "@/components/ui/reveal";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
+import { CloudShape } from "@/components/ui/cloud-shape";
 import { Search, PenLine, Megaphone, BarChart3, Rocket, type LucideIcon } from "lucide-react";
 
 type Step = { n: string; title: string; desc: string; Icon: LucideIcon };
 
 const steps: Step[] = [
   { n: "01", title: "Diagnóstico", desc: "Escuchamos. Analizamos tu marca, tu público y tus objetivos reales.", Icon: Search },
-  { n: "02", title: "Estrategia y contenido", desc: "Definimos mensaje, calendario y creatividades. Planeamos antes de publicar.", Icon: PenLine },
-  { n: "03", title: "Campañas", desc: "Publicamos y lanzamos anuncios segmentados en redes para llegar a clientes.", Icon: Megaphone },
-  { n: "04", title: "Optimización", desc: "Medimos métricas y ajustamos creatividades y segmentación para mejor rendimiento.", Icon: BarChart3 },
-  { n: "05", title: "Reporte y crecimiento", desc: "Reportes claros y acompañamiento continuo para seguir escalando la marca.", Icon: Rocket },
+  { n: "02", title: "Estrategia y contenido", desc: "Definimos mensaje, calendario y creatividades antes de publicar.", Icon: PenLine },
+  { n: "03", title: "Campañas", desc: "Publicamos y lanzamos anuncios segmentados para llegar a clientes.", Icon: Megaphone },
+  { n: "04", title: "Optimización", desc: "Medimos métricas y ajustamos creatividades y segmentación.", Icon: BarChart3 },
+  { n: "05", title: "Crecimiento", desc: "Reportes claros y acompañamiento continuo para escalar la marca.", Icon: Rocket },
 ];
 
 export function Process() {
   return (
-    <section className="relative bg-white py-24">
-      <div className="container-page">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
-            · Proceso
-          </p>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight md:text-5xl">
-            Cómo <span className="text-gradient">trabajamos</span>
+    <section className="relative overflow-hidden bg-[color:var(--color-navy)] py-24 text-white">
+      {/* cloud watermarks drifting on the night-sky */}
+      <CloudShape variant="wide" fill="#ffffff" opacity={0.05} className="animate-cloud pointer-events-none absolute left-[-3%] top-12 w-72" />
+      <CloudShape variant="puffy" fill="#ffffff" opacity={0.06} className="animate-cloud-rev pointer-events-none absolute right-[-2%] bottom-10 w-64" />
+
+      <div className="container-page relative">
+        <Reveal>
+          <SectionEyebrow tone="dark">Cómo trabajamos</SectionEyebrow>
+          <h2 className="mt-4 max-w-2xl font-display text-3xl font-bold tracking-tight md:text-5xl">
+            Tu marca, paso a paso, <span className="text-gradient">hasta las nubes</span>
           </h2>
-          <p className="mt-5 text-[color:var(--color-muted)]">
-            Un proceso simple, transparente y enfocado en resultados. Sin promesas vacías.
-          </p>
         </Reveal>
 
-        {/* Desktop timeline */}
-        <div className="mt-16 hidden md:block">
+        {/* Desktop: ascending cloud trail */}
+        <div className="mt-20 hidden md:block">
           <div className="relative">
-            <div className="absolute left-0 right-0 top-8 h-0.5 bg-gradient-to-r from-transparent via-[color:var(--color-accent)]/25 to-transparent" />
-            <ol className="relative grid grid-cols-5 gap-4">
+            {/* dotted ascending path */}
+            <svg viewBox="0 0 1000 200" preserveAspectRatio="none" className="absolute inset-x-0 top-0 h-44 w-full" aria-hidden>
+              <path d="M40,170 C220,140 260,60 460,80 C640,98 700,30 960,30" fill="none" stroke="#ffffff" strokeOpacity="0.25" strokeWidth="2" strokeDasharray="2 10" strokeLinecap="round" />
+            </svg>
+            <ol className="relative grid grid-cols-5 items-end gap-4">
               {steps.map((s, i) => (
-                <Reveal key={s.n} as="li" delay={i * 0.08} className="text-center">
-                  <div className="relative mx-auto grid size-16 place-items-center rounded-full bg-white text-[color:var(--color-accent)] shadow-soft ring-1 ring-[color:var(--color-border)]">
-                    <s.Icon className="size-6" />
-                    <span className="absolute -bottom-2 -right-1 rounded-full grad-brand px-1.5 py-0.5 text-[10px] font-bold text-white">
-                      {s.n}
-                    </span>
+                <Reveal key={s.n} as="li" delay={i * 0.08} className={["mt-[104px]", "mt-[78px]", "mt-[52px]", "mt-[26px]", "mt-0"][i]}>
+                  <div className="relative rounded-3xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur-sm">
+                    <span className="font-display text-3xl font-extrabold text-white/15">{s.n}</span>
+                    <div className="-mt-4 inline-flex size-11 items-center justify-center rounded-2xl grad-brand text-white shadow-soft">
+                      <s.Icon className="size-5" />
+                    </div>
+                    <h3 className="mt-4 font-display text-base font-bold">{s.title}</h3>
+                    <p className="mt-2 text-xs leading-relaxed text-white/65">{s.desc}</p>
                   </div>
-                  <h3 className="mt-6 font-display text-base font-bold">{s.title}</h3>
-                  <p className="mt-2 text-xs leading-relaxed text-[color:var(--color-muted)]">{s.desc}</p>
                 </Reveal>
               ))}
             </ol>
           </div>
         </div>
 
-        {/* Mobile timeline */}
+        {/* Mobile: vertical list */}
         <ol className="mt-12 space-y-4 md:hidden">
           {steps.map((s, i) => (
-            <Reveal
-              key={s.n}
-              as="li"
-              delay={i * 0.06}
-              className="flex gap-4 rounded-2xl border border-[color:var(--color-border)] bg-white p-5 shadow-soft"
-            >
-              <div className="relative grid size-12 shrink-0 place-items-center rounded-full bg-[color:var(--color-accent)]/10 text-[color:var(--color-accent)]">
+            <Reveal key={s.n} as="li" delay={i * 0.06} className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.06] p-5">
+              <div className="relative grid size-12 shrink-0 place-items-center rounded-2xl grad-brand text-white">
                 <s.Icon className="size-5" />
-                <span className="absolute -bottom-1.5 -right-1.5 rounded-full grad-brand px-1.5 py-0.5 text-[9px] font-bold text-white">
-                  {s.n}
-                </span>
+                <span className="absolute -bottom-1.5 -right-1.5 rounded-full bg-white px-1.5 py-0.5 text-[9px] font-bold text-[color:var(--color-navy)]">{s.n}</span>
               </div>
               <div>
                 <h3 className="font-display text-base font-bold">{s.title}</h3>
-                <p className="mt-1 text-xs text-[color:var(--color-muted)]">{s.desc}</p>
+                <p className="mt-1 text-xs text-white/65">{s.desc}</p>
               </div>
             </Reveal>
           ))}

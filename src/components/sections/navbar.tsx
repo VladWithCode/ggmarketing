@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { BrandMark } from "@/components/ui/brand-mark";
 
 const links = [
   { href: "/", label: "Inicio" },
@@ -40,13 +40,8 @@ export function Navbar() {
               : "border border-transparent",
           )}
         >
-          <Link href="/" className="flex items-center gap-2.5">
-            <span className="grid size-8 place-items-center overflow-hidden rounded-lg grad-brand shadow-soft">
-              <Image src="/logo.png" alt="GG Marketing" width={28} height={28} className="rounded-md" />
-            </span>
-            <span className="font-display text-sm font-bold tracking-tight text-[color:var(--color-navy)]">
-              GG <span className="text-[color:var(--color-accent)]">Marketing</span>
-            </span>
+          <Link href="/">
+            <BrandMark />
           </Link>
 
           <ul className="hidden items-center gap-1 md:flex">

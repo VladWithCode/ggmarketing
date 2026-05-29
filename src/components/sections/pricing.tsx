@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { getPlans } from "@/lib/plans";
 import { siteConfig } from "@/lib/utils";
-import { CloudBullet, CloudShape } from "@/components/ui/cloud-shape";
+import { CloudShape } from "@/components/ui/cloud-shape";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 
 // Simple Corporate-Memphis style illustration (flat blobs + circle).
 function MemphisArt({ i }: { i: number }) {
@@ -34,10 +35,8 @@ export async function Pricing() {
       <CloudShape variant="wide" fill="#ffffff" opacity={0.6} className="animate-cloud pointer-events-none absolute left-[-4%] top-10 w-64" />
       <CloudShape variant="puffy" fill="#ffffff" opacity={0.5} className="animate-cloud-rev pointer-events-none absolute right-[-2%] top-24 w-56" />
       <div className="container-page relative">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--color-accent)]">
-            <CloudBullet /> Planes
-          </p>
+        <Reveal className="mx-auto flex max-w-2xl flex-col items-center text-center">
+          <SectionEyebrow>Planes</SectionEyebrow>
           <h2 className="mt-3 font-display text-3xl font-bold tracking-tight md:text-5xl">
             Elige por dónde <span className="text-gradient">empezar</span>
           </h2>

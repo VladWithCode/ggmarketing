@@ -4,6 +4,7 @@ import { siteConfig } from "@/lib/utils";
 import type { SiteSettings } from "@/lib/settings";
 import { WaveDivider } from "@/components/ui/wave-divider";
 import { CloudShape } from "@/components/ui/cloud-shape";
+import { BrandMark } from "@/components/ui/brand-mark";
 
 export function Footer({ settings }: { settings?: SiteSettings }) {
   const s = settings;
@@ -31,10 +32,8 @@ export function Footer({ settings }: { settings?: SiteSettings }) {
         <div className="grid gap-12 md:grid-cols-2">
           {/* Left: contact */}
           <div>
-            <h3 className="font-display text-2xl font-bold">
-              GG <span className="text-[color:var(--color-accent-2)]">Marketing</span>
-            </h3>
-            <p className="mt-3 max-w-md text-sm text-white/65">{siteConfig.description}</p>
+            <BrandMark tone="dark" />
+            <p className="mt-4 max-w-md text-sm text-white/65">{siteConfig.description}</p>
 
             <ul className="mt-6 space-y-2.5 text-sm text-white/75">
               {phone && (

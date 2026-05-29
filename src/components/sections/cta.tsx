@@ -15,11 +15,11 @@ export function CtaSection() {
           <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[color:var(--color-bg-soft)] p-10 md:p-16">
             <div
               aria-hidden
-              className="pointer-events-none absolute -left-32 -top-32 size-[420px] rounded-full bg-[color:var(--color-accent)]/30 blur-3xl"
+              className="pointer-events-none absolute -left-32 -top-32 size-[360px] rounded-full bg-[color:var(--color-accent)]/30 blur-2xl"
             />
             <div
               aria-hidden
-              className="pointer-events-none absolute -right-20 -bottom-32 size-[380px] rounded-full bg-[color:var(--color-accent-2)]/25 blur-3xl"
+              className="pointer-events-none absolute -right-20 -bottom-32 size-[320px] rounded-full bg-[color:var(--color-accent-2)]/25 blur-2xl"
             />
             <div
               aria-hidden

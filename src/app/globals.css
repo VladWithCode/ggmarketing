@@ -40,7 +40,9 @@
     background-image:
       radial-gradient(1200px 600px at 50% -200px, color-mix(in oklab, var(--color-accent) 18%, transparent), transparent 60%),
       radial-gradient(900px 500px at 100% 10%, color-mix(in oklab, var(--color-accent-2) 12%, transparent), transparent 60%);
-    background-attachment: fixed;
+    background-repeat: no-repeat;
+    /* NOT background-attachment: fixed — that forces a full-viewport repaint
+       on every scroll frame (major jank). Gradient paints once with the page. */
   }
   h1, h2, h3, h4, h5 {
     font-family: var(--font-display);
@@ -88,30 +90,27 @@
     }
   }
   @keyframes reveal-fade { from { opacity: 0; } to { opacity: 1; } }
-  /* CSS scroll-reveal (replaces per-section Framer Motion) */
+  /* CSS scroll-reveal (replaces per-section Framer Motion).
+     opacity + translateY ONLY — no filter:blur (animating blur is paint-heavy
+     and was a scroll-jank source). Both props are GPU-composited. */
   .reveal {
     opacity: 0;
-    transform: translateY(36px);
-    filter: blur(8px);
+    transform: translateY(28px);
     transition:
-      opacity 800ms cubic-bezier(0.22, 1, 0.36, 1),
-      transform 800ms cubic-bezier(0.22, 1, 0.36, 1),
-      filter 800ms cubic-bezier(0.22, 1, 0.36, 1);
+      opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
   }
   .reveal.reveal-in {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
   }
   /* Shorter, subtler reveal on small screens */
   @media (max-width: 640px) {
     .reveal {
-      transform: translateY(22px);
-      filter: blur(4px);
+      transform: translateY(18px);
       transition:
-        opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
-        filter 600ms cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 500ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
     }
   }
   /* On-load entrance (hero) */
@@ -243,11 +242,14 @@
   from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: translateY(0); }
 }
+/* translate + opacity only — no scale. Scaling a blurred layer forces the
+   browser to re-rasterize the blur every frame (expensive). Translate stays
+   on the compositor. */
 @keyframes cloud-drift {
-  0% { opacity: 0.28; transform: translate(0, 0) scale(0.95); }
-  33% { opacity: 0.5; transform: translate(22px, -14px) scale(1.05); }
-  66% { opacity: 0.4; transform: translate(-14px, 12px) scale(1.0); }
-  100% { opacity: 0.28; transform: translate(0, 0) scale(0.95); }
+  0% { opacity: 0.30; transform: translate3d(0, 0, 0); }
+  33% { opacity: 0.5; transform: translate3d(22px, -14px, 0); }
+  66% { opacity: 0.4; transform: translate3d(-14px, 12px, 0); }
+  100% { opacity: 0.30; transform: translate3d(0, 0, 0); }
 }
 @keyframes float-slow {
   0%, 100% { transform: translateY(0) translateX(0); }

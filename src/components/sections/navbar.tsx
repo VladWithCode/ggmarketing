@@ -41,7 +41,7 @@ export function Navbar() {
           className={cn(
             "flex h-14 w-full items-center justify-between rounded-full px-2 pl-4 transition-all duration-500",
             scrolled
-              ? "border border-white/10 bg-[color:var(--color-bg)]/70 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.6)] backdrop-blur-xl"
+              ? "border border-white/10 bg-[color:var(--color-bg)]/85 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.6)] backdrop-blur-md"
               : "border border-transparent",
           )}
         >
@@ -98,7 +98,7 @@ export function Navbar() {
 
       {open && (
         <div className="mx-auto mt-3 max-w-6xl px-4 md:hidden motion-safe:animate-[reveal-rise_0.2s_ease-out]">
-            <div className="rounded-3xl border border-white/10 bg-[color:var(--color-bg)]/90 p-3 backdrop-blur-xl">
+            <div className="rounded-3xl border border-white/10 bg-[color:var(--color-bg)]/95 p-3 backdrop-blur-md">
               {links.map((l) => (
                 <Link
                   key={l.href}

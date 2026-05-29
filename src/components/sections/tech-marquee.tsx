@@ -7,7 +7,7 @@ const row2 = [
 
 function Chip({ label }: { label: string }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 font-display text-base font-medium text-white/80 backdrop-blur">
+    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-5 py-2.5 font-display text-base font-medium text-white/80">
       <span className="size-1.5 rounded-full bg-[color:var(--color-accent)]" />
       {label}
     </span>

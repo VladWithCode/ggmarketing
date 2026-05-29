@@ -20,7 +20,7 @@ export default async function ContactoPage() {
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[60vh] [mask-image:radial-gradient(60%_60%_at_50%_0%,black,transparent)]"
       >
-        <div className="absolute left-1/2 top-0 size-[700px] -translate-x-1/2 rounded-full bg-[color:var(--color-accent)]/20 blur-3xl" />
+        <div className="absolute left-1/2 top-0 size-[520px] -translate-x-1/2 rounded-full bg-[color:var(--color-accent)]/20 blur-2xl" />
       </div>
 
       <div className="container-page grid gap-12 pt-32 pb-24 md:grid-cols-[1fr_1.3fr] md:gap-16">

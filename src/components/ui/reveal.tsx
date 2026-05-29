@@ -1,17 +1,19 @@
 "use client";
 
-import { createElement, useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { createElement, useEffect, useRef, type ReactNode } from "react";
 
 type Tag = "div" | "section" | "article" | "figure" | "li" | "ul" | "h1" | "h2" | "p";
 
 /**
- * Lightweight scroll-reveal. IntersectionObserver primary; scroll/resize
- * (rAF-throttled) fallback ONLY when IO is unavailable, so the two never fight.
+ * Reversible scroll-reveal driven by INLINE styles inside the
+ * IntersectionObserver callback — no React state. React state batching could
+ * collapse a fast hide+show into a single commit (no DOM change => no
+ * transition => "pop"). Driving opacity/transform/transition-delay directly on
+ * the node guarantees a deterministic hide->show order and a real transition
+ * every time the element re-enters the viewport.
  *
- * once=false (default): reversible. Re-hides on exit, re-animates on return.
- * Smoothness: the stagger delay is applied via --reveal-delay only on enter,
- * and showing is deferred with a double requestAnimationFrame so the browser
- * paints the hidden state before transitioning back in (no "pop").
+ * once=false (default): reversible. once=true: stops observing after first show.
+ * Stagger delay applies ONLY on enter; hiding is immediate.
  */
 export function Reveal({
   children,
@@ -27,82 +29,85 @@ export function Reveal({
   once?: boolean;
 }) {
   const ref = useRef<HTMLElement>(null);
-  const [shown, setShown] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    let raf1 = 0;
-    let raf2 = 0;
-    let current = false; // last applied visibility — guards redundant updates
+    const reduce =
+      typeof matchMedia !== "undefined" &&
+      matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduce) {
+      el.style.opacity = "1";
+      el.style.transform = "none";
+      return;
+    }
+
+    const enterDelay = delay ? `${delay}s` : "0s";
+    let visible = false;
     let io: IntersectionObserver | null = null;
 
-    const clearRafs = () => {
-      if (raf1) cancelAnimationFrame(raf1);
-      if (raf2) cancelAnimationFrame(raf2);
-      raf1 = raf2 = 0;
+    const show = () => {
+      el.style.transitionDelay = enterDelay; // stagger only on enter
+      el.style.opacity = "1";
+      el.style.transform = "translateY(0)";
+    };
+    const hide = () => {
+      el.style.transitionDelay = "0s"; // hide immediately, no stagger
+      el.style.opacity = "0";
+      el.style.transform = ""; // fall back to .reveal class translateY
     };
 
-    const apply = (next: boolean) => {
-      if (next === current) return; // no-op if unchanged
-      current = next;
-      clearRafs();
+    const set = (next: boolean) => {
+      if (next === visible) return; // guard redundant toggles
+      visible = next;
       if (next) {
-        // double rAF: ensure the hidden state is committed/painted before we
-        // add .reveal-in, so the transition actually runs on re-entry.
-        raf1 = requestAnimationFrame(() => {
-          raf2 = requestAnimationFrame(() => setShown(true));
-        });
+        show();
+        if (once) cleanup();
       } else {
-        setShown(false); // hide immediately (delay=0 via CSS) -> repaint hidden
+        hide();
       }
-      if (next && once) cleanup();
     };
+
+    // initial hidden state (matches .reveal class; explicit for clarity)
+    hide();
 
     function cleanup() {
       io?.disconnect();
       io = null;
       window.removeEventListener("scroll", onScroll, true);
       window.removeEventListener("resize", onScroll);
-      clearRafs();
     }
 
     if (typeof IntersectionObserver !== "undefined") {
-      // IO is the single source of truth when available.
-      io = new IntersectionObserver(
-        ([entry]) => apply(entry.isIntersecting),
-        { threshold: 0.25, rootMargin: "0px 0px -15% 0px" },
-      );
+      // threshold 0 + bottom rootMargin: enters when top passes 85% of the
+      // viewport, exits only once fully gone — tall sections never flicker.
+      io = new IntersectionObserver(([entry]) => set(entry.isIntersecting), {
+        threshold: 0,
+        rootMargin: "0px 0px -15% 0px",
+      });
       io.observe(el);
       return cleanup;
     }
 
-    // Fallback only when IO is missing (rAF-throttled, hysteresis band).
+    // Fallback only when IO unavailable (rAF-throttled).
     let ticking = false;
-    const onScroll = () => {
+    function onScroll() {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
         ticking = false;
-        const r = el.getBoundingClientRect();
+        const r = el!.getBoundingClientRect();
         const vh = window.innerHeight || document.documentElement.clientHeight;
-        apply(r.top < vh * 0.85 && r.bottom > vh * 0.1);
+        set(r.top < vh * 0.85 && r.bottom > vh * 0.1);
       });
-    };
+    }
     window.addEventListener("scroll", onScroll, true);
     window.addEventListener("resize", onScroll);
     onScroll();
     return cleanup;
-  }, [once]);
+  }, [delay, once]);
 
-  return createElement(
-    as,
-    {
-      ref,
-      className: `reveal ${shown ? "reveal-in" : ""} ${className}`.trim(),
-      style: delay ? ({ "--reveal-delay": `${delay}s` } as CSSProperties) : undefined,
-    },
-    children,
-  );
+  return createElement(as, { ref, className: `reveal ${className}`.trim() }, children);
 }

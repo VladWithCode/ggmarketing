@@ -6,6 +6,7 @@ import { Navbar } from "@/components/sections/navbar";
 import { Footer } from "@/components/sections/footer";
 import { WhatsAppFab } from "@/components/sections/whatsapp-fab";
 import { OrgJsonLd } from "@/components/seo/org-jsonld";
+import { AppLoader } from "@/components/ui/app-loader";
 import { getSettings } from "@/lib/settings";
 import "./globals.css";
 
@@ -48,10 +49,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {/* Fallback: if JS is disabled, IntersectionObserver never fires —
             force reveal/rise content visible so nothing stays hidden. */}
         <noscript>
-          <style>{`.reveal{opacity:1!important;transform:none!important;filter:none!important}.rise{opacity:1!important;animation:none!important}`}</style>
+          <style>{`.reveal{opacity:1!important;transform:none!important;filter:none!important}.rise{opacity:1!important;animation:none!important}#app-loader{display:none!important}`}</style>
         </noscript>
       </head>
       <body className="min-h-screen antialiased">
+        <AppLoader />
         <OrgJsonLd />
         <Navbar />
         <main>{children}</main>

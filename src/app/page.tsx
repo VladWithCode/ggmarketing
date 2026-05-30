@@ -2,7 +2,8 @@ import { Hero } from "@/components/sections/hero";
 import { Clients } from "@/components/sections/clients";
 import { ServicesGrid } from "@/components/sections/services-grid";
 import { WebDesign } from "@/components/sections/web-design";
-import { FeaturedProjects } from "@/components/sections/featured-projects";
+import { ShowcaseProjects } from "@/components/sections/showcase-projects";
+import { TemplatesGallery } from "@/components/sections/templates-gallery";
 import { Pricing } from "@/components/sections/pricing";
 import { Process } from "@/components/sections/process";
 import { TechMarquee } from "@/components/sections/tech-marquee";
@@ -17,7 +18,8 @@ export default function HomePage() {
       <Clients />
       <ServicesGrid />
       <WebDesign />
-      <FeaturedProjects />
+      <ShowcaseProjects />
+      <TemplatesGallery />
       <Pricing />
       <TechMarquee />
       <Process />

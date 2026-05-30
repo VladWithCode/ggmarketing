@@ -1,64 +1,90 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
-import { listProjects } from "@/lib/projects";
+import { Clouds } from "@/components/sections/clouds";
+import { WaveDivider } from "@/components/ui/wave-divider";
+import { ShowcaseProjects } from "@/components/sections/showcase-projects";
+import { TemplatesGallery } from "@/components/sections/templates-gallery";
+import { getSettings } from "@/lib/settings";
 
 export const metadata: Metadata = {
-  title: "Proyectos",
-  description: "Portafolio de campañas, marcas y sitios web creados por GG Marketing.",
+  title: "Proyectos y diseños",
+  description:
+    "Proyectos reales creados por GG Marketing y diseños demo listos para adaptar a tu marca.",
 };
 
 export default async function ProyectosPage() {
-  const projects = await listProjects();
+  const s = await getSettings();
+  const wa = `https://wa.me/${s.whatsappNumber}?text=${encodeURIComponent(
+    "Hola, vi sus proyectos y quiero adaptar un diseño para mi negocio.",
+  )}`;
 
   return (
     <>
-      <section className="container-page pt-32 pb-12 text-center">
-        <Reveal>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-accent)]">
-            Portafolio
-          </p>
-          <h1 className="mx-auto mt-3 max-w-3xl font-display text-4xl font-bold tracking-tight md:text-6xl">
-            Algunos de nuestros <span className="text-gradient">clientes</span>
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-[color:var(--color-muted)]">
-            Una muestra del trabajo real entregado a nuestros clientes.
-          </p>
-        </Reveal>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#cfe1ff] to-[#eef4ff] pt-32 pb-24">
+        <Clouds density="soft" />
+        <div className="container-page relative text-center">
+          <Reveal>
+            <span className="inline-flex items-center rounded-full bg-white/80 px-4 py-1.5 text-xs font-semibold text-[color:var(--color-accent)] shadow-soft backdrop-blur">
+              Portafolio · GG Marketing
+            </span>
+            <h1 className="mx-auto mt-5 max-w-3xl font-display text-4xl font-extrabold tracking-tight md:text-6xl">
+              Proyectos y diseños listos para{" "}
+              <span className="text-gradient">impulsar tu marca</span>
+            </h1>
+            <p className="mx-auto mt-5 max-w-2xl text-[color:var(--color-muted)]">
+              Explora trabajos reales y demos que podemos adaptar con tu identidad, servicios
+              y objetivos.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <a
+                href="#proyectos"
+                className="inline-flex items-center gap-2 rounded-full grad-brand px-6 py-3 text-sm font-semibold text-white shadow-soft transition hover:brightness-105"
+              >
+                Ver proyectos reales
+              </a>
+              <a
+                href="#disenos"
+                className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-accent)]/30 bg-white px-6 py-3 text-sm font-semibold text-[color:var(--color-accent)] transition hover:bg-[color:var(--color-accent)]/5"
+              >
+                Ver diseños disponibles
+              </a>
+            </div>
+          </Reveal>
+        </div>
+        <WaveDivider fill="#ffffff" className="absolute inset-x-0 bottom-0" />
       </section>
 
-      <section className="container-page pb-24">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((p, i) => (
-            <Reveal key={p.slug} delay={(i % 3) * 0.05}>
-              <Link
-                href={`/proyectos/${p.slug}`}
-                className="card-hover group block h-full overflow-hidden rounded-3xl border border-[color:var(--color-border)] bg-white shadow-soft"
+      <ShowcaseProjects />
+      <TemplatesGallery />
+
+      {/* Final CTA */}
+      <section className="relative bg-[color:var(--color-bg)] py-24">
+        <div className="container-page">
+          <div className="relative overflow-hidden rounded-[2.5rem] grad-brand px-8 py-16 text-center text-white shadow-soft-lg md:px-16">
+            <div
+              aria-hidden
+              className="absolute inset-0 opacity-20 [mask-image:radial-gradient(60%_60%_at_50%_50%,black,transparent)]"
+              style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px)", backgroundSize: "24px 24px" }}
+            />
+            <div className="relative mx-auto max-w-2xl">
+              <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">
+                ¿Ya viste un diseño que te gustó?
+              </h2>
+              <p className="mt-4 text-white/85">
+                Lo adaptamos a tu negocio con tu marca, colores, servicios y datos reales.
+              </p>
+              <a
+                href={wa}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-base font-bold text-[color:var(--color-accent)] shadow-soft transition hover:-translate-y-0.5"
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={p.heroImage}
-                    alt={p.title}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                    className="object-cover transition duration-700 group-hover:scale-[1.03]"
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[color:var(--color-accent)]">
-                      {p.category}
-                    </span>
-                    <ArrowUpRight className="size-4 text-[color:var(--color-muted)] transition group-hover:text-[color:var(--color-accent)]" />
-                  </div>
-                  <h3 className="mt-2 text-lg font-bold">{p.title}</h3>
-                  <p className="mt-1.5 line-clamp-2 text-sm text-[color:var(--color-muted)]">{p.shortDescription}</p>
-                </div>
-              </Link>
-            </Reveal>
-          ))}
+                <MessageCircle className="size-4" /> Quiero adaptar un diseño
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </>

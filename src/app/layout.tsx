@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
   },
-  icons: { icon: "/logo.png" },
+  icons: { icon: "/gg-logo.png" },
 };
 
 export const viewport: Viewport = {

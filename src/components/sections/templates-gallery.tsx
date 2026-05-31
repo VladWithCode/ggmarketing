@@ -19,7 +19,7 @@ export function TemplatesGallery() {
       <CloudShape variant="puffy" fill="#ffffff" opacity={0.5} className="animate-cloud-rev pointer-events-none absolute right-[-2%] top-24 w-56" />
 
       <div className="container-page relative">
-        <Reveal className="max-w-2xl">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <SectionEyebrow>Diseños disponibles para ti</SectionEyebrow>
           <h2 className="mt-4 font-display text-3xl font-bold tracking-tight md:text-5xl">
             Demos listos para <span className="text-gradient">adaptar a tu marca</span>

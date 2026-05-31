@@ -24,7 +24,7 @@ export function Process() {
         <Reveal>
           <SectionEyebrow tone="dark">Cómo trabajamos</SectionEyebrow>
           <h2 className="mt-4 max-w-2xl font-display text-3xl font-bold tracking-tight text-white md:text-5xl">
-            Tu marca, paso a paso, <span className="text-gradient">hasta las nubes</span>
+De la estrategia a los <span className="text-gradient">resultados</span>, paso a paso
           </h2>
         </Reveal>
 

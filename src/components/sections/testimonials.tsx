@@ -13,7 +13,7 @@ export function Testimonials() {
         <Reveal>
           <SectionEyebrow index="04">Testimonios</SectionEyebrow>
           <h2 className="mt-4 max-w-2xl font-display text-3xl font-bold tracking-tight md:text-5xl">
-            Marcas que ya están <span className="text-gradient">en las nubes</span>
+            Lo que dicen <span className="text-gradient">nuestros clientes</span>
           </h2>
         </Reveal>
 

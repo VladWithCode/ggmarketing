@@ -18,7 +18,6 @@ const fields: { name: keyof SettingsInput; label: string; placeholder?: string }
   { name: "whatsappNumber", label: "WhatsApp (solo dígitos)", placeholder: "528000000000" },
   { name: "instagramUrl", label: "Instagram URL" },
   { name: "facebookUrl", label: "Facebook URL" },
-  { name: "linkedinUrl", label: "LinkedIn URL" },
   { name: "githubUrl", label: "GitHub URL" },
   { name: "address", label: "Dirección (opcional)" },
 ];

@@ -8,7 +8,6 @@ export const settingsSchema = z.object({
   whatsappNumber: z.string().min(8).max(20),
   instagramUrl: z.string().url().optional().or(z.literal("")),
   facebookUrl: z.string().url().optional().or(z.literal("")),
-  linkedinUrl: z.string().url().optional().or(z.literal("")),
   githubUrl: z.string().url().optional().or(z.literal("")),
   address: z.string().max(200).optional().or(z.literal("")),
 });

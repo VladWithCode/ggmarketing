@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Instagram, Facebook, Linkedin, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
+import { Instagram, Facebook, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
 import { siteConfig } from "@/lib/utils";
 import type { SiteSettings } from "@/lib/settings";
 import { WaveDivider } from "@/components/ui/wave-divider";
@@ -13,7 +13,6 @@ export function Footer({ settings }: { settings?: SiteSettings }) {
     { href: s?.instagramUrl || siteConfig.social.instagram, Icon: Instagram, label: "Instagram" },
     { href: s?.facebookUrl || siteConfig.social.facebook, Icon: Facebook, label: "Facebook" },
     { href: wa, Icon: MessageCircle, label: "WhatsApp" },
-    { href: s?.linkedinUrl || siteConfig.social.linkedin, Icon: Linkedin, label: "LinkedIn" },
   ].filter((x) => x.href);
 
   const email = s?.email || siteConfig.email;

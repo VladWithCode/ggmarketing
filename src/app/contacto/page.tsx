@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, MessageCircle, MapPin, Instagram, Linkedin, Facebook } from "lucide-react";
+import { Mail, MessageCircle, MapPin, Instagram, Facebook } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { ContactForm } from "@/components/sections/contact-form";
 import { getSettings } from "@/lib/settings";
@@ -89,7 +89,6 @@ export default async function ContactoPage() {
             {[
               { href: s.instagramUrl, Icon: Instagram, label: "Instagram" },
               { href: s.facebookUrl, Icon: Facebook, label: "Facebook" },
-              { href: s.linkedinUrl, Icon: Linkedin, label: "LinkedIn" },
             ].filter((x) => x.href).map(({ href, Icon, label }) => (
               <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}
                 className="grid size-10 place-items-center rounded-full border border-[color:var(--color-border)] bg-white text-[color:var(--color-muted)] shadow-soft transition hover:text-[color:var(--color-accent)]">

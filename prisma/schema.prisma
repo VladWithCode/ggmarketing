@@ -108,7 +108,6 @@ model Settings {
   phone         String?
   instagramUrl  String?
   facebookUrl   String?
-  linkedinUrl   String?
   githubUrl     String?
   address       String?
   updatedAt     DateTime @updatedAt

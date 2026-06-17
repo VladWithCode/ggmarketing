@@ -24,7 +24,6 @@ export default async function ConfigPage() {
             whatsappNumber: s.whatsappNumber,
             instagramUrl: s.instagramUrl,
             facebookUrl: s.facebookUrl,
-            linkedinUrl: s.linkedinUrl,
             githubUrl: s.githubUrl,
             address: s.address,
           }}

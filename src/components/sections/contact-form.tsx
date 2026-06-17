@@ -53,7 +53,7 @@ export function ContactForm() {
         </div>
         <div className="space-y-2">
           <Label htmlFor="phone">Teléfono</Label>
-          <Input id="phone" placeholder="618 000 0000" {...register("phone")} />
+          <Input id="phone" placeholder="618 229 8042" {...register("phone")} />
         </div>
         <div className="space-y-2">
           <Label htmlFor="company">Empresa</Label>

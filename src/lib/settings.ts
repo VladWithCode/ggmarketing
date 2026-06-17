@@ -9,7 +9,6 @@ export type SiteSettings = {
   whatsappNumber: string;
   instagramUrl: string;
   facebookUrl: string;
-  linkedinUrl: string;
   githubUrl: string;
   address: string;
 };
@@ -23,7 +22,6 @@ function defaults(): SiteSettings {
     whatsappNumber: siteConfig.whatsapp,
     instagramUrl: siteConfig.social.instagram,
     facebookUrl: siteConfig.social.facebook,
-    linkedinUrl: siteConfig.social.linkedin,
     githubUrl: siteConfig.social.github,
     address: "Durango, México",
   };
@@ -50,7 +48,6 @@ export async function getSettings(): Promise<SiteSettings> {
       whatsappNumber: s.whatsappNumber || d.whatsappNumber,
       instagramUrl: s.instagramUrl || d.instagramUrl,
       facebookUrl: s.facebookUrl || d.facebookUrl,
-      linkedinUrl: s.linkedinUrl || d.linkedinUrl,
       githubUrl: s.githubUrl || d.githubUrl,
       address: s.address || d.address,
     };

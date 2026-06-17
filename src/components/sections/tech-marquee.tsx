@@ -1,5 +1,5 @@
 const row1 = [
-  "Meta Ads", "Instagram", "Facebook", "TikTok", "Google Ads", "YouTube", "WhatsApp Business", "LinkedIn",
+  "Meta Ads", "Instagram", "Facebook", "TikTok", "Google Ads", "YouTube", "WhatsApp Business",
 ];
 const row2 = [
   "Canva", "Adobe Photoshop", "Illustrator", "Premiere Pro", "CapCut", "Figma", "Mailchimp", "Metricool",

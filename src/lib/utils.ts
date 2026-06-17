@@ -22,12 +22,11 @@ export const siteConfig = {
   description:
     "Impulsamos tu marca con estrategia, contenido, campañas en redes y sitios web que conectan con tus clientes.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://ggmarketing.com",
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "528000000000",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "526182298042",
   email: "contacto@ggmarketing.com",
   social: {
-    instagram: "https://instagram.com/ggmarketing",
-    facebook: "https://facebook.com/ggmarketing",
-    linkedin: "https://linkedin.com/company/ggmarketing",
+    instagram: "https://instagram.com/ggmkt.mx",
+    facebook: "https://facebook.com/ggmarketing.mx",
     github: "https://github.com/ggmarketing",
   },
 };

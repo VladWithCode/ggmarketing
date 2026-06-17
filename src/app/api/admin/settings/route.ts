@@ -23,7 +23,6 @@ export async function PUT(req: Request) {
     whatsappNumber: d.whatsappNumber,
     instagramUrl: d.instagramUrl || null,
     facebookUrl: d.facebookUrl || null,
-    linkedinUrl: d.linkedinUrl || null,
     githubUrl: d.githubUrl || null,
     address: d.address || null,
   };

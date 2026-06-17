@@ -16,12 +16,12 @@ export function ShowcaseProjects() {
   return (
     <section id="proyectos" className="relative bg-white py-24">
       <div className="container-page">
-        <Reveal>
+        <Reveal className="mx-auto max-w-2xl text-center">
           <SectionEyebrow index="03">Proyectos que hemos creado</SectionEyebrow>
-          <h2 className="mt-4 max-w-2xl font-display text-3xl font-bold tracking-tight md:text-5xl">
+          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight md:text-5xl">
             Páginas reales, <span className="text-gradient">en línea hoy</span>
           </h2>
-          <p className="mt-4 max-w-xl text-[color:var(--color-muted)]">
+          <p className="mx-auto mt-4 max-w-xl text-[color:var(--color-muted)]">
             Sitios y apps que construimos y siguen funcionando para negocios reales.
           </p>
         </Reveal>

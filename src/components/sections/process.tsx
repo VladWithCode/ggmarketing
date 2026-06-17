@@ -21,10 +21,10 @@ export function Process() {
       <CloudShape variant="puffy" fill="#ffffff" opacity={0.06} className="animate-cloud-rev pointer-events-none absolute right-[-2%] bottom-10 w-64" />
 
       <div className="container-page relative">
-        <Reveal>
+        <Reveal className="mx-auto max-w-2xl text-center">
           <SectionEyebrow tone="dark">Cómo trabajamos</SectionEyebrow>
-          <h2 className="mt-4 max-w-2xl font-display text-3xl font-bold tracking-tight text-white md:text-5xl">
-            Tu marca, paso a paso, <span className="text-gradient">hasta las nubes</span>
+          <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-white md:text-5xl">
+Tu marca, paso a paso, <span className="text-gradient">hasta las nubes</span>
           </h2>
         </Reveal>
 
